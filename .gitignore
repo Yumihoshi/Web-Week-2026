@@ -1,0 +1,21 @@
+# 操作系统生成的文件
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 编辑器或IDE的配置目录/文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.code-workspace
+
+# 日志文件
+*.log
+npm-debug.log*
+
+# 临时文件
+.cache/
+.tmp/
