@@ -19,3 +19,6 @@ npm-debug.log*
 # 临时文件
 .cache/
 .tmp/
+
+# 忽略 Microsoft Office 临时文件
+~$*
