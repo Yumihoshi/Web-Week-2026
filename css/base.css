@@ -1,0 +1,47 @@
+/* ========================================
+   基础样式 - 重置与全局设置
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--宋体);
+    background-color: var(--牙白);
+    color: #2f2621;
+    line-height: 1.6;
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(178, 76, 44, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 80% 0%, rgba(63, 108, 87, 0.1) 0%, transparent 40%),
+        linear-gradient(180deg, #fbf6ee 0%, #f4ecdc 55%, #eee2c8 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container,
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+main {
+    padding: 40px 0;
+    min-height: 600px;
+}
+
+.page-main {
+    width: 100%;
+    padding: 0;
+}
+
+.page-main > section {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
+}

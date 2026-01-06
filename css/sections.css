@@ -1,0 +1,458 @@
+/* ========================================
+   区块样式 - 各内容区块
+   ======================================== */
+
+/* 概览区块 */
+.culture-intro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    padding: 90px 0;
+    background: linear-gradient(120deg, rgba(243, 228, 202, 0.95), rgba(233, 209, 179, 0.9));
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 90px;
+    position: relative;
+}
+
+.culture-intro::after {
+    content: '';
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 4px;
+    background: 
+        radial-gradient(circle at 20px 2px, var(--杏黄) 1.5px, transparent 2px),
+        radial-gradient(circle at 40px 2px, var(--石绿) 1.5px, transparent 2px),
+        radial-gradient(circle at 60px 2px, var(--朱砂) 1.5px, transparent 2px),
+        radial-gradient(circle at 80px 2px, var(--杏黄) 1.5px, transparent 2px),
+        radial-gradient(circle at 100px 2px, var(--石绿) 1.5px, transparent 2px),
+        radial-gradient(circle at 120px 2px, var(--朱砂) 1.5px, transparent 2px),
+        radial-gradient(circle at 140px 2px, var(--杏黄) 1.5px, transparent 2px),
+        radial-gradient(circle at 160px 2px, var(--石绿) 1.5px, transparent 2px),
+        radial-gradient(circle at 180px 2px, var(--朱砂) 1.5px, transparent 2px),
+        radial-gradient(circle at 200px 2px, var(--杏黄) 1.5px, transparent 2px),
+        radial-gradient(circle at 220px 2px, var(--石绿) 1.5px, transparent 2px),
+        radial-gradient(circle at 240px 2px, var(--朱砂) 1.5px, transparent 2px),
+        radial-gradient(circle at 260px 2px, var(--杏黄) 1.5px, transparent 2px);
+    opacity: 0.6;
+}
+
+.intro-kicker {
+    font-size: 0.9rem;
+    letter-spacing: 0.35em;
+    color: var(--朱砂);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.intro-title {
+    font-family: var(--书法体);
+    font-size: 3.2rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+    color: var(--檀木棕);
+    letter-spacing: 0.1em;
+}
+
+.intro-description {
+    font-size: 1.1rem;
+    color: #5a4a3d;
+    margin-bottom: 25px;
+}
+
+.intro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.intro-tags span {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background-color: rgba(108, 58, 44, 0.12);
+    color: var(--檀木棕);
+    font-size: 0.95rem;
+}
+
+.intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.intro-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+/* 主题内容区块 */
+.content-section {
+    padding: 120px 0;
+    border-radius: 0;
+    margin-bottom: 120px;
+    border: none;
+    position: relative;
+}
+
+.content-section::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    height: 25px;
+    background-image: 
+        radial-gradient(ellipse 25px 8px at 25px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 25px 8px at 75px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 25px 8px at 125px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 25px 8px at 175px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 25px 8px at 225px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 25px 8px at 275px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 25px 8px at 325px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%);
+    background-size: 50px 25px;
+    background-repeat: repeat-x;
+    opacity: 0.85;
+}
+
+.theme-festivals {
+    background-image: linear-gradient(115deg, rgba(111, 62, 46, 0.94), rgba(179, 76, 44, 0.78)), url('../111/纪妖（原名知妖）_files/header_bg.png');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+
+.theme-literature {
+    background-image: linear-gradient(120deg, rgba(16, 31, 42, 0.94), rgba(63, 108, 87, 0.78)), url('../111/纪妖（原名知妖）_files/essays_bg2.png');
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.theme-crafts {
+    background-image: linear-gradient(120deg, rgba(62, 50, 44, 0.92), rgba(170, 124, 74, 0.75)), url('../111/纪妖（原名知妖）_files/monster_bg.png');
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 60px;
+    color: white;
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 20%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0.6) 80%, transparent 100%);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.section-kicker {
+    font-size: 0.9rem;
+    letter-spacing: 0.35em;
+    color: rgba(28, 58, 94, 0.7);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: var(--书法体);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--天青);
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 15px;
+    letter-spacing: 0.12em;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--杏黄), var(--石绿));
+    border-radius: 5px;
+}
+
+.content-section .section-title {
+    color: #fff;
+}
+
+.section-description {
+    max-width: 680px;
+    color: #4a4a4a;
+    font-size: 1.05rem;
+}
+
+.content-section .section-description {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.content-section .section-kicker {
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.section-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 30px;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 35px;
+    margin-bottom: 40px;
+}
+
+/* 特色文章卡片 */
+.section-feature-card {
+    border-radius: 0;
+    padding: 40px 30px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    box-shadow: none;
+}
+
+.feature-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.section-feature-card h3 {
+    font-size: 1.8rem;
+    line-height: 1.4;
+}
+
+.feature-meta {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.feature-meta li {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.feature-meta span {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+}
+
+/* 专题面板 */
+.culture-panels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    margin-bottom: 120px;
+    position: relative;
+}
+
+.culture-panels::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--檀木棕) 10%,
+        var(--朱砂) 30%,
+        var(--杏黄) 50%,
+        var(--朱砂) 70%,
+        var(--檀木棕) 90%,
+        transparent 100%
+    );
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.panel-card {
+    border-radius: 0;
+    overflow: hidden;
+    position: relative;
+    min-height: 360px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: none;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.panel-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+}
+
+.panel-overlay {
+    position: absolute;
+    inset: 0;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(180deg, rgba(12, 19, 24, 0.1) 0%, rgba(12, 19, 24, 0.85) 100%);
+    color: #fff;
+    gap: 10px;
+    transition: background 0.4s ease;
+}
+
+.panel-card:hover .panel-overlay {
+    background: linear-gradient(180deg, rgba(12, 19, 24, 0.2) 0%, rgba(12, 19, 24, 0.92) 100%);
+}
+
+.panel-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.panel-link {
+    color: var(--杏黄);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s ease;
+}
+
+.panel-link::after {
+    content: '→';
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.panel-card:hover .panel-link::after {
+    transform: translateX(5px);
+}
+
+/* 时间轴区块 */
+.timeline-section {
+    padding: 110px 0;
+    border-radius: 0;
+    border-top: 1px solid rgba(108, 58, 44, 0.2);
+    border-bottom: 1px solid rgba(63, 108, 87, 0.2);
+    background: linear-gradient(135deg, rgba(251, 246, 238, 0.95), rgba(239, 227, 204, 0.9));
+    margin-bottom: 130px;
+    position: relative;
+}
+
+.timeline-section::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 3px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--檀木棕) 0px,
+        var(--檀木棕) 8px,
+        transparent 8px,
+        transparent 16px
+    );
+    opacity: 0.5;
+}
+
+.timeline-section::after {
+    content: '◆';
+    position: absolute;
+    bottom: -65px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: var(--石绿);
+    opacity: 0.6;
+    letter-spacing: 30px;
+    text-indent: 30px;
+}
+
+.timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.timeline-item {
+    padding: 25px 30px;
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid rgba(63, 108, 87, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.timeline-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+    border-color: var(--朱砂);
+}
+
+.timeline-section.is-visible .timeline-item {
+    animation: timelineSlideUp 0.6s ease forwards;
+}
+
+.timeline-section.is-visible .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-section.is-visible .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-section.is-visible .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-section.is-visible .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+.timeline-era {
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(28, 58, 94, 0.7);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.timeline-item h3 {
+    font-size: 1.3rem;
+    color: var(--黛蓝);
+    margin-bottom: 10px;
+}
+
+.timeline-item p {
+    color: #555;
+    line-height: 1.6;
+}

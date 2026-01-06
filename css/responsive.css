@@ -1,0 +1,270 @@
+/* ========================================
+   响应式样式
+   ======================================== */
+
+@media (max-width: 992px) {
+    :root {
+        --page-gutter: clamp(18px, 8vw, 80px);
+    }
+    
+    .nav-container {
+        flex-wrap: wrap;
+    }
+
+    .category-grid,
+    .detail-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .carousel-container {
+        height: 400px;
+    }
+
+    .carousel-title {
+        font-size: 2.5rem;
+    }
+
+    .carousel-text {
+        font-size: 1.2rem;
+    }
+
+    .carousel-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .carousel-prev {
+        left: 20px;
+    }
+
+    .carousel-next {
+        right: 20px;
+    }
+
+    .culture-intro {
+        grid-template-columns: 1fr;
+        padding: 40px 30px;
+    }
+
+    .content-section {
+        padding: 45px 35px;
+    }
+
+    .section-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --page-gutter: clamp(16px, 9vw, 60px);
+    }
+    
+    .header-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo-text {
+        font-size: 2rem;
+    }
+
+    .nav-item {
+        padding: 10px 20px;
+        font-size: 0.95rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+    }
+
+    .detail-container {
+        padding: 25px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .carousel-container {
+        height: 350px;
+    }
+
+    .carousel-content {
+        padding: 30px 20px;
+    }
+
+    .carousel-title {
+        font-size: 2rem;
+    }
+
+    .carousel-text {
+        font-size: 1.1rem;
+    }
+
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+
+    .carousel-prev {
+        left: 15px;
+    }
+
+    .carousel-next {
+        right: 15px;
+    }
+
+    .carousel-indicators {
+        bottom: 20px;
+    }
+
+    .intro-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .intro-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-title {
+        font-size: 2.5rem;
+    }
+
+    .culture-panels {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        grid-template-columns: 1fr;
+    }
+
+    /* 移动端：卡片默认保持紧凑，点击展开 */
+    .category-card {
+        padding: 20px;
+        cursor: pointer;
+    }
+
+    .category-card .card-header::after {
+        content: '\f078'; /* FontAwesome down arrow */
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        right: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .category-card.expanded .card-header::after {
+        transform: rotate(180deg);
+    }
+
+    /* 移动端卡片列表始终通过点击展开 */
+    .category-card .card-list {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    .category-card.expanded .card-list {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    .category-card .card-button {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    .category-card.expanded .card-button {
+        max-height: 50px;
+        opacity: 1;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --page-gutter: 18px;
+    }
+
+    .category-grid,
+    .detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+        padding: 30px 20px;
+    }
+
+    .logo-text {
+        font-size: 1.8rem;
+    }
+
+    .carousel-container {
+        height: 300px;
+        border-radius: 15px;
+    }
+
+    .carousel-content {
+        padding: 20px 15px;
+    }
+
+    .carousel-title {
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+    }
+
+    .carousel-text {
+        font-size: 1rem;
+    }
+
+    .content-section,
+    .timeline-section {
+        padding: 70px 0;
+    }
+
+    .section-feature-card {
+        padding: 25px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .carousel-prev {
+        left: 10px;
+    }
+
+    .carousel-next {
+        right: 10px;
+    }
+
+    .indicator {
+        width: 12px;
+        height: 12px;
+    }
+
+    .indicator.active {
+        width: 30px;
+    }
+}

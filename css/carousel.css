@@ -1,0 +1,155 @@
+/* ========================================
+   轮播图样式（当前未使用，保留备用）
+   ======================================== */
+
+.carousel-section {
+    margin-bottom: 50px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--天青) 0%, var(--石绿) 50%, var(--竹青) 100%);
+    background-size: cover;
+    background-position: center;
+}
+
+.carousel-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(255, 165, 0, 0.1) 0%, transparent 40%);
+    opacity: 0.7;
+}
+
+.carousel-slide:nth-child(1) {
+    background-image: linear-gradient(135deg, rgba(195, 39, 43, 0.85) 0%, rgba(139, 69, 19, 0.85) 50%, rgba(255, 165, 0, 0.85) 100%), url('../111/纪妖（原名知妖）_files/header_bg.png');
+}
+
+.carousel-slide:nth-child(2) {
+    background-image: linear-gradient(135deg, rgba(46, 92, 138, 0.85) 0%, rgba(0, 168, 107, 0.85) 50%, rgba(120, 157, 90, 0.85) 100%), url('../111/纪妖（原名知妖）_files/essays_bg1.png');
+}
+
+.carousel-slide:nth-child(3) {
+    background-image: linear-gradient(135deg, rgba(139, 69, 19, 0.85) 0%, rgba(212, 185, 150, 0.85) 50%, rgba(255, 165, 0, 0.85) 100%), url('../111/纪妖（原名知妖）_files/monster_card_bg.jpg');
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 40px;
+    max-width: 900px;
+}
+
+.carousel-title {
+    font-family: var(--书法体);
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    animation: slideInDown 0.8s ease-out;
+}
+
+.carousel-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 0.8s ease-out;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.carousel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+    left: 30px;
+}
+
+.carousel-next {
+    right: 30px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.indicator:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background-color: white;
+    border-color: white;
+    width: 40px;
+    border-radius: 10px;
+}

@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    document.body.classList.add('page-ready');
     // Carousel functionality
     const slides = document.querySelectorAll('.carousel-slide');
     if (slides.length) {
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     indicators[i].classList.remove('active');
                 }
             });
-            
+
             currentSlide = (index + slides.length) % slides.length;
             slides[currentSlide].classList.add('active');
             if (indicators[currentSlide]) {
@@ -94,59 +93,46 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    const detailBlocks = document.querySelectorAll('.theme-detail');
-    detailBlocks.forEach(block => {
-        const tabs = block.querySelectorAll('.detail-tab');
-        const panels = block.querySelectorAll('.detail-card');
+    // 卡片交互：移动端点击展开，桌面端悬停展开
+    const categoryCards = document.querySelectorAll('.category-card');
 
-        const activatePanel = (target) => {
-            tabs.forEach(btn => {
-                const isActive = btn.dataset.target === target;
-                btn.classList.toggle('active', isActive);
-                btn.setAttribute('aria-selected', isActive);
+    // 检测是否为移动设备
+    const isMobile = () => window.innerWidth <= 768;
+
+    categoryCards.forEach(card => {
+        // 移动端：点击卡片标题区域切换展开/折叠
+        if (isMobile()) {
+            const cardHeader = card.querySelector('.card-header');
+            cardHeader.addEventListener('click', function (e) {
+                e.preventDefault();
+                card.classList.toggle('expanded');
             });
-
-            panels.forEach(panel => {
-                const isMatch = panel.dataset.panel === target;
-                panel.classList.toggle('active', isMatch);
-                panel.setAttribute('aria-hidden', (!isMatch).toString());
-            });
-        };
-
-        tabs.forEach(tab => {
-            if (!tab.hasAttribute('aria-selected')) {
-                tab.setAttribute('aria-selected', tab.classList.contains('active'));
-            }
-
-            tab.addEventListener('click', () => {
-                activatePanel(tab.dataset.target);
-            });
-        });
-
-        panels.forEach(panel => {
-            panel.setAttribute('aria-hidden', (!panel.classList.contains('active')).toString());
-        });
+        }
     });
 
-    const detailLinks = document.querySelectorAll('.detail-link');
-    detailLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
+    // 响应窗口大小变化
+    window.addEventListener('resize', () => {
+        if (!isMobile()) {
+            categoryCards.forEach(card => card.classList.remove('expanded'));
+        }
+    });
+
+    const cardButtons = document.querySelectorAll('.card-button');
+    cardButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
             e.preventDefault();
-            const panel = this.closest('.detail-card');
-            const title = panel ? panel.querySelector('h3').textContent.trim() : '该主题';
-            const prompts = [
-                `即将深入探索「${title}」的秘密档案。`,
-                `准备好一起走进「${title}」的文化现场了吗？`,
-                `「${title}」还藏着更多故事，敬请期待！`
-            ];
-            alert(prompts[Math.floor(Math.random() * prompts.length)]);
-        });
-    });
+            const card = this.closest('.category-card');
+            const title = card ? card.querySelector('.card-title').textContent : "该内容";
 
-    const floatingElements = document.querySelectorAll('.floating-element');
-    floatingElements.forEach(el => {
-        const randomDelay = Math.random() * 5;
-        el.style.animationDelay = `${randomDelay}s`;
+            const messages = [
+                `即将深入探索「${title}」的奥秘！`,
+                `准备好开启「${title}」的学习之旅了吗？`,
+                `「${title}」蕴藏着丰富的文化宝藏，让我们一探究竟！`
+            ];
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            alert(randomMessage);
+        });
     });
 
     window.addEventListener('scroll', function () {

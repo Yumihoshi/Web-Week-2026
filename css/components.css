@@ -1,0 +1,247 @@
+/* ========================================
+   通用组件样式 - 按钮、卡片、标签等
+   ======================================== */
+
+/* 按钮样式 */
+.btn {
+    padding: 12px 26px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn.primary {
+    background: linear-gradient(120deg, var(--朱砂), var(--檀木棕));
+    color: #fff;
+    box-shadow: 0 15px 35px rgba(108, 58, 44, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn.primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn.primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn.ghost {
+    border-color: rgba(42, 55, 52, 0.3);
+    color: var(--天青);
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn.ghost:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(42, 55, 52, 0.5);
+}
+
+.btn.text {
+    color: var(--檀木棕);
+}
+
+.btn.text:hover {
+    color: var(--朱砂);
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 卡片样式 */
+.category-card {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: none;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.category-card:hover::before {
+    left: 100%;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.card-header {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.95);
+    padding: 0 0 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.card-icon {
+    width: 58px;
+    height: 58px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.card-content {
+    padding: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.card-desc {
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    transition: margin 0.4s ease;
+}
+
+.category-card:hover .card-desc,
+.category-card.expanded .card-desc {
+    margin-bottom: 24px;
+}
+
+.card-list {
+    list-style: none;
+    margin-bottom: 20px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease, margin 0.5s ease;
+}
+
+.category-card:hover .card-list,
+.category-card.expanded .card-list {
+    max-height: 300px;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+.card-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-list li:last-child {
+    border-bottom: none;
+}
+
+.list-icon {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+}
+
+.card-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 20px;
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    font-size: 0.95rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.category-card:hover .card-button,
+.category-card.expanded .card-button {
+    max-height: 50px;
+    opacity: 1;
+    padding: 10px 20px;
+    margin-top: 15px;
+}
+
+.card-button:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 统计卡片 */
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    padding: 25px;
+    border: 1px solid rgba(120, 157, 90, 0.2);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--竹青);
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+}
+
+.stat-value {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--朱砂);
+    margin-bottom: 10px;
+}
+
+.stat-desc {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
