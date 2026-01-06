@@ -101,6 +101,110 @@ document.addEventListener('DOMContentLoaded', function () {
     // 检测是否为移动设备
     const isMobile = () => window.innerWidth <= 768;
 
+    const sectionBgConfigs = {
+        festivals: {
+            gradient: 'linear-gradient(115deg, rgba(111, 62, 46, 0.94), rgba(179, 76, 44, 0.78))',
+            defaultImage: '../img/bg-festival.png'
+        },
+        literature: {
+            gradient: 'linear-gradient(120deg, rgba(16, 31, 42, 0.94), rgba(63, 108, 87, 0.78))',
+            defaultImage: '../img/bg-literature.png'
+        },
+        crafts: {
+            gradient: 'linear-gradient(120deg, rgba(62, 50, 44, 0.92), rgba(170, 124, 74, 0.75))',
+            defaultImage: '../img/bg-crafts.png'
+        }
+    };
+
+    const sectionBgRegistry = new WeakMap();
+
+    const initSectionBackgrounds = () => {
+        Object.entries(sectionBgConfigs).forEach(([sectionId, config]) => {
+            const section = document.getElementById(sectionId);
+            if (!section || sectionBgRegistry.has(section)) {
+                return;
+            }
+
+            const stack = document.createElement('div');
+            stack.className = 'section-bg-stack';
+            stack.setAttribute('aria-hidden', 'true');
+
+            const primaryLayer = document.createElement('div');
+            primaryLayer.className = 'section-bg-layer is-active';
+            primaryLayer.style.backgroundImage = `${config.gradient}, url('${config.defaultImage}')`;
+
+            const bufferLayer = document.createElement('div');
+            bufferLayer.className = 'section-bg-layer';
+            bufferLayer.style.backgroundImage = `${config.gradient}, url('${config.defaultImage}')`;
+
+            stack.append(primaryLayer, bufferLayer);
+            section.insertBefore(stack, section.firstChild);
+
+            sectionBgRegistry.set(section, {
+                layers: [primaryLayer, bufferLayer],
+                activeIndex: 0,
+                gradient: config.gradient,
+                defaultImage: config.defaultImage,
+                currentImage: config.defaultImage,
+                resetTimer: null
+            });
+        });
+    };
+
+    const swapSectionBackground = (section, imagePath) => {
+        const state = sectionBgRegistry.get(section);
+        if (!state) {
+            return;
+        }
+
+        const targetImage = imagePath || state.defaultImage;
+        if (state.currentImage === targetImage) {
+            return;
+        }
+
+        if (state.resetTimer) {
+            clearTimeout(state.resetTimer);
+            state.resetTimer = null;
+        }
+
+        const nextIndex = state.activeIndex === 0 ? 1 : 0;
+        const nextLayer = state.layers[nextIndex];
+        const activeLayer = state.layers[state.activeIndex];
+
+        nextLayer.style.backgroundImage = `${state.gradient}, url('${targetImage}')`;
+
+        requestAnimationFrame(() => {
+            nextLayer.classList.add('is-active');
+            activeLayer.classList.remove('is-active');
+            state.activeIndex = nextIndex;
+            state.currentImage = targetImage;
+        });
+    };
+
+    const resetSectionBackground = (section, immediate = false) => {
+        const state = sectionBgRegistry.get(section);
+        if (!state) {
+            return;
+        }
+
+        if (state.resetTimer) {
+            clearTimeout(state.resetTimer);
+            state.resetTimer = null;
+        }
+
+        if (immediate) {
+            swapSectionBackground(section, state.defaultImage);
+            return;
+        }
+
+        state.resetTimer = setTimeout(() => {
+            swapSectionBackground(section, state.defaultImage);
+            state.resetTimer = null;
+        }, 200);
+    };
+
+    initSectionBackgrounds();
+
     categoryCards.forEach(card => {
         const cardHeader = card.querySelector('.card-header');
         if (!cardHeader) {
@@ -121,6 +225,12 @@ document.addEventListener('DOMContentLoaded', function () {
             card.classList.remove('card-focused', 'card-muted', 'expanded');
         });
         interactiveGrids.forEach(grid => grid.classList.remove('grid-focused'));
+        interactiveGrids.forEach(grid => {
+            const section = grid.closest('.content-section');
+            if (section) {
+                resetSectionBackground(section, true);
+            }
+        });
     };
 
     const lockGridHeight = grid => {
@@ -200,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!cards.length) {
                 return;
             }
+            const section = grid.closest('.content-section');
 
             cards.forEach(card => {
                 card.addEventListener('mouseenter', () => {
@@ -217,6 +328,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     card.classList.add('card-focused');
                     card.classList.remove('card-muted');
                     grid.classList.add('grid-focused');
+                    if (section) {
+                        swapSectionBackground(section, card.dataset.bg);
+                    }
                 });
             });
 
@@ -226,6 +340,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 cards.forEach(card => card.classList.remove('card-focused', 'card-muted'));
                 grid.classList.remove('grid-focused');
+                if (section) {
+                    resetSectionBackground(section);
+                }
             });
         });
     };

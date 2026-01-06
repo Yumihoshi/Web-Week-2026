@@ -273,17 +273,7 @@
     pointer-events: none;
 }
 
-.category-card[data-theme="spring-festival"].card-focused {
-    background: linear-gradient(120deg, rgba(250, 145, 125, 0.95), rgba(149, 43, 28, 0.9));
-}
-
-.category-card[data-theme="dragon-boat"].card-focused {
-    background: linear-gradient(120deg, rgba(53, 145, 142, 0.95), rgba(21, 68, 65, 0.9));
-}
-
-.category-card[data-theme="mid-autumn"].card-focused {
-    background: linear-gradient(120deg, rgba(233, 194, 120, 0.95), rgba(100, 71, 34, 0.92));
-}
+/* 主题背景由父级 section 控制，卡片保持统一质感 */
 
 /* 统计卡片 */
 .stat-card {

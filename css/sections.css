@@ -91,6 +91,7 @@
     margin-bottom: 120px;
     border: none;
     position: relative;
+    overflow: hidden;
 }
 
 .content-section::after {
@@ -109,6 +110,36 @@
     background-position: 0 0, 23px 11px, 0 11px;
     background-repeat: repeat-x;
     opacity: 0.9;
+    z-index: 2;
+}
+
+.content-section > *:not(.section-bg-stack) {
+    position: relative;
+    z-index: 1;
+}
+
+.section-bg-stack {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section-bg-layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 0.8s ease, transform 1.2s ease;
+}
+
+.section-bg-layer.is-active {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .theme-festivals {
