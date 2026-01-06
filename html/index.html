@@ -1,14 +1,860 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>翰林苑 - 传统文化教师工作平台</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --天青: #2E5C8A;
+            --牙白: #F5F1E6;
+            --檀木棕: #8B4513;
+            --绢素白: #FEFCF5;
+            --黛蓝: #1C3A5E;
+            --竹青: #789D5A;
+            --朱砂: #C3272B;
+            --浅赭: #D4B996;
+            --宋体: 'Noto Serif SC', serif;
+            --书法体: 'Ma Shan Zheng', cursive;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--宋体);
+            background-color: var(--牙白);
+            color: #333;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(213, 196, 172, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(46, 92, 138, 0.03) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(to bottom, var(--黛蓝), var(--天青));
+            color: white;
+            padding: 20px 0;
+            border-bottom: 5px solid var(--檀木棕);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232E5C8A' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            background-color: var(--绢素白);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid var(--檀木棕);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-icon i {
+            font-size: 28px;
+            color: var(--天青);
+        }
+        
+        .logo-text {
+            font-family: var(--书法体);
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo-subtitle {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-top: 5px;
+            opacity: 0.9;
+            letter-spacing: 2px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--绢素白);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--浅赭);
+        }
+        
+        .user-avatar i {
+            font-size: 24px;
+            color: var(--天青);
+        }
+        
+        .user-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        nav {
+            background-color: var(--绢素白);
+            padding: 15px 0;
+            border-bottom: 2px solid var(--浅赭);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .nav-item {
+            padding: 12px 25px;
+            background-color: white;
+            border-radius: 5px;
+            border: 1px solid var(--浅赭);
+            color: var(--黛蓝);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.1), transparent);
+            transition: left 0.7s;
+        }
+        
+        .nav-item:hover::before {
+            left: 100%;
+        }
+        
+        .nav-item:hover {
+            background-color: var(--天青);
+            color: white;
+            border-color: var(--天青);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 92, 138, 0.2);
+        }
+        
+        .nav-item.active {
+            background-color: var(--檀木棕);
+            color: white;
+            border-color: var(--檀木棕);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+        
+        main {
+            padding: 40px 0;
+            min-height: 600px;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid var(--浅赭);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23D4B996' fill-opacity='0.1' d='M45.1,-59.5C57.9,-51.8,67.3,-37.1,71.1,-21.5C74.9,-5.8,73.2,10.8,67.1,25.6C61,40.4,50.6,53.5,37.6,61.6C24.6,69.7,9.1,72.8,-6.6,70.9C-22.2,69,-37.6,62.1,-49.4,51.3C-61.2,40.5,-69.3,25.8,-71.6,10.3C-73.9,-5.2,-70.4,-21.5,-62.2,-35.1C-54,-48.7,-41,-59.6,-26.7,-66.5C-12.4,-73.4,3.1,-76.3,19.1,-74.4C35.1,-72.5,52.4,-65.8,45.1,-59.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+        
+        .section-title {
+            font-family: var(--书法体);
+            font-size: 2.2rem;
+            color: var(--檀木棕);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--竹青);
+        }
+        
+        .welcome-text {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--浅赭);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--天青), var(--黛蓝));
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-desc {
+            color: #666;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--浅赭);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--天青);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .card-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--檀木棕);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-family: var(--宋体);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .card-button:hover {
+            background-color: var(--天青);
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+        }
+        
+        .activities-section {
+            margin-bottom: 50px;
+        }
+        
+        .activities-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .activity-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            border-left: 5px solid var(--竹青);
+            border: 1px solid var(--浅赭);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .activity-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .activity-date {
+            background-color: var(--天青);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .activity-day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .activity-month {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .activity-details {
+            flex-grow: 1;
+        }
+        
+        .activity-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--黛蓝);
+            margin-bottom: 5px;
+        }
+        
+        .activity-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            background-color: var(--黛蓝);
+            color: white;
+            padding: 40px 0 20px;
+            border-top: 5px solid var(--檀木棕);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-title {
+            font-family: var(--书法体);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--浅赭);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--竹青);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--浅赭);
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 992px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .nav-item {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .activity-date {
+                width: 100%;
+                height: auto;
+                padding: 10px;
+                flex-direction: row;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .activity-day, .activity-month {
+                font-size: 1.2rem;
+            }
+        }
+        
+        .seal {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(195, 39, 43, 0.1);
+            border: 2px solid var(--朱砂);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--书法体);
+            color: var(--朱砂);
+            font-size: 1.2rem;
+            transform: rotate(-15deg);
+            opacity: 0.7;
+        }
+        
+        .seal-1 {
+            top: 20px;
+            right: 5%;
+        }
+        
+        .seal-2 {
+            bottom: 40px;
+            left: 5%;
+        }
+    </style>
 </head>
-
 <body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div>
+                    <h1 class="logo-text">翰林苑</h1>
+                    <p class="logo-subtitle">传统文化教师工作平台</p>
+                </div>
+            </div>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div>
+                    <p class="user-name">王明远 老师</p>
+                    <p>语文教研室 | 教龄22年</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="seal seal-1">教</div>
+        <div class="seal seal-2">研</div>
+    </header>
+    
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="nav-item active">
+                <i class="fas fa-home nav-icon"></i> 翰林首页
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-book-open nav-icon"></i> 文渊阁
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-pen-fancy nav-icon"></i> 修撰司
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chalkboard-teacher nav-icon"></i> 经筵讲坛
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-award nav-icon"></i> 金石录
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-user-circle nav-icon"></i> 我的书房
+            </a>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section class="welcome-section">
+            <h2 class="section-title">文以载道，教泽流长</h2>
+            <p class="welcome-text">
+                尊敬的先生/女士，欢迎回到翰林苑。此处是专为传承文化与现代教育所设之数字斋院。今日宜静心备课，亦宜与同仁论道。您有3条新消息，2份教案待修订，1场线上经筵将于申时开讲。
+            </p>
+        </section>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="card-title">文渊阁</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-desc">
+                        仿《四库全书》分类法，藏经史子集四部。收录您多年积累的教案、课件、试题及学术资料，支持全文检索与智能分类。
+                    </p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">1,247</div>
+                            <div class="stat-label">藏书卷目</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">86</div>
+                            <div class="stat-label">新增本月</div>
+                        </div>
+                    </div>
+                    <a href="#" class="card-button">进入文渊阁</a>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3 class="card-title">修撰司</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-desc">
+                        备课与创作中心，提供严谨的文稿编辑、古籍式排版及协同校勘工具。支持插入传统纹样、书法字体与古籍插图。
+                    </p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">进行中教案</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">待校勘文稿</div>
+                        </div>
+                    </div>
+                    <a href="#" class="card-button">开始修撰</a>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="card-title">经筵讲坛</h3>
+                </div>
+                <div class="card-content">
+                    <p class="card-desc">
+                        教研直播与学术讲座专区。可发起或参与线上教研，观摩名师讲堂，参与学术论辩，体现"御前讲学"之庄重。
+                    </p>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">今日讲坛</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">15:30</div>
+                            <div class="stat-label">下一场开始</div>
+                        </div>
+                    </div>
+                    <a href="#" class="card-button">前往讲坛</a>
+                </div>
+            </div>
+        </div>
+        
+        <section class="activities-section">
+            <h2 class="section-title" style="margin-bottom: 30px;">近期经筵与活动</h2>
+            <div class="activities-list">
+                <div class="activity-item">
+                    <div class="activity-date">
+                        <span class="activity-day">15</span>
+                        <span class="activity-month">六月</span>
+                    </div>
+                    <div class="activity-details">
+                        <h4 class="activity-title">古典诗词教学法研讨</h4>
+                        <p class="activity-desc">主讲：李翰林教授 | 地点：线上经筵厅 | 巳时三刻（10:30）</p>
+                    </div>
+                    <a href="#" class="card-button" style="width: auto; padding: 8px 20px;">参加</a>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-date">
+                        <span class="activity-day">18</span>
+                        <span class="activity-month">六月</span>
+                    </div>
+                    <div class="activity-details">
+                        <h4 class="activity-title">《论语》现代解读集体备课</h4>
+                        <p class="activity-desc">主持：语文教研室 | 地点：文渊阁甲字号斋室 | 未时（14:00）</p>
+                    </div>
+                    <a href="#" class="card-button" style="width: auto; padding: 8px 20px;">准备</a>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-date">
+                        <span class="activity-day">22</span>
+                        <span class="activity-month">六月</span>
+                    </div>
+                    <div class="activity-details">
+                        <h4 class="activity-title">金石录年度成果申报截止</h4>
+                        <p class="activity-desc">请各位先生将本年论文、获奖等成果归档至金石录，以资存鉴。</p>
+                    </div>
+                    <a href="#" class="card-button" style="width: auto; padding: 8px 20px;">提交</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">翰林苑</h3>
+                    <p>承千年文脉，育时代新人。此平台专为尊师设计，融传统雅韵于现代教育之器。</p>
+                    <p class="quote">"师者，所以传道受业解惑也。" —— 韩愈《师说》</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">斋院导航</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 文渊阁（资源库）</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 修撰司（备课区）</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 经筵讲坛（教研区）</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> 金石录（成果室）</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">联系翰林</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-envelope"></i> hanlinyuan@edu.cn</a></li>
+                        <li><a href="#"><i class="fas fa-phone-alt"></i> 010-翰林苑转各斋</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 北京市国子监街1号</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> 使用指南与帮助</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 翰林苑传统文化教师平台 | 设计遵循宋代美学，致敬华夏教育传统</p>
+                <p>今日访问：第 1,208 位学人 | 当前版本：崇宁二年·夏修订版</p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    document.querySelector('main').style.opacity = '0.7';
+                    setTimeout(() => {
+                        document.querySelector('main').style.opacity = '1';
+                    }, 300);
+                });
+            });
+            
+            const cardButtons = document.querySelectorAll('.card-button');
+            cardButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const cardTitle = this.closest('.feature-card').querySelector('.card-title').textContent;
+                    alert(`即将进入「${cardTitle}」功能区，实际平台中将加载相应页面。`);
+                });
+            });
+            
+            const welcomeText = document.querySelector('.welcome-text');
+            const now = new Date();
+            const hours = now.getHours();
+            let timeGreeting = '';
+            
+            if (hours < 6) timeGreeting = '寅卯之交';
+            else if (hours < 9) timeGreeting = '辰时';
+            else if (hours < 12) timeGreeting = '巳时';
+            else if (hours < 14) timeGreeting = '午时';
+            else if (hours < 17) timeGreeting = '未时';
+            else if (hours < 19) timeGreeting = '申时';
+            else timeGreeting = '戌亥之交';
+            
+            welcomeText.innerHTML = welcomeText.innerHTML.replace('今日', `<strong>${timeGreeting}</strong>，今日`);
+        });
+    </script>
 </body>
-
-</html>aswadsfasdfasdf
+</html>
