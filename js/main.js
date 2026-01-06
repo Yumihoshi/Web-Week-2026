@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Carousel functionality
+    // 轮播图功能逻辑
     const slides = document.querySelectorAll('.carousel-slide');
     if (slides.length) {
         const indicators = document.querySelectorAll('.indicator');
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
         startAutoPlay();
     }
 
-    // Navigation functionality
+    // 导航交互逻辑
     const navItems = document.querySelectorAll('.nav-item');
 
     navItems.forEach(item => {
@@ -95,8 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 卡片交互：移动端点击展开，桌面端悬停展开
     const categoryCards = document.querySelectorAll('.category-card');
-    const festivalGrid = document.querySelector('.festival-grid');
-    const festivalCards = festivalGrid ? Array.from(festivalGrid.querySelectorAll('.category-card')) : [];
+    const interactiveGrids = Array.from(document.querySelectorAll('.interactive-grid'));
+    const getGridCards = grid => Array.from(grid.querySelectorAll('.category-card'));
 
     // 检测是否为移动设备
     const isMobile = () => window.innerWidth <= 768;
@@ -120,27 +120,30 @@ document.addEventListener('DOMContentLoaded', function () {
         categoryCards.forEach(card => {
             card.classList.remove('card-focused', 'card-muted', 'expanded');
         });
-        if (festivalGrid) {
-            festivalGrid.classList.remove('grid-focused');
-        }
+        interactiveGrids.forEach(grid => grid.classList.remove('grid-focused'));
     };
 
-    const lockFestivalGridHeight = () => {
-        if (!festivalGrid || !festivalCards.length || isMobile()) {
+    const lockGridHeight = grid => {
+        if (!grid || isMobile()) {
             return;
         }
 
-        festivalGrid.classList.add('is-measuring');
-        festivalGrid.style.removeProperty('min-height');
-        festivalGrid.style.removeProperty('height');
-        const hadGridFocus = festivalGrid.classList.contains('grid-focused');
+        const cards = getGridCards(grid);
+        if (!cards.length) {
+            return;
+        }
+
+        grid.classList.add('is-measuring');
+        grid.style.removeProperty('min-height');
+        grid.style.removeProperty('height');
+        const hadGridFocus = grid.classList.contains('grid-focused');
         if (hadGridFocus) {
-            festivalGrid.classList.remove('grid-focused');
+            grid.classList.remove('grid-focused');
         }
 
         let maxExpandedHeight = 0;
 
-        festivalCards.forEach(sourceCard => {
+        cards.forEach(sourceCard => {
             const clone = sourceCard.cloneNode(true);
             clone.classList.add('card-focused');
             clone.classList.remove('card-muted', 'expanded');
@@ -149,66 +152,82 @@ document.addEventListener('DOMContentLoaded', function () {
             clone.style.width = '100%';
             clone.style.visibility = 'hidden';
             clone.style.pointerEvents = 'none';
-            festivalGrid.appendChild(clone);
+            grid.appendChild(clone);
 
             const expandedHeight = clone.getBoundingClientRect().height;
             maxExpandedHeight = Math.max(maxExpandedHeight, expandedHeight);
             clone.remove();
         });
 
-        festivalGrid.classList.remove('is-measuring');
+        grid.classList.remove('is-measuring');
 
-        const baseHeight = festivalGrid.getBoundingClientRect().height;
+        const baseHeight = grid.getBoundingClientRect().height;
         const targetHeight = Math.max(baseHeight, maxExpandedHeight);
 
-        festivalGrid.style.minHeight = `${Math.ceil(targetHeight)}px`;
-        festivalGrid.style.height = `${Math.ceil(targetHeight)}px`;
+        grid.style.minHeight = `${Math.ceil(targetHeight)}px`;
+        grid.style.height = `${Math.ceil(targetHeight)}px`;
         if (hadGridFocus) {
-            festivalGrid.classList.add('grid-focused');
+            grid.classList.add('grid-focused');
         }
     };
 
-    const releaseFestivalGridHeight = () => {
-        if (!festivalGrid) {
+    const releaseGridHeight = grid => {
+        if (!grid) {
             return;
         }
-        festivalGrid.style.removeProperty('min-height');
-        festivalGrid.style.removeProperty('height');
+        grid.style.removeProperty('min-height');
+        grid.style.removeProperty('height');
+    };
+
+    const lockAllGridHeights = () => {
+        if (isMobile()) {
+            return;
+        }
+        interactiveGrids.forEach(grid => lockGridHeight(grid));
+    };
+
+    const releaseAllGridHeights = () => {
+        interactiveGrids.forEach(grid => releaseGridHeight(grid));
     };
 
     const enableDesktopHover = () => {
-        if (!festivalGrid || !festivalCards.length) {
+        if (!interactiveGrids.length) {
             return;
         }
 
-        festivalCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
+        interactiveGrids.forEach(grid => {
+            const cards = getGridCards(grid);
+            if (!cards.length) {
+                return;
+            }
+
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    if (isMobile()) {
+                        return;
+                    }
+
+                    cards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.classList.add('card-muted');
+                            otherCard.classList.remove('card-focused');
+                        }
+                    });
+
+                    card.classList.add('card-focused');
+                    card.classList.remove('card-muted');
+                    grid.classList.add('grid-focused');
+                });
+            });
+
+            grid.addEventListener('mouseleave', () => {
                 if (isMobile()) {
                     return;
                 }
-
-                festivalCards.forEach(otherCard => {
-                    if (otherCard !== card) {
-                        otherCard.classList.add('card-muted');
-                        otherCard.classList.remove('card-focused');
-                    }
-                });
-
-                card.classList.add('card-focused');
-                card.classList.remove('card-muted');
-                festivalGrid.classList.add('grid-focused');
+                cards.forEach(card => card.classList.remove('card-focused', 'card-muted'));
+                grid.classList.remove('grid-focused');
             });
         });
-
-        festivalGrid.addEventListener('mouseleave', () => {
-            if (isMobile()) {
-                return;
-            }
-            festivalCards.forEach(card => card.classList.remove('card-focused', 'card-muted'));
-            festivalGrid.classList.remove('grid-focused');
-        });
-
-        requestAnimationFrame(lockFestivalGridHeight);
     };
 
     enableDesktopHover();
@@ -217,22 +236,22 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', () => {
         if (isMobile()) {
             resetCardStates();
-            releaseFestivalGridHeight();
+            releaseAllGridHeights();
         } else {
             categoryCards.forEach(card => card.classList.remove('expanded'));
-            lockFestivalGridHeight();
+            lockAllGridHeights();
         }
     });
 
     if (!isMobile()) {
-        requestAnimationFrame(lockFestivalGridHeight);
+        requestAnimationFrame(lockAllGridHeights);
     }
 
     window.addEventListener('load', () => {
         if (!isMobile()) {
-            lockFestivalGridHeight();
+            lockAllGridHeights();
         } else {
-            releaseFestivalGridHeight();
+            releaseAllGridHeights();
         }
     });
 

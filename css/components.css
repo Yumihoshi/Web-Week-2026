@@ -214,7 +214,7 @@
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
-.festival-grid {
+.interactive-grid {
     display: flex;
     align-items: stretch;
     gap: 30px;
@@ -222,15 +222,15 @@
     transition: gap 0.35s ease;
 }
 
-.festival-grid.grid-focused {
+.interactive-grid.grid-focused {
     gap: 0;
 }
 
-.festival-grid.is-measuring .category-card {
+.interactive-grid.is-measuring .category-card {
     transition: none !important;
 }
 
-.festival-grid .category-card {
+.interactive-grid .category-card {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: calc((100% - 60px) / 3);
@@ -241,7 +241,7 @@
     transition: flex-basis 0.5s ease, max-width 0.5s ease, opacity 0.35s linear, transform 0.35s ease-out;
 }
 
-.festival-grid .category-card.card-focused {
+.interactive-grid .category-card.card-focused {
     display: block;
     padding: 45px;
     border-width: 2px;
@@ -253,7 +253,7 @@
     z-index: 2;
 }
 
-.festival-grid .category-card.card-muted {
+.interactive-grid .category-card.card-muted {
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: 0;

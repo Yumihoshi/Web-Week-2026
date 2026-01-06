@@ -19,26 +19,19 @@
 .culture-intro::after {
     content: '';
     position: absolute;
-    bottom: -45px;
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 280px;
-    height: 4px;
-    background: 
-        radial-gradient(circle at 20px 2px, var(--杏黄) 1.5px, transparent 2px),
-        radial-gradient(circle at 40px 2px, var(--石绿) 1.5px, transparent 2px),
-        radial-gradient(circle at 60px 2px, var(--朱砂) 1.5px, transparent 2px),
-        radial-gradient(circle at 80px 2px, var(--杏黄) 1.5px, transparent 2px),
-        radial-gradient(circle at 100px 2px, var(--石绿) 1.5px, transparent 2px),
-        radial-gradient(circle at 120px 2px, var(--朱砂) 1.5px, transparent 2px),
-        radial-gradient(circle at 140px 2px, var(--杏黄) 1.5px, transparent 2px),
-        radial-gradient(circle at 160px 2px, var(--石绿) 1.5px, transparent 2px),
-        radial-gradient(circle at 180px 2px, var(--朱砂) 1.5px, transparent 2px),
-        radial-gradient(circle at 200px 2px, var(--杏黄) 1.5px, transparent 2px),
-        radial-gradient(circle at 220px 2px, var(--石绿) 1.5px, transparent 2px),
-        radial-gradient(circle at 240px 2px, var(--朱砂) 1.5px, transparent 2px),
-        radial-gradient(circle at 260px 2px, var(--杏黄) 1.5px, transparent 2px);
-    opacity: 0.6;
+    width: 100vw;
+    height: 18px;
+    background-image:
+        radial-gradient(circle, rgba(233, 193, 143, 0.8) 35%, transparent 36%),
+        radial-gradient(circle, rgba(149, 43, 28, 0.7) 35%, transparent 36%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.9) 35%, transparent 36%);
+    background-size: 40px 18px, 40px 18px, 40px 18px;
+    background-position: 0 0, 20px 9px, 0 9px;
+    background-repeat: repeat-x;
+    opacity: 0.85;
 }
 
 .intro-kicker {
@@ -103,39 +96,36 @@
 .content-section::after {
     content: '';
     position: absolute;
-    bottom: -60px;
+    bottom: -55px;
     left: 50%;
     transform: translateX(-50%);
-    width: 350px;
-    height: 25px;
-    background-image: 
-        radial-gradient(ellipse 25px 8px at 25px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 25px 8px at 75px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 25px 8px at 125px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 25px 8px at 175px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 25px 8px at 225px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 25px 8px at 275px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%),
-        radial-gradient(ellipse 25px 8px at 325px 12px, rgba(255, 255, 255, 0.6) 0%, transparent 50%);
-    background-size: 50px 25px;
+    width: 100vw;
+    height: 22px;
+    background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.95) 32%, transparent 33%),
+        radial-gradient(circle, rgba(233, 193, 143, 0.65) 32%, transparent 33%),
+        radial-gradient(circle, rgba(149, 43, 28, 0.65) 32%, transparent 33%);
+    background-size: 46px 22px, 46px 22px, 46px 22px;
+    background-position: 0 0, 23px 11px, 0 11px;
     background-repeat: repeat-x;
-    opacity: 0.85;
+    opacity: 0.9;
 }
 
 .theme-festivals {
-    background-image: linear-gradient(115deg, rgba(111, 62, 46, 0.94), rgba(179, 76, 44, 0.78)), url('../111/纪妖（原名知妖）_files/header_bg.png');
+    background-image: linear-gradient(115deg, rgba(111, 62, 46, 0.94), rgba(179, 76, 44, 0.78)), url('../img/bg-festival.png');
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;
 }
 
 .theme-literature {
-    background-image: linear-gradient(120deg, rgba(16, 31, 42, 0.94), rgba(63, 108, 87, 0.78)), url('../111/纪妖（原名知妖）_files/essays_bg2.png');
+    background-image: linear-gradient(120deg, rgba(16, 31, 42, 0.94), rgba(63, 108, 87, 0.78)), url('../img/panel-literature.png');
     background-size: cover;
     background-blend-mode: multiply;
 }
 
 .theme-crafts {
-    background-image: linear-gradient(120deg, rgba(62, 50, 44, 0.92), rgba(170, 124, 74, 0.75)), url('../111/纪妖（原名知妖）_files/monster_bg.png');
+    background-image: linear-gradient(120deg, rgba(62, 50, 44, 0.92), rgba(170, 124, 74, 0.75)), url('../img/bg-crafts.png');
     background-size: cover;
     background-blend-mode: multiply;
 }
@@ -223,7 +213,7 @@
     margin-bottom: 40px;
 }
 
-.category-grid.festival-grid {
+.category-grid.interactive-grid {
     display: flex;
 }
 
@@ -289,22 +279,19 @@
 .culture-panels::after {
     content: '';
     position: absolute;
-    bottom: -60px;
+    bottom: -55px;
     left: 50%;
     transform: translateX(-50%);
-    width: 400px;
-    height: 2px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--檀木棕) 10%,
-        var(--朱砂) 30%,
-        var(--杏黄) 50%,
-        var(--朱砂) 70%,
-        var(--檀木棕) 90%,
-        transparent 100%
-    );
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    width: 100vw;
+    height: 20px;
+    background-image:
+        radial-gradient(circle, rgba(233, 193, 143, 0.8) 30%, transparent 31%),
+        radial-gradient(circle, rgba(149, 43, 28, 0.7) 30%, transparent 31%),
+        radial-gradient(circle, rgba(255, 255, 255, 0.85) 30%, transparent 31%);
+    background-size: 44px 20px, 44px 20px, 44px 20px;
+    background-position: 0 0, 22px 10px, 0 10px;
+    background-repeat: repeat-x;
+    opacity: 0.9;
 }
 
 .panel-card {
