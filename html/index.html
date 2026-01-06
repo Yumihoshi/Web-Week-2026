@@ -13,28 +13,16 @@
 </head>
 
 <body>
-    <div class="floating-elements">
-        <div class="floating-element" style="top: 10%; left: 5%; color: var(--天青);">文</div>
-        <div class="floating-element" style="top: 20%; right: 8%; color: var(--石绿);">艺</div>
-        <div class="floating-element" style="bottom: 30%; left: 10%; color: var(--杏黄);">节</div>
-        <div class="floating-element" style="bottom: 20%; right: 5%; color: var(--朱砂);">技</div>
-    </div>
-
-    <header>
-        <div class="container">
-            <div class="header-container">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-landmark"></i>
-                    </div>
-                    <div>
-                        <h1 class="logo-text">传统文化</h1>
-                        <p class="logo-subtitle">华夏文明百科全书</p>
-                    </div>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <i class="fas fa-landmark"></i>
+                <div class="brand-text">
+                    <div class="section-layout">
+                        <article class="section-feature-card" style="background-image: url('../111/纪妖（原名知妖）_files/header_bg.png');">
                 </div>
             </div>
-
-            <div class="nav-container">
+            <div class="nav-links">
                 <a href="#festivals" class="nav-item active">
                     <i class="fas fa-calendar-alt nav-icon"></i> 传统节日
                 </a>
@@ -46,83 +34,191 @@
                 </a>
             </div>
         </div>
-    </header>
-
-    <main class="container">
-        <section class="hero-section">
-            <h2 class="hero-title">华夏文明，千年传承</h2>
-            <p class="hero-subtitle">探索中华文化瑰宝，感受五千年文明魅力</p>
-            <p class="hero-text">
-                中华传统文化源远流长，博大精深。从节日庆典到文学艺术，从哲学思想到手工艺技，每一处都蕴藏着先人的智慧与审美。让我们一起穿越时空，领略这份独特的文化遗产。
-            </p>
-        </section>
-
-        <section id="festivals">
-            <h2 class="section-title">一、传统节日</h2>
-            <div class="category-grid">
-                <div class="category-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-home"></i>
+                        <div class="theme-detail" data-theme="festivals">
+                            <div class="detail-tabs" role="tablist" aria-label="传统节日切换">
+                                <button class="detail-tab active" type="button" data-target="spring">春节</button>
+                                <button class="detail-tab" type="button" data-target="dragon">端午</button>
+                                <button class="detail-tab" type="button" data-target="mid">中秋</button>
+                            </div>
+                            <div class="detail-panels">
+                                <article class="detail-card active" data-panel="spring">
+                                    <div class="detail-visual" style="background-image: url('../111/纪妖（原名知妖）_files/header_bg.png');"></div>
+                                    <div class="detail-text">
+                                        <h3>春节 · 岁首大典</h3>
+                                        <p>农历新岁象征辞旧迎新。贴春联、守岁、拜年等礼俗把家国情怀融入烟火人间。</p>
+                                        <ul class="detail-list">
+                                            <li><i class="fas fa-scroll"></i> 贴春联、挂年画</li>
+                                            <li><i class="fas fa-fire"></i> 守岁、放鞭炮</li>
+                                            <li><i class="fas fa-dragon"></i> 舞龙舞狮、祈福巡游</li>
+                                        </ul>
+                                        <div class="detail-meta">
+                                            <span class="detail-chip">团圆年味</span>
+                                            <span class="detail-chip">吉祥祈愿</span>
+                                        </div>
+                                        <a href="#" class="detail-link" data-role="detail-link">了解春节习俗</a>
+                                    </div>
+                                </article>
+                                <article class="detail-card" data-panel="dragon">
+                                    <div class="detail-visual" style="background-image: linear-gradient(135deg, rgba(179, 76, 44, 0.9), rgba(255, 193, 94, 0.65)), url('../111/纪妖（原名知妖）_files/monster_card_bg.jpg');"></div>
+                                    <div class="detail-text">
+                                        <h3>端午 · 龙舟竞渡</h3>
+                                        <p>纪念爱国诗人屈原的五月节，龙舟竞渡与粽叶飘香凝聚共同的文化记忆。</p>
+                                        <ul class="detail-list">
+                                            <li><i class="fas fa-water"></i> 龙舟竞赛、江河祭礼</li>
+                                            <li><i class="fas fa-leaf"></i> 粽子、雄黄酒</li>
+                                            <li><i class="fas fa-seedling"></i> 挂艾草、菖蒲辟邪</li>
+                                        </ul>
+                                        <div class="detail-meta">
+                                            <span class="detail-chip">忠烈纪念</span>
+                                            <span class="detail-chip">万物安康</span>
+                                        </div>
+                                        <a href="#" class="detail-link" data-role="detail-link">体验端午习俗</a>
+                                    </div>
+                                </article>
+                                <article class="detail-card" data-panel="mid">
+                                    <div class="detail-visual" style="background-image: linear-gradient(135deg, rgba(16, 31, 42, 0.85), rgba(132, 117, 89, 0.7)), url('../111/纪妖（原名知妖）_files/84de9bc2-d68b-420f-80db-e7c6dfce4ec8.png');"></div>
+                                    <div class="detail-text">
+                                        <h3>中秋 · 月下团圆</h3>
+                                        <p>秋月最明之夜，阖家赏桂、品月饼，以圆月寄托团圆与丰收的祝愿。</p>
+                                        <ul class="detail-list">
+                                            <li><i class="fas fa-moon"></i> 赏月、拜月</li>
+                                            <li><i class="fas fa-cookie"></i> 月饼、桂花酒</li>
+                                            <li><i class="fas fa-people-group"></i> 家族团聚、祈福</li>
+                                        </ul>
+                                        <div class="detail-meta">
+                                            <span class="detail-chip">圆满情思</span>
+                                            <span class="detail-chip">桂影清辉</span>
+                                        </div>
+                                        <a href="#" class="detail-link" data-role="detail-link">了解中秋文化</a>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
-                        <h3 class="card-title">春节</h3>
-                    </div>
-                    <div class="card-content">
-                        <p class="card-desc">农历新年，中华民族最隆重的传统佳节，象征辞旧迎新、团圆和睦。</p>
-                        <ul class="card-list">
-                            <li><i class="fas fa-star list-icon"></i> 贴春联、年画</li>
-                            <li><i class="fas fa-star list-icon"></i> 年夜饭、守岁</li>
-                            <li><i class="fas fa-star list-icon"></i> 拜年、压岁钱</li>
-                            <li><i class="fas fa-star list-icon"></i> 舞龙舞狮</li>
-                        </ul>
-                        <a href="#" class="card-button">了解春节习俗</a>
-                    </div>
+                    <p class="stat-value">80+</p>
+                    <p class="stat-desc">呈现器物工艺与民间手艺背后的故事</p>
+
+                <div class="ornament-divider" aria-hidden="true">
+                    <span></span>
+                    <i class="fas fa-fan"></i>
+                    <span></span>
                 </div>
-
-                <div class="category-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-dragon"></i>
-                        </div>
-                        <h3 class="card-title">端午节</h3>
-                    </div>
-                    <div class="card-content">
-                        <p class="card-desc">农历五月初五，纪念爱国诗人屈原，又称"龙舟节"。</p>
-                        <ul class="card-list">
-                            <li><i class="fas fa-star list-icon"></i> 赛龙舟</li>
-                            <li><i class="fas fa-star list-icon"></i> 吃粽子</li>
-                            <li><i class="fas fa-star list-icon"></i> 挂艾草、菖蒲</li>
-                            <li><i class="fas fa-star list-icon"></i> 饮雄黄酒</li>
-                        </ul>
-                        <a href="#" class="card-button">体验端午习俗</a>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-moon"></i>
-                        </div>
-                        <h3 class="card-title">中秋节</h3>
-                    </div>
-                    <div class="card-content">
-                        <p class="card-desc">农历八月十五，秋季正中，象征团圆美满，又称"团圆节"。</p>
-                        <ul class="card-list">
-                            <li><i class="fas fa-star list-icon"></i> 赏月、拜月</li>
-                            <li><i class="fas fa-star list-icon"></i> 吃月饼</li>
-                            <li><i class="fas fa-star list-icon"></i> 阖家团圆</li>
-                            <li><i class="fas fa-star list-icon"></i> 赏桂花、饮桂花酒</li>
-                        </ul>
-                        <a href="#" class="card-button">了解中秋文化</a>
-                    </div>
                 </div>
             </div>
-
         </section>
 
-        <section id="literature" style="margin-top: 80px;">
-            <h2 class="section-title">二、文学与艺术</h2>
-            <div class="category-grid">
+        <section id="festivals" class="content-section theme-festivals reveal-on-scroll">
+            <div class="section-heading">
+                <p class="section-kicker">Festivals &amp; Rituals</p>
+                <h2 class="section-title">一、传统节日</h2>
+                <p class="section-description">以“岁时”串起的情感记忆，映照四时流转与家国风貌。</p>
+            </div>
+            <div class="section-layout">
+                <article class="section-feature-card" style="background-image: url('../111/纪妖（原名知妖）_files/essays_bg1.png');">
+                    <span class="feature-label">节日特写</span>
+                    <h3>从除夕到元宵：东方新岁的十夜光影</h3>
+                    <p>舞龙舞狮、烟火天灯与团聚夜话勾勒出“年”的仪式感，也为一年定下吉祥序章。</p>
+                    <ul class="feature-meta">
+                        <li>
+                            <span>仪式元素</span>
+                            灯彩 · 年味 · 家宴
+                        </li>
+                        <li>
+                            <span>流行地区</span>
+                            中原 · 江南 · 华南
+                        </li>
+                    </ul>
+                </article>
+                <div class="theme-detail" data-theme="literature">
+                    <div class="detail-tabs" role="tablist" aria-label="文学艺术切换">
+                        <button class="detail-tab active" type="button" data-target="classics">文学经典</button>
+                        <button class="detail-tab" type="button" data-target="painting">书画艺术</button>
+                        <button class="detail-tab" type="button" data-target="opera">戏曲民乐</button>
+                    </div>
+                    <div class="detail-panels">
+                        <article class="detail-card active" data-panel="classics">
+                            <div class="detail-visual" style="background-image: url('../111/纪妖（原名知妖）_files/essays_bg1.png');"></div>
+                            <div class="detail-text">
+                                <h3>典籍长河</h3>
+                                <p>从《诗经》《楚辞》到明清小说，文字中映照着礼乐与市井的共鸣。</p>
+                                <ul class="detail-list">
+                                    <li><i class="fas fa-feather"></i> 唐宋诗词、元曲</li>
+                                    <li><i class="fas fa-book"></i> 诸子散文与经典章回</li>
+                                    <li><i class="fas fa-dragon"></i> 四大名著、笔记传奇</li>
+                                </ul>
+                                <div class="detail-meta">
+                                    <span class="detail-chip">意境层层</span>
+                                    <span class="detail-chip">文脉相承</span>
+                                </div>
+                                <a href="#" class="detail-link" data-role="detail-link">阅读经典作品</a>
+                            </div>
+                        </article>
+                        <article class="detail-card" data-panel="painting">
+                            <div class="detail-visual" style="background-image: url('../111/纪妖（原名知妖）_files/essays_bg2.png');"></div>
+                            <div class="detail-text">
+                                <h3>书画天地</h3>
+                                <p>“一笔一墨皆心印”，书法、国画与文房器物塑造东方美学的骨与气。</p>
+                                <ul class="detail-list">
+                                    <li><i class="fas fa-pen-nib"></i> 楷行草法帖与碑刻</li>
+                                    <li><i class="fas fa-mountain"></i> 山水花鸟人物章法</li>
+                                    <li><i class="fas fa-gem"></i> 文房四宝、金石印谱</li>
+                                </ul>
+                                <div class="detail-meta">
+                                    <span class="detail-chip">气韵生动</span>
+                                    <span class="detail-chip">墨香流转</span>
+                                </div>
+                                <a href="#" class="detail-link" data-role="detail-link">欣赏书画名作</a>
+                            </div>
+                        </article>
+                        <article class="detail-card" data-panel="opera">
+                            <div class="detail-visual" style="background-image: linear-gradient(135deg, rgba(34, 25, 43, 0.92), rgba(179, 76, 44, 0.65)), url('../111/纪妖（原名知妖）_files/header_bg.png');"></div>
+                            <div class="detail-text">
+                                <h3>戏曲民乐</h3>
+                                <p>唱念做打与丝竹管弦相和，演绎千年积淀的故事与情感。</p>
+                                <ul class="detail-list">
+                                    <li><i class="fas fa-masks-theater"></i> 京昆越等剧种程式</li>
+                                    <li><i class="fas fa-music"></i> 古筝、琵琶、二胡名曲</li>
+                                    <li><i class="fas fa-fan"></i> 绣、服、头面等舞台工艺</li>
+                                </ul>
+                                <div class="detail-meta">
+                                    <span class="detail-chip">腔韵婉转</span>
+                                    <span class="detail-chip">丝竹相和</span>
+                                </div>
+                                <a href="#" class="detail-link" data-role="detail-link">聆听东方之声</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+        </section>
+
+
+        <div class="ornament-divider" aria-hidden="true">
+            <span></span>
+            <i class="fas fa-yin-yang"></i>
+            <span></span>
+        </div>
+        <section id="literature" class="content-section theme-literature reveal-on-scroll">
+            <div class="section-heading">
+                <p class="section-kicker">Literature &amp; Aesthetics</p>
+                <h2 class="section-title">二、文学与艺术</h2>
+                <p class="section-description">诗书画韵并置，显影文脉相承的东方感性与理性。</p>
+            </div>
+            <div class="section-layout">
+                <article class="section-feature-card" style="background-image: url('../111/纪妖（原名知妖）_files/essays_bg1.png');">
+                    <span class="feature-label">典籍视窗</span>
+                    <h3>从《诗经》到《红楼梦》的情感演进</h3>
+                    <p>以文学视角回望礼乐社会到市井百态，体味语言背后的文化变迁。</p>
+                    <ul class="feature-meta">
+                        <li>
+                            <span>代表体裁</span>
+                            诗 · 文 · 小说
+                        </li>
+                        <li>
+                            <span>美学关键词</span>
+                            意境 · 气韵 · 情志
+                        </li>
+                    <div class="section-layout">
+                        <article class="section-feature-card" style="background-image: url('../111/纪妖（原名知妖）_files/monster_bg.png');">
+                <div class="category-grid">
                 <div class="category-card">
                     <div class="card-header">
                         <div class="card-icon">
@@ -136,55 +232,83 @@
                             <li><i class="fas fa-book list-icon"></i> 唐诗、宋词、元曲</li>
                             <li><i class="fas fa-book list-icon"></i> 诸子散文：《论语》《庄子》</li>
                             <li><i class="fas fa-book list-icon"></i> 四大名著</li>
-                            <li><i class="fas fa-book list-icon"></i> 《聊斋志异》《儒林外史》</li>
-                        </ul>
-                        <a href="#" class="card-button">阅读经典作品</a>
-                    </div>
-                </div>
-
-                <div class="category-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-paint-brush"></i>
+                        <div class="theme-detail" data-theme="crafts">
+                            <div class="detail-tabs" role="tablist" aria-label="工艺技艺切换">
+                                <button class="detail-tab active" type="button" data-target="artifact">器物工艺</button>
+                                <button class="detail-tab" type="button" data-target="folk">民间手工</button>
+                                <button class="detail-tab" type="button" data-target="skills">传统技艺</button>
+                            </div>
+                            <div class="detail-panels">
+                                <article class="detail-card active" data-panel="artifact">
+                                    <div class="detail-visual" style="background-image: url('../111/纪妖（原名知妖）_files/monster_card_bg.jpg');"></div>
+                                    <div class="detail-text">
+                                        <h3>器物工艺</h3>
+                                        <p>青铜、陶瓷、玉器构成了礼制与审美的并行历史。</p>
+                                        <ul class="detail-list">
+                                            <li><i class="fas fa-monument"></i> 司母戊鼎、四羊方尊</li>
+                                            <li><i class="fas fa-mug-hot"></i> 青花瓷与宋代五大名窑</li>
+                                            <li><i class="fas fa-gem"></i> 玉佩、礼器与金银错</li>
+                                        </ul>
+                                        <div class="detail-meta">
+                                            <span class="detail-chip">礼制之器</span>
+                                            <span class="detail-chip">匠心打磨</span>
+                                        </div>
+                                        <a href="#" class="detail-link" data-role="detail-link">欣赏古代器物</a>
+                                    </div>
+                                </article>
+                                <article class="detail-card" data-panel="folk">
+                                    <div class="detail-visual" style="background-image: linear-gradient(135deg, rgba(170, 124, 74, 0.9), rgba(217, 180, 118, 0.6)), url('../111/纪妖（原名知妖）_files/0404088d-0cd0-4bfc-bc2f-bfc7d90c9fa3.jpeg');"></div>
+                                    <div class="detail-text">
+                                        <h3>民间手工</h3>
+                                        <p>剪纸、泥塑、糖画等技艺以生活为底色，传递民俗想象。</p>
+                                        <ul class="detail-list">
+                                            <li><i class="fas fa-cut"></i> 剪纸窗花、吉祥纹样</li>
+                                            <li><i class="fas fa-mask"></i> 皮影戏、泥人张</li>
+                                            <li><i class="fas fa-candy-cane"></i> 糖画、面塑、风筝</li>
+                                        </ul>
+                                        <div class="detail-meta">
+                                            <span class="detail-chip">生活美学</span>
+                                            <span class="detail-chip">民俗记忆</span>
+                                        </div>
+                                        <a href="#" class="detail-link" data-role="detail-link">学习民间手艺</a>
+                                    </div>
+                                </article>
+                                <article class="detail-card" data-panel="skills">
+                                    <div class="detail-visual" style="background-image: linear-gradient(135deg, rgba(28, 58, 94, 0.85), rgba(64, 93, 69, 0.7)), url('../111/纪妖（原名知妖）_files/monster_bg.png');"></div>
+                                    <div class="detail-text">
+                                        <h3>传统技艺</h3>
+                                        <p>榫卯、竹编、染织等技术，在结构与纹理中蕴含东方科学。</p>
+                                        <ul class="detail-list">
+                                            <li><i class="fas fa-tree"></i> 木雕、建筑彩绘</li>
+                                            <li><i class="fas fa-bamboo"></i> 竹编、藤编器具</li>
+                                            <li><i class="fas fa-water"></i> 蓝印花布、扎染</li>
+                                        </ul>
+                                        <div class="detail-meta">
+                                            <span class="detail-chip">工序严谨</span>
+                                            <span class="detail-chip">技法传承</span>
+                                        </div>
+                                        <a href="#" class="detail-link" data-role="detail-link">探索传统技艺</a>
+                                    </div>
+                                </article>
+                            </div>
                         </div>
-                        <h3 class="card-title">书画艺术</h3>
-                    </div>
-                    <div class="card-content">
-                        <p class="card-desc">书法与国画，东方艺术的精髓，展现中华美学境界。</p>
-                        <ul class="card-list">
-                            <li><i class="fas fa-pen list-icon"></i> 书法：楷书、行书、草书等</li>
-                            <li><i class="fas fa-mountain list-icon"></i> 国画：山水、花鸟、人物</li>
-                            <li><i class="fas fa-palette list-icon"></i> 文房四宝：笔、墨、纸、砚</li>
-                            <li><i class="fas fa-user list-icon"></i> 著名书画家：王羲之、顾恺之等</li>
-                        </ul>
-                        <a href="#" class="card-button">欣赏书画名作</a>
-                    </div>
-                </div>
+                        <li>
+                            <span>材料</span>
 
-                <div class="category-card">
-                    <div class="card-header">
-                        <div class="card-icon">
-                            <i class="fas fa-music"></i>
-                        </div>
-                        <h3 class="card-title">戏曲民乐</h3>
-                    </div>
-                    <div class="card-content">
-                        <p class="card-desc">古老的声音艺术，传承千年的音乐与表演智慧。</p>
-                        <ul class="card-list">
-                            <li><i class="fas fa-theater-masks list-icon"></i> 戏曲：京剧、昆曲、越剧等</li>
-                            <li><i class="fas fa-guitar list-icon"></i> 民乐：古筝、二胡、琵琶等</li>
-                            <li><i class="fas fa-music list-icon"></i> 名曲：《高山流水》《二泉映月》</li>
-                            <li><i class="fas fa-tshirt list-icon"></i> 四大名绣：苏绣、湘绣等</li>
-                        </ul>
-                        <a href="#" class="card-button">聆听传统音乐</a>
-                    </div>
+                <div class="ornament-divider" aria-hidden="true">
+                    <span></span>
+                    <i class="fas fa-seedling"></i>
+                    <span></span>
                 </div>
-            </div>
-        </section>
-
-        <section id="crafts" style="margin-top: 80px;">
-            <h2 class="section-title">三、工艺与技艺</h2>
-            <div class="category-grid">
+                            木 · 竹 · 金银
+                        </li>
+                        <li>
+                            <span>延展领域</span>
+                            建筑 · 器物 · 服饰
+                        </li>
+                    </ul>
+                </article>
+                <div class="category-grid">
                 <div class="category-card">
                     <div class="card-header">
                         <div class="card-icon">
@@ -243,6 +367,74 @@
                 </div>
             </div>
         </section>
+
+        <section id="spotlight" class="culture-panels reveal-on-scroll">
+            <div class="panel-card" style="background-image: url('../111/纪妖（原名知妖）_files/essays_bg2.png');">
+                <div class="panel-overlay">
+                    <p class="panel-tag">文化专题</p>
+                    <h3>节气里的色彩学</h3>
+                    <p>以燕脂、石绿、玄青为线索，追溯东方美学如何描绘四时光影。</p>
+                    <a href="#festivals" class="panel-link">前往专题</a>
+                </div>
+            </div>
+            <div class="panel-card" style="background-image: url('../111/纪妖（原名知妖）_files/monster_card_bg.jpg');">
+                <div class="panel-overlay">
+                    <p class="panel-tag">技艺纪录</p>
+                    <h3>非遗匠人的24小时</h3>
+                    <p>以纪实角度呈现一线手艺人在工作、生活中的节奏与坚守。</p>
+                    <a href="#crafts" class="panel-link">走进工坊</a>
+                </div>
+            </div>
+            <div class="panel-card" style="background-image: url('../111/纪妖（原名知妖）_files/84de9bc2-d68b-420f-80db-e7c6dfce4ec8.png');">
+                <div class="panel-overlay">
+                    <p class="panel-tag">知识地图</p>
+                    <h3>古典文献索引</h3>
+                    <p>提炼朝代、门类、代表人物等检索维度，构建传统文化知识图谱。</p>
+                    <a href="#literature" class="panel-link">查阅索引</a>
+                </div>
+            </div>
+        </section>
+
+        <div class="ornament-divider" aria-hidden="true">
+            <span></span>
+            <i class="fas fa-scroll"></i>
+            <span></span>
+        </div>
+
+        <section id="timeline" class="timeline-section reveal-on-scroll">
+            <div class="section-heading">
+                <p class="section-kicker">Heritage Timeline</p>
+                <h2 class="section-title">文化脉络速览</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-era">先秦</span>
+                    <h3>礼乐制度与诸子百家</h3>
+                    <p>礼仪规范与思想流派同频发展，为节庆典礼与哲学艺术奠定框架。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-era">汉唐</span>
+                    <h3>丝路交响与盛世美学</h3>
+                    <p>多元文化交融，推动音乐、舞乐与器物工艺的革新。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-era">宋元</span>
+                    <h3>市民文化与雅致生活</h3>
+                    <p>市井经济崛起，点茶、焚香、插花等生活美学走入日常。</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-era">明清</span>
+                    <h3>文人兼容与匠作精微</h3>
+                    <p>小说、戏曲、织造、木作等领域臻于成熟，形成可追溯的工序体系。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="ornament-divider" aria-hidden="true">
+            <span></span>
+            <i class="fas fa-circle-notch"></i>
+            <span></span>
+        </div>
     </main>
 
     <footer>
