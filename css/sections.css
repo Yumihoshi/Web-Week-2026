@@ -131,10 +131,10 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-blend-mode: multiply;
     opacity: 0;
     transform: scale(1.08);
-    transition: opacity 0.8s ease, transform 1.2s ease;
+    filter: brightness(1);
+    transition: opacity 0.8s ease, transform 1.2s ease, filter 0.5s ease;
 }
 
 .section-bg-layer.is-active {
@@ -142,23 +142,24 @@
     transform: scale(1);
 }
 
+.section-bg-layer.has-image {
+    filter: brightness(0.7) saturate(0.95);
+}
+
 .theme-festivals {
-    background-image: linear-gradient(115deg, rgba(111, 62, 46, 0.94), rgba(179, 76, 44, 0.78)), url('../img/bg-festival.png');
+    background-image: linear-gradient(115deg, rgba(111, 62, 46, 0.94), rgba(179, 76, 44, 0.78));
     background-size: cover;
     background-position: center;
-    background-blend-mode: multiply;
 }
 
 .theme-literature {
-    background-image: linear-gradient(120deg, rgba(16, 31, 42, 0.94), rgba(63, 108, 87, 0.78)), url('../img/panel-literature.png');
+    background-image: linear-gradient(120deg, rgba(16, 31, 42, 0.94), rgba(63, 108, 87, 0.78));
     background-size: cover;
-    background-blend-mode: multiply;
 }
 
 .theme-crafts {
-    background-image: linear-gradient(120deg, rgba(62, 50, 44, 0.92), rgba(170, 124, 74, 0.75)), url('../img/bg-crafts.png');
+    background-image: linear-gradient(120deg, rgba(62, 50, 44, 0.92), rgba(170, 124, 74, 0.75));
     background-size: cover;
-    background-blend-mode: multiply;
 }
 
 .section-heading {

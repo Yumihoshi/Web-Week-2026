@@ -103,17 +103,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const sectionBgConfigs = {
         festivals: {
-            gradient: 'linear-gradient(115deg, rgba(111, 62, 46, 0.94), rgba(179, 76, 44, 0.78))',
-            defaultImage: '../img/bg-festival.png'
+            defaultImage: null
         },
         literature: {
-            gradient: 'linear-gradient(120deg, rgba(16, 31, 42, 0.94), rgba(63, 108, 87, 0.78))',
-            defaultImage: '../img/bg-literature.png'
+            defaultImage: null
         },
         crafts: {
-            gradient: 'linear-gradient(120deg, rgba(62, 50, 44, 0.92), rgba(170, 124, 74, 0.75))',
-            defaultImage: '../img/bg-crafts.png'
+            defaultImage: null
         }
+    };
+
+    const composeSectionBackground = imagePath => {
+        return imagePath ? `url('${imagePath}')` : 'none';
+    };
+
+    const sanitizeImagePath = value => {
+        if (typeof value !== 'string') {
+            return null;
+        }
+        const trimmed = value.trim();
+        return trimmed.length ? trimmed : null;
+    };
+
+    const setLayerBackground = (layer, imagePath) => {
+        if (!layer) {
+            return null;
+        }
+        const sanitized = sanitizeImagePath(imagePath);
+        layer.style.backgroundImage = composeSectionBackground(sanitized);
+        if (sanitized) {
+            layer.classList.add('has-image');
+        } else {
+            layer.classList.remove('has-image');
+        }
+        return sanitized;
     };
 
     const sectionBgRegistry = new WeakMap();
@@ -131,21 +154,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const primaryLayer = document.createElement('div');
             primaryLayer.className = 'section-bg-layer is-active';
-            primaryLayer.style.backgroundImage = `${config.gradient}, url('${config.defaultImage}')`;
 
             const bufferLayer = document.createElement('div');
             bufferLayer.className = 'section-bg-layer';
-            bufferLayer.style.backgroundImage = `${config.gradient}, url('${config.defaultImage}')`;
 
             stack.append(primaryLayer, bufferLayer);
             section.insertBefore(stack, section.firstChild);
 
+            const defaultImage = setLayerBackground(primaryLayer, config.defaultImage);
+            setLayerBackground(bufferLayer, defaultImage);
+
             sectionBgRegistry.set(section, {
                 layers: [primaryLayer, bufferLayer],
                 activeIndex: 0,
-                gradient: config.gradient,
-                defaultImage: config.defaultImage,
-                currentImage: config.defaultImage,
+                defaultImage,
+                currentImage: defaultImage,
                 resetTimer: null
             });
         });
@@ -157,7 +180,8 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const targetImage = imagePath || state.defaultImage;
+        const normalizedPath = sanitizeImagePath(imagePath);
+        const targetImage = normalizedPath ?? state.defaultImage;
         if (state.currentImage === targetImage) {
             return;
         }
@@ -171,13 +195,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const nextLayer = state.layers[nextIndex];
         const activeLayer = state.layers[state.activeIndex];
 
-        nextLayer.style.backgroundImage = `${state.gradient}, url('${targetImage}')`;
+        const appliedImage = setLayerBackground(nextLayer, targetImage);
 
         requestAnimationFrame(() => {
             nextLayer.classList.add('is-active');
             activeLayer.classList.remove('is-active');
             state.activeIndex = nextIndex;
-            state.currentImage = targetImage;
+            state.currentImage = appliedImage;
         });
     };
 
