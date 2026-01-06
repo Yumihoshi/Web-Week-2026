@@ -211,15 +211,20 @@
 
 .section-layout {
     display: grid;
-    grid-template-columns: 1fr 1.3fr;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 2.1fr);
     gap: 30px;
+    align-items: start;
 }
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 35px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
     margin-bottom: 40px;
+}
+
+.category-grid.festival-grid {
+    display: flex;
 }
 
 /* 特色文章卡片 */

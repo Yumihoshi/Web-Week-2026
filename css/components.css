@@ -74,6 +74,10 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
 }
 
 .category-card::before {
@@ -92,7 +96,6 @@
 }
 
 .category-card:hover {
-    transform: translateY(-8px);
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.35);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
@@ -209,6 +212,77 @@
     border-color: rgba(255, 255, 255, 0.5);
     transform: translateX(5px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.festival-grid {
+    display: flex;
+    align-items: stretch;
+    gap: 30px;
+    position: relative;
+    transition: gap 0.35s ease;
+}
+
+.festival-grid.grid-focused {
+    gap: 0;
+}
+
+.festival-grid.is-measuring .category-card {
+    transition: none !important;
+}
+
+.festival-grid .category-card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: calc((100% - 60px) / 3);
+    max-width: calc((100% - 60px) / 3);
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+    transition: flex-basis 0.5s ease, max-width 0.5s ease, opacity 0.35s linear, transform 0.35s ease-out;
+}
+
+.festival-grid .category-card.card-focused {
+    display: block;
+    padding: 45px;
+    border-width: 2px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
+    max-width: 100%;
+    z-index: 2;
+}
+
+.festival-grid .category-card.card-muted {
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 0;
+    max-width: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.98);
+    padding: 0;
+    border-width: 0;
+    margin: 0;
+}
+
+.category-card.card-muted {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.category-card[data-theme="spring-festival"].card-focused {
+    background: linear-gradient(120deg, rgba(250, 145, 125, 0.95), rgba(149, 43, 28, 0.9));
+}
+
+.category-card[data-theme="dragon-boat"].card-focused {
+    background: linear-gradient(120deg, rgba(53, 145, 142, 0.95), rgba(21, 68, 65, 0.9));
+}
+
+.category-card[data-theme="mid-autumn"].card-focused {
+    background: linear-gradient(120deg, rgba(233, 194, 120, 0.95), rgba(100, 71, 34, 0.92));
 }
 
 /* 统计卡片 */

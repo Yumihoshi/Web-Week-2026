@@ -62,6 +62,23 @@
     .section-layout {
         grid-template-columns: 1fr;
     }
+
+    .festival-grid {
+        flex-direction: column;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .festival-grid .category-card {
+        flex: none;
+    }
+
+    .festival-grid .category-card.card-muted {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -197,6 +214,24 @@
         max-height: 50px;
         opacity: 1;
         padding: 10px 20px;
+    }
+
+    .festival-grid .category-card.card-focused {
+        display: flex;
+        padding: 20px;
+    }
+
+    .festival-grid .category-card.card-focused .card-content {
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .festival-grid .category-card.card-muted {
+        flex: none;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: none;
     }
 }
 

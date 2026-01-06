@@ -95,25 +95,144 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 卡片交互：移动端点击展开，桌面端悬停展开
     const categoryCards = document.querySelectorAll('.category-card');
+    const festivalGrid = document.querySelector('.festival-grid');
+    const festivalCards = festivalGrid ? Array.from(festivalGrid.querySelectorAll('.category-card')) : [];
 
     // 检测是否为移动设备
     const isMobile = () => window.innerWidth <= 768;
 
     categoryCards.forEach(card => {
-        // 移动端：点击卡片标题区域切换展开/折叠
-        if (isMobile()) {
-            const cardHeader = card.querySelector('.card-header');
-            cardHeader.addEventListener('click', function (e) {
-                e.preventDefault();
-                card.classList.toggle('expanded');
-            });
+        const cardHeader = card.querySelector('.card-header');
+        if (!cardHeader) {
+            return;
         }
+
+        cardHeader.addEventListener('click', function (e) {
+            if (!isMobile()) {
+                return;
+            }
+            e.preventDefault();
+            card.classList.toggle('expanded');
+        });
     });
+
+    const resetCardStates = () => {
+        categoryCards.forEach(card => {
+            card.classList.remove('card-focused', 'card-muted', 'expanded');
+        });
+        if (festivalGrid) {
+            festivalGrid.classList.remove('grid-focused');
+        }
+    };
+
+    const lockFestivalGridHeight = () => {
+        if (!festivalGrid || !festivalCards.length || isMobile()) {
+            return;
+        }
+
+        festivalGrid.classList.add('is-measuring');
+        festivalGrid.style.removeProperty('min-height');
+        festivalGrid.style.removeProperty('height');
+        const hadGridFocus = festivalGrid.classList.contains('grid-focused');
+        if (hadGridFocus) {
+            festivalGrid.classList.remove('grid-focused');
+        }
+
+        let maxExpandedHeight = 0;
+
+        festivalCards.forEach(sourceCard => {
+            const clone = sourceCard.cloneNode(true);
+            clone.classList.add('card-focused');
+            clone.classList.remove('card-muted', 'expanded');
+            clone.style.position = 'absolute';
+            clone.style.inset = '0';
+            clone.style.width = '100%';
+            clone.style.visibility = 'hidden';
+            clone.style.pointerEvents = 'none';
+            festivalGrid.appendChild(clone);
+
+            const expandedHeight = clone.getBoundingClientRect().height;
+            maxExpandedHeight = Math.max(maxExpandedHeight, expandedHeight);
+            clone.remove();
+        });
+
+        festivalGrid.classList.remove('is-measuring');
+
+        const baseHeight = festivalGrid.getBoundingClientRect().height;
+        const targetHeight = Math.max(baseHeight, maxExpandedHeight);
+
+        festivalGrid.style.minHeight = `${Math.ceil(targetHeight)}px`;
+        festivalGrid.style.height = `${Math.ceil(targetHeight)}px`;
+        if (hadGridFocus) {
+            festivalGrid.classList.add('grid-focused');
+        }
+    };
+
+    const releaseFestivalGridHeight = () => {
+        if (!festivalGrid) {
+            return;
+        }
+        festivalGrid.style.removeProperty('min-height');
+        festivalGrid.style.removeProperty('height');
+    };
+
+    const enableDesktopHover = () => {
+        if (!festivalGrid || !festivalCards.length) {
+            return;
+        }
+
+        festivalCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if (isMobile()) {
+                    return;
+                }
+
+                festivalCards.forEach(otherCard => {
+                    if (otherCard !== card) {
+                        otherCard.classList.add('card-muted');
+                        otherCard.classList.remove('card-focused');
+                    }
+                });
+
+                card.classList.add('card-focused');
+                card.classList.remove('card-muted');
+                festivalGrid.classList.add('grid-focused');
+            });
+        });
+
+        festivalGrid.addEventListener('mouseleave', () => {
+            if (isMobile()) {
+                return;
+            }
+            festivalCards.forEach(card => card.classList.remove('card-focused', 'card-muted'));
+            festivalGrid.classList.remove('grid-focused');
+        });
+
+        requestAnimationFrame(lockFestivalGridHeight);
+    };
+
+    enableDesktopHover();
 
     // 响应窗口大小变化
     window.addEventListener('resize', () => {
-        if (!isMobile()) {
+        if (isMobile()) {
+            resetCardStates();
+            releaseFestivalGridHeight();
+        } else {
             categoryCards.forEach(card => card.classList.remove('expanded'));
+            lockFestivalGridHeight();
+        }
+    });
+
+    if (!isMobile()) {
+        requestAnimationFrame(lockFestivalGridHeight);
+    }
+
+    window.addEventListener('load', () => {
+        if (!isMobile()) {
+            lockFestivalGridHeight();
+        } else {
+            releaseFestivalGridHeight();
         }
     });
 
