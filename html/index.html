@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>翰林苑 - 传统文化教师工作平台</title>
+    <title>传统文化 - 华夏文明百科全书</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
     <style>
         :root {
             --天青: #2E5C8A;
@@ -16,8 +16,11 @@
             --竹青: #789D5A;
             --朱砂: #C3272B;
             --浅赭: #D4B996;
+            --杏黄: #FFA500;
+            --石绿: #00A86B;
             --宋体: 'Noto Serif SC', serif;
             --书法体: 'Ma Shan Zheng', cursive;
+            --活泼体: 'ZCOOL QingKe HuangYou', cursive;
         }
         
         * {
@@ -32,8 +35,8 @@
             color: #333;
             line-height: 1.6;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(213, 196, 172, 0.05) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(46, 92, 138, 0.03) 0%, transparent 20%);
+                radial-gradient(circle at 10% 20%, rgba(120, 157, 90, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 165, 0, 0.03) 0%, transparent 20%);
             min-height: 100vh;
         }
         
@@ -44,10 +47,10 @@
         }
         
         header {
-            background: linear-gradient(to bottom, var(--黛蓝), var(--天青));
+            background: linear-gradient(135deg, var(--天青) 0%, var(--石绿) 100%);
             color: white;
-            padding: 20px 0;
-            border-bottom: 5px solid var(--檀木棕);
+            padding: 15px 0;
+            border-bottom: 5px solid var(--杏黄);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
@@ -60,7 +63,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232E5C8A' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
             opacity: 0.3;
         }
         
@@ -86,13 +89,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 3px solid var(--檀木棕);
+            border: 3px solid var(--杏黄);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         
         .logo-icon i {
             font-size: 28px;
-            color: var(--天青);
+            color: var(--石绿);
         }
         
         .logo-text {
@@ -103,63 +106,30 @@
         }
         
         .logo-subtitle {
-            font-size: 1rem;
+            font-family: var(--活泼体);
+            font-size: 1.2rem;
             font-weight: normal;
             margin-top: 5px;
             opacity: 0.9;
-            letter-spacing: 2px;
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 10px 20px;
-            border-radius: 50px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .user-avatar {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: var(--绢素白);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--浅赭);
-        }
-        
-        .user-avatar i {
-            font-size: 24px;
-            color: var(--天青);
-        }
-        
-        .user-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-        
-        nav {
-            background-color: var(--绢素白);
-            padding: 15px 0;
-            border-bottom: 2px solid var(--浅赭);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            color: #FFE484;
         }
         
         .nav-container {
             display: flex;
             justify-content: center;
             gap: 10px;
+            flex-wrap: wrap;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 15px;
         }
         
         .nav-item {
             padding: 12px 25px;
             background-color: white;
-            border-radius: 5px;
-            border: 1px solid var(--浅赭);
+            border-radius: 25px;
+            border: 2px solid var(--竹青);
             color: var(--黛蓝);
             font-weight: 600;
             text-decoration: none;
@@ -178,7 +148,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(120, 157, 90, 0.2), transparent);
             transition: left 0.7s;
         }
         
@@ -187,17 +157,17 @@
         }
         
         .nav-item:hover {
-            background-color: var(--天青);
+            background-color: var(--竹青);
             color: white;
-            border-color: var(--天青);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(46, 92, 138, 0.2);
+            border-color: var(--竹青);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(120, 157, 90, 0.3);
         }
         
         .nav-item.active {
-            background-color: var(--檀木棕);
+            background-color: var(--杏黄);
             color: white;
-            border-color: var(--檀木棕);
+            border-color: var(--杏黄);
         }
         
         .nav-icon {
@@ -209,106 +179,113 @@
             min-height: 600px;
         }
         
-        .welcome-section {
+        .hero-section {
             text-align: center;
             margin-bottom: 50px;
-            padding: 30px;
+            padding: 40px 30px;
             background-color: white;
-            border-radius: 10px;
-            border: 1px solid var(--浅赭);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 15px;
+            border: 3px solid var(--杏黄);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            background-image: linear-gradient(135deg, rgba(254, 252, 245, 0.9) 0%, rgba(245, 241, 230, 0.9) 100%);
         }
         
-        .welcome-section::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23D4B996' fill-opacity='0.1' d='M45.1,-59.5C57.9,-51.8,67.3,-37.1,71.1,-21.5C74.9,-5.8,73.2,10.8,67.1,25.6C61,40.4,50.6,53.5,37.6,61.6C24.6,69.7,9.1,72.8,-6.6,70.9C-22.2,69,-37.6,62.1,-49.4,51.3C-61.2,40.5,-69.3,25.8,-71.6,10.3C-73.9,-5.2,-70.4,-21.5,-62.2,-35.1C-54,-48.7,-41,-59.6,-26.7,-66.5C-12.4,-73.4,3.1,-76.3,19.1,-74.4C35.1,-72.5,52.4,-65.8,45.1,-59.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-            opacity: 0.5;
+        .hero-title {
+            font-family: var(--书法体);
+            font-size: 3rem;
+            color: var(--天青);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 2px 2px 0px rgba(255, 165, 0, 0.2);
+        }
+        
+        .hero-subtitle {
+            font-family: var(--活泼体);
+            font-size: 1.8rem;
+            color: var(--石绿);
+            margin-bottom: 25px;
+        }
+        
+        .hero-text {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
         }
         
         .section-title {
             font-family: var(--书法体);
-            font-size: 2.2rem;
-            color: var(--檀木棕);
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            color: var(--天青);
+            margin-bottom: 40px;
             position: relative;
             display: inline-block;
+            padding-bottom: 15px;
         }
         
         .section-title::after {
             content: "";
             position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: var(--竹青);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--杏黄), var(--石绿));
+            border-radius: 5px;
         }
         
-        .welcome-text {
-            font-size: 1.2rem;
-            color: #555;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-        
-        .features-grid {
+        .category-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
-        .feature-card {
+        .category-card {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            border: 1px solid var(--浅赭);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 2px solid var(--浅赭);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
         }
         
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .category-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .card-header {
-            background: linear-gradient(to right, var(--天青), var(--黛蓝));
+            background: linear-gradient(135deg, var(--天青) 0%, var(--石绿) 100%);
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             display: flex;
             align-items: center;
             gap: 15px;
+            position: relative;
         }
         
         .card-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
         .card-title {
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.6rem;
+            font-weight: 700;
         }
         
         .card-content {
@@ -322,125 +299,110 @@
             color: #666;
             margin-bottom: 20px;
             flex-grow: 1;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
         
-        .card-stats {
-            display: flex;
-            justify-content: space-between;
+        .card-list {
+            list-style: none;
             margin-bottom: 20px;
-            padding-top: 15px;
-            border-top: 1px dashed var(--浅赭);
         }
         
-        .stat-item {
-            text-align: center;
+        .card-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--浅赭);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--天青);
+        .card-list li:last-child {
+            border-bottom: none;
         }
         
-        .stat-label {
+        .list-icon {
+            color: var(--竹青);
             font-size: 0.9rem;
-            color: #777;
         }
         
         .card-button {
             display: block;
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             background-color: var(--檀木棕);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             font-family: var(--宋体);
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
             text-decoration: none;
+            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
         }
         
         .card-button:hover {
             background-color: var(--天青);
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(46, 92, 138, 0.3);
         }
         
-        .activities-section {
-            margin-bottom: 50px;
+        .detail-section {
+            margin-bottom: 60px;
         }
         
-        .activities-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .activity-item {
+        .detail-container {
             background-color: white;
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 2px solid var(--浅赭);
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .detail-item {
+            padding: 25px;
+            background-color: #f9f7f2;
+            border-radius: 10px;
             border-left: 5px solid var(--竹青);
-            border: 1px solid var(--浅赭);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            transition: all 0.3s ease;
         }
         
-        .activity-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        .detail-title {
+            font-size: 1.4rem;
+            color: var(--天青);
+            margin-bottom: 15px;
+            font-weight: 700;
         }
         
-        .activity-date {
-            background-color: var(--天青);
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 8px;
+        .detail-list {
+            list-style: none;
+        }
+        
+        .detail-list li {
+            padding: 8px 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .detail-icon {
+            color: var(--杏黄);
+            margin-top: 3px;
             flex-shrink: 0;
         }
         
-        .activity-day {
-            font-size: 1.8rem;
-            font-weight: 700;
-            line-height: 1;
-        }
-        
-        .activity-month {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        .activity-details {
-            flex-grow: 1;
-        }
-        
-        .activity-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--黛蓝);
-            margin-bottom: 5px;
-        }
-        
-        .activity-desc {
-            color: #666;
-            font-size: 0.95rem;
-        }
-        
         footer {
-            background-color: var(--黛蓝);
+            background: linear-gradient(135deg, var(--黛蓝) 0%, var(--天青) 100%);
             color: white;
-            padding: 40px 0 20px;
-            border-top: 5px solid var(--檀木棕);
+            padding: 50px 0 25px;
+            border-top: 5px solid var(--杏黄);
         }
         
         .footer-content {
@@ -458,9 +420,9 @@
         
         .footer-title {
             font-family: var(--书法体);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--浅赭);
+            color: var(--杏黄);
             position: relative;
             padding-bottom: 10px;
         }
@@ -470,8 +432,8 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 2px;
+            width: 60px;
+            height: 3px;
             background-color: var(--竹青);
         }
         
@@ -480,37 +442,38 @@
         }
         
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         
         .footer-links a {
-            color: #ccc;
+            color: #ddd;
             text-decoration: none;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 1.05rem;
         }
         
         .footer-links a:hover {
             color: white;
-            transform: translateX(5px);
+            transform: translateX(8px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.9rem;
+            color: #ccc;
+            font-size: 0.95rem;
         }
         
         .quote {
             font-style: italic;
-            color: var(--浅赭);
+            color: var(--杏黄);
             text-align: center;
-            margin-top: 10px;
-            font-size: 0.9rem;
+            margin-top: 15px;
+            font-size: 1rem;
         }
         
         @media (max-width: 992px) {
@@ -518,8 +481,16 @@
                 flex-wrap: wrap;
             }
             
-            .features-grid {
+            .category-grid, .detail-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
             }
         }
         
@@ -534,12 +505,24 @@
             }
             
             .nav-item {
-                padding: 10px 15px;
-                font-size: 0.9rem;
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
+            }
+            
+            .detail-container {
+                padding: 25px;
             }
             
             .footer-content {
@@ -548,231 +531,302 @@
         }
         
         @media (max-width: 576px) {
-            .features-grid {
+            .category-grid, .detail-grid {
                 grid-template-columns: 1fr;
             }
             
-            .activity-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+            .hero-section {
+                padding: 30px 20px;
             }
             
-            .activity-date {
-                width: 100%;
-                height: auto;
-                padding: 10px;
-                flex-direction: row;
-                justify-content: center;
-                gap: 10px;
-            }
-            
-            .activity-day, .activity-month {
-                font-size: 1.2rem;
+            .logo-text {
+                font-size: 1.8rem;
             }
         }
         
-        .seal {
+        .floating-elements {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .floating-element {
             position: absolute;
-            width: 80px;
-            height: 80px;
-            background-color: rgba(195, 39, 43, 0.1);
-            border: 2px solid var(--朱砂);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--书法体);
-            color: var(--朱砂);
-            font-size: 1.2rem;
-            transform: rotate(-15deg);
-            opacity: 0.7;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 10s infinite linear;
         }
         
-        .seal-1 {
-            top: 20px;
-            right: 5%;
-        }
-        
-        .seal-2 {
-            bottom: 40px;
-            left: 5%;
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
     </style>
 </head>
 <body>
+    <div class="floating-elements">
+        <div class="floating-element" style="top: 10%; left: 5%; color: var(--天青);">文</div>
+        <div class="floating-element" style="top: 20%; right: 8%; color: var(--石绿);">艺</div>
+        <div class="floating-element" style="bottom: 30%; left: 10%; color: var(--杏黄);">节</div>
+        <div class="floating-element" style="bottom: 20%; right: 5%; color: var(--朱砂);">技</div>
+    </div>
+    
     <header>
-        <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-university"></i>
-                </div>
-                <div>
-                    <h1 class="logo-text">翰林苑</h1>
-                    <p class="logo-subtitle">传统文化教师工作平台</p>
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div>
+                        <h1 class="logo-text">传统文化</h1>
+                        <p class="logo-subtitle">华夏文明百科全书</p>
+                    </div>
                 </div>
             </div>
             
-            <div class="user-info">
-                <div class="user-avatar">
-                    <i class="fas fa-user-graduate"></i>
-                </div>
-                <div>
-                    <p class="user-name">王明远 老师</p>
-                    <p>语文教研室 | 教龄22年</p>
-                </div>
+            <div class="nav-container">
+                <a href="#festivals" class="nav-item active">
+                    <i class="fas fa-calendar-alt nav-icon"></i> 传统节日
+                </a>
+                <a href="#literature" class="nav-item">
+                    <i class="fas fa-book nav-icon"></i> 文学艺术
+                </a>
+                <a href="#crafts" class="nav-item">
+                    <i class="fas fa-hands nav-icon"></i> 工艺技艺
+                </a>
             </div>
         </div>
-        
-        <div class="seal seal-1">教</div>
-        <div class="seal seal-2">研</div>
     </header>
     
-    <nav>
-        <div class="container nav-container">
-            <a href="#" class="nav-item active">
-                <i class="fas fa-home nav-icon"></i> 翰林首页
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-book-open nav-icon"></i> 文渊阁
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-pen-fancy nav-icon"></i> 修撰司
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-chalkboard-teacher nav-icon"></i> 经筵讲坛
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-award nav-icon"></i> 金石录
-            </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-user-circle nav-icon"></i> 我的书房
-            </a>
-        </div>
-    </nav>
-    
     <main class="container">
-        <section class="welcome-section">
-            <h2 class="section-title">文以载道，教泽流长</h2>
-            <p class="welcome-text">
-                尊敬的先生/女士，欢迎回到翰林苑。此处是专为传承文化与现代教育所设之数字斋院。今日宜静心备课，亦宜与同仁论道。您有3条新消息，2份教案待修订，1场线上经筵将于申时开讲。
+        <section class="hero-section">
+            <h2 class="hero-title">华夏文明，千年传承</h2>
+            <p class="hero-subtitle">探索中华文化瑰宝，感受五千年文明魅力</p>
+            <p class="hero-text">
+                中华传统文化源远流长，博大精深。从节日庆典到文学艺术，从哲学思想到手工艺技，每一处都蕴藏着先人的智慧与审美。让我们一起穿越时空，领略这份独特的文化遗产。
             </p>
         </section>
         
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-book"></i>
+        <section id="festivals">
+            <h2 class="section-title">一、传统节日</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="card-title">春节</h3>
                     </div>
-                    <h3 class="card-title">文渊阁</h3>
+                    <div class="card-content">
+                        <p class="card-desc">农历新年，中华民族最隆重的传统佳节，象征辞旧迎新、团圆和睦。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-star list-icon"></i> 贴春联、年画</li>
+                            <li><i class="fas fa-star list-icon"></i> 年夜饭、守岁</li>
+                            <li><i class="fas fa-star list-icon"></i> 拜年、压岁钱</li>
+                            <li><i class="fas fa-star list-icon"></i> 舞龙舞狮</li>
+                        </ul>
+                        <a href="#" class="card-button">了解春节习俗</a>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <p class="card-desc">
-                        仿《四库全书》分类法，藏经史子集四部。收录您多年积累的教案、课件、试题及学术资料，支持全文检索与智能分类。
-                    </p>
-                    <div class="card-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">1,247</div>
-                            <div class="stat-label">藏书卷目</div>
+                
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-dragon"></i>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-value">86</div>
-                            <div class="stat-label">新增本月</div>
-                        </div>
+                        <h3 class="card-title">端午节</h3>
                     </div>
-                    <a href="#" class="card-button">进入文渊阁</a>
+                    <div class="card-content">
+                        <p class="card-desc">农历五月初五，纪念爱国诗人屈原，又称"龙舟节"。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-star list-icon"></i> 赛龙舟</li>
+                            <li><i class="fas fa-star list-icon"></i> 吃粽子</li>
+                            <li><i class="fas fa-star list-icon"></i> 挂艾草、菖蒲</li>
+                            <li><i class="fas fa-star list-icon"></i> 饮雄黄酒</li>
+                        </ul>
+                        <a href="#" class="card-button">体验端午习俗</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <h3 class="card-title">中秋节</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">农历八月十五，秋季正中，象征团圆美满，又称"团圆节"。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-star list-icon"></i> 赏月、拜月</li>
+                            <li><i class="fas fa-star list-icon"></i> 吃月饼</li>
+                            <li><i class="fas fa-star list-icon"></i> 阖家团圆</li>
+                            <li><i class="fas fa-star list-icon"></i> 赏桂花、饮桂花酒</li>
+                        </ul>
+                        <a href="#" class="card-button">了解中秋文化</a>
+                    </div>
                 </div>
             </div>
             
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-pen-nib"></i>
+            <div class="detail-container">
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <h4 class="detail-title">元宵节</h4>
+                        <ul class="detail-list">
+                            <li><i class="fas fa-lightbulb detail-icon"></i> 赏花灯、猜灯谜</li>
+                            <li><i class="fas fa-utensils detail-icon"></i> 吃元宵（汤圆）</li>
+                            <li><i class="fas fa-dragon detail-icon"></i> 舞龙、舞狮</li>
+                            <li><i class="fas fa-walking detail-icon"></i> 走百病</li>
+                            <li><i class="fas fa-fire detail-icon"></i> 放烟火、踩高跷</li>
+                        </ul>
                     </div>
-                    <h3 class="card-title">修撰司</h3>
-                </div>
-                <div class="card-content">
-                    <p class="card-desc">
-                        备课与创作中心，提供严谨的文稿编辑、古籍式排版及协同校勘工具。支持插入传统纹样、书法字体与古籍插图。
-                    </p>
-                    <div class="card-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">12</div>
-                            <div class="stat-label">进行中教案</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">3</div>
-                            <div class="stat-label">待校勘文稿</div>
-                        </div>
+                    
+                    <div class="detail-item">
+                        <h4 class="detail-title">清明节</h4>
+                        <ul class="detail-list">
+                            <li><i class="fas fa-monument detail-icon"></i> 扫墓祭祖</li>
+                            <li><i class="fas fa-hiking detail-icon"></i> 踏青郊游</li>
+                            <li><i class="fas fa-leaf detail-icon"></i> 插柳戴柳</li>
+                            <li><i class="fas fa-wind detail-icon"></i> 放风筝</li>
+                            <li><i class="fas fa-child detail-icon"></i> 荡秋千、蹴鞠</li>
+                        </ul>
                     </div>
-                    <a href="#" class="card-button">开始修撰</a>
-                </div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="card-header">
-                    <div class="card-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
+                    
+                    <div class="detail-item">
+                        <h4 class="detail-title">重阳节</h4>
+                        <ul class="detail-list">
+                            <li><i class="fas fa-mountain detail-icon"></i> 登高望远</li>
+                            <li><i class="fas fa-flower detail-icon"></i> 赏菊、饮菊花酒</li>
+                            <li><i class="fas fa-user-friends detail-icon"></i> 敬老爱老</li>
+                            <li><i class="fas fa-cookie detail-icon"></i> 吃重阳糕</li>
+                            <li><i class="fas fa-leaf detail-icon"></i> 佩茱萸</li>
+                        </ul>
                     </div>
-                    <h3 class="card-title">经筵讲坛</h3>
-                </div>
-                <div class="card-content">
-                    <p class="card-desc">
-                        教研直播与学术讲座专区。可发起或参与线上教研，观摩名师讲堂，参与学术论辩，体现"御前讲学"之庄重。
-                    </p>
-                    <div class="card-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">2</div>
-                            <div class="stat-label">今日讲坛</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">15:30</div>
-                            <div class="stat-label">下一场开始</div>
-                        </div>
-                    </div>
-                    <a href="#" class="card-button">前往讲坛</a>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <section class="activities-section">
-            <h2 class="section-title" style="margin-bottom: 30px;">近期经筵与活动</h2>
-            <div class="activities-list">
-                <div class="activity-item">
-                    <div class="activity-date">
-                        <span class="activity-day">15</span>
-                        <span class="activity-month">六月</span>
+        <section id="literature" style="margin-top: 80px;">
+            <h2 class="section-title">二、文学与艺术</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-pen-fancy"></i>
+                        </div>
+                        <h3 class="card-title">文学经典</h3>
                     </div>
-                    <div class="activity-details">
-                        <h4 class="activity-title">古典诗词教学法研讨</h4>
-                        <p class="activity-desc">主讲：李翰林教授 | 地点：线上经筵厅 | 巳时三刻（10:30）</p>
+                    <div class="card-content">
+                        <p class="card-desc">从诗经楚辞到明清小说，中国文学脉络绵延三千年。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-book list-icon"></i> 唐诗、宋词、元曲</li>
+                            <li><i class="fas fa-book list-icon"></i> 诸子散文：《论语》《庄子》</li>
+                            <li><i class="fas fa-book list-icon"></i> 四大名著</li>
+                            <li><i class="fas fa-book list-icon"></i> 《聊斋志异》《儒林外史》</li>
+                        </ul>
+                        <a href="#" class="card-button">阅读经典作品</a>
                     </div>
-                    <a href="#" class="card-button" style="width: auto; padding: 8px 20px;">参加</a>
                 </div>
                 
-                <div class="activity-item">
-                    <div class="activity-date">
-                        <span class="activity-day">18</span>
-                        <span class="activity-month">六月</span>
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="card-title">书画艺术</h3>
                     </div>
-                    <div class="activity-details">
-                        <h4 class="activity-title">《论语》现代解读集体备课</h4>
-                        <p class="activity-desc">主持：语文教研室 | 地点：文渊阁甲字号斋室 | 未时（14:00）</p>
+                    <div class="card-content">
+                        <p class="card-desc">书法与国画，东方艺术的精髓，展现中华美学境界。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-pen list-icon"></i> 书法：楷书、行书、草书等</li>
+                            <li><i class="fas fa-mountain list-icon"></i> 国画：山水、花鸟、人物</li>
+                            <li><i class="fas fa-palette list-icon"></i> 文房四宝：笔、墨、纸、砚</li>
+                            <li><i class="fas fa-user list-icon"></i> 著名书画家：王羲之、顾恺之等</li>
+                        </ul>
+                        <a href="#" class="card-button">欣赏书画名作</a>
                     </div>
-                    <a href="#" class="card-button" style="width: auto; padding: 8px 20px;">准备</a>
                 </div>
                 
-                <div class="activity-item">
-                    <div class="activity-date">
-                        <span class="activity-day">22</span>
-                        <span class="activity-month">六月</span>
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="card-title">戏曲民乐</h3>
                     </div>
-                    <div class="activity-details">
-                        <h4 class="activity-title">金石录年度成果申报截止</h4>
-                        <p class="activity-desc">请各位先生将本年论文、获奖等成果归档至金石录，以资存鉴。</p>
+                    <div class="card-content">
+                        <p class="card-desc">古老的声音艺术，传承千年的音乐与表演智慧。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-theater-masks list-icon"></i> 戏曲：京剧、昆曲、越剧等</li>
+                            <li><i class="fas fa-guitar list-icon"></i> 民乐：古筝、二胡、琵琶等</li>
+                            <li><i class="fas fa-music list-icon"></i> 名曲：《高山流水》《二泉映月》</li>
+                            <li><i class="fas fa-tshirt list-icon"></i> 四大名绣：苏绣、湘绣等</li>
+                        </ul>
+                        <a href="#" class="card-button">聆听传统音乐</a>
                     </div>
-                    <a href="#" class="card-button" style="width: auto; padding: 8px 20px;">提交</a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="crafts" style="margin-top: 80px;">
+            <h2 class="section-title">三、工艺与技艺</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-vase"></i>
+                        </div>
+                        <h3 class="card-title">器物工艺</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">青铜器、瓷器等，展现古代工匠高超技艺与审美。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-monument list-icon"></i> 青铜器：司母戊鼎、四羊方尊</li>
+                            <li><i class="fas fa-mug-hot list-icon"></i> 瓷器：青花瓷、宋代五大名窑</li>
+                            <li><i class="fas fa-gem list-icon"></i> 玉器：礼器、佩饰</li>
+                            <li><i class="fas fa-chess-board list-icon"></i> 漆器、金银器</li>
+                        </ul>
+                        <a href="#" class="card-button">欣赏古代器物</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3 class="card-title">民间手工</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">剪纸、泥塑等民间艺术，体现百姓生活智慧与创意。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-snowflake list-icon"></i> 剪纸：窗花、民俗纹样</li>
+                            <li><i class="fas fa-splotch list-icon"></i> 泥塑：泥人张、凤翔泥塑</li>
+                            <li><i class="fas fa-theater-masks list-icon"></i> 皮影戏</li>
+                            <li><i class="fas fa-candy-cane list-icon"></i> 糖画、面塑</li>
+                        </ul>
+                        <a href="#" class="card-button">学习民间手艺</a>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="card-title">传统技艺</h3>
+                    </div>
+                    <div class="card-content">
+                        <p class="card-desc">木雕、竹编等传统技艺，承载着地域文化与历史记忆。</p>
+                        <ul class="card-list">
+                            <li><i class="fas fa-tree list-icon"></i> 木雕：建筑装饰、家具</li>
+                            <li><i class="fas fa-bamboo list-icon"></i> 竹编：日用器具、工艺品</li>
+                            <li><i class="fas fa-tshirt list-icon"></i> 染织：蓝印花布、扎染</li>
+                            <li><i class="fas fa-archway list-icon"></i> 建筑技艺：榫卯结构</li>
+                        </ul>
+                        <a href="#" class="card-button">探索传统技艺</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -782,35 +836,34 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3 class="footer-title">翰林苑</h3>
-                    <p>承千年文脉，育时代新人。此平台专为尊师设计，融传统雅韵于现代教育之器。</p>
-                    <p class="quote">"师者，所以传道受业解惑也。" —— 韩愈《师说》</p>
+                    <h3 class="footer-title">传统文化百科</h3>
+                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。</p>
+                    <p class="quote">"观今宜鉴古，无古不成今"</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h3 class="footer-title">斋院导航</h3>
+                    <h3 class="footer-title">内容分类</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> 文渊阁（资源库）</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> 修撰司（备课区）</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> 经筵讲坛（教研区）</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> 金石录（成果室）</a></li>
+                        <li><a href="#festivals"><i class="fas fa-calendar-alt"></i> 传统节日</a></li>
+                        <li><a href="#literature"><i class="fas fa-book"></i> 文学艺术</a></li>
+                        <li><a href="#crafts"><i class="fas fa-hands"></i> 工艺技艺</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h3 class="footer-title">联系翰林</h3>
+                    <h3 class="footer-title">联系我们</h3>
                     <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-envelope"></i> hanlinyuan@edu.cn</a></li>
-                        <li><a href="#"><i class="fas fa-phone-alt"></i> 010-翰林苑转各斋</a></li>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 北京市国子监街1号</a></li>
-                        <li><a href="#"><i class="fas fa-question-circle"></i> 使用指南与帮助</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> 常见问题</a></li>
+                        <li><a href="#"><i class="fas fa-lightbulb"></i> 内容建议</a></li>
+                        <li><a href="#"><i class="fas fa-school"></i> 学校合作</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> 投稿联系</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 翰林苑传统文化教师平台 | 设计遵循宋代美学，致敬华夏教育传统</p>
-                <p>今日访问：第 1,208 位学人 | 当前版本：崇宁二年·夏修订版</p>
+                <p>&copy; 2023 传统文化百科平台 | 传承文明，启迪未来</p>
+                <p>本日访问量：2,358 次 | 总知识条目：1,248 条</p>
             </div>
         </div>
     </footer>
@@ -818,16 +871,24 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navItems = document.querySelectorAll('.nav-item');
+            
             navItems.forEach(item => {
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    
                     navItems.forEach(nav => nav.classList.remove('active'));
                     this.classList.add('active');
                     
-                    document.querySelector('main').style.opacity = '0.7';
-                    setTimeout(() => {
-                        document.querySelector('main').style.opacity = '1';
-                    }, 300);
+                    if(targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if(targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
                 });
             });
             
@@ -835,25 +896,46 @@
             cardButtons.forEach(button => {
                 button.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const cardTitle = this.closest('.feature-card').querySelector('.card-title').textContent;
-                    alert(`即将进入「${cardTitle}」功能区，实际平台中将加载相应页面。`);
+                    const card = this.closest('.category-card');
+                    const title = card ? card.querySelector('.card-title').textContent : "该内容";
+                    
+                    const messages = [
+                        `即将深入探索「${title}」的奥秘！`,
+                        `准备好开启「${title}」的学习之旅了吗？`,
+                        `「${title}」蕴藏着丰富的文化宝藏，让我们一探究竟！`
+                    ];
+                    
+                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                    alert(randomMessage);
                 });
             });
             
-            const welcomeText = document.querySelector('.welcome-text');
-            const now = new Date();
-            const hours = now.getHours();
-            let timeGreeting = '';
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach(el => {
+                const randomDelay = Math.random() * 5;
+                el.style.animationDelay = `${randomDelay}s`;
+            });
             
-            if (hours < 6) timeGreeting = '寅卯之交';
-            else if (hours < 9) timeGreeting = '辰时';
-            else if (hours < 12) timeGreeting = '巳时';
-            else if (hours < 14) timeGreeting = '午时';
-            else if (hours < 17) timeGreeting = '未时';
-            else if (hours < 19) timeGreeting = '申时';
-            else timeGreeting = '戌亥之交';
-            
-            welcomeText.innerHTML = welcomeText.innerHTML.replace('今日', `<strong>${timeGreeting}</strong>，今日`);
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-item');
+                
+                let currentSection = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if(window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                        currentSection = '#' + section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
