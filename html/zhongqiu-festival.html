@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中秋节 · 传统文化详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式（调整为主色调中秋金桂色系） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏样式（主色调整为中秋藏金棕） */
+        .site-nav {
+            background-color: rgba(83, 58, 32, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .nav-brand i {
+            font-size: 2rem;
+            color: #f8d568;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* 主内容区域 */
+        .page-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* 主要内容区域 */
+        .content-section {
+            flex: 3;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        /* 详情内容区域 */
+        .detail-body {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: #533a20; /* 中秋主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d568;
+        }
+        
+        .detail-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .detail-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        .detail-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+        
+        .detail-list li:before {
+            content: "•";
+            color: #533a20; /* 中秋主色 */
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .detail-timeline {
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .detail-timeline:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #f8d568;
+        }
+        
+        .detail-timeline li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .detail-timeline li:before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: #533a20; /* 中秋主色 */
+            border: 2px solid #f8d568;
+        }
+        
+        .detail-timeline h4 {
+            color: #533a20; /* 中秋主色 */
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .detail-timeline p {
+            color: #666;
+        }
+        
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-tags span {
+            background-color: #f0e0c8; /* 中秋浅金 */
+            color: #533a20; /* 中秋主色 */
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .detail-quote {
+            background-color: #f9f5f0; /* 中秋背景色 */
+            border-left: 4px solid #f8d568;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: #533a20; /* 中秋主色 */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #3d2a18; /* 中秋深色 */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(83, 58, 32, 0.2);
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #533a20; /* 中秋主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d568;
+        }
+        
+        .regional-customs {
+            list-style-type: none;
+        }
+        
+        .regional-customs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .regional-customs li:last-child {
+            border-bottom: none;
+        }
+        
+        .region-icon {
+            color: #533a20; /* 中秋主色 */
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .custom-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .custom-item:last-child {
+            border-bottom: none;
+        }
+        
+        .custom-icon {
+            background-color: #f0e0c8; /* 中秋浅金 */
+            color: #533a20; /* 中秋主色 */
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .custom-text h4 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+        
+        .custom-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 页脚样式（适配中秋主色） */
+        footer {
+            background-color: #2d2010; /* 中秋深棕 */
+            color: #e8d4b8;
+            padding: 3rem 0 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            color: #f8d568;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #533a20; /* 中秋主色 */
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #e8d4b8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #f8d568;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(83, 58, 32, 0.2);
+            border-radius: 5px;
+            border-left: 3px solid #f8d568;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #c0aa90;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .page-main {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-item span {
+                display: none;
+            }
+            
+            .nav-item {
+                padding: 0.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .detail-body {
+                padding: 1.8rem;
+            }
+        }
+        
+        /* 动画效果 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 中秋诗词拓展模块样式 */
+        .poetry-section {
+            background-color: #fcf8f2;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #533a20; /* 中秋主色 */
+        }
+        
+        .poetry-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .poetry-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .poetry-title {
+            color: #533a20; /* 中秋主色 */
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poetry-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .poetry-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body class="detail-page">
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <i class="fas fa-moon"></i>
+                <div class="brand-text">
+                    <span class="brand-title">传统文化</span>
+                    <span class="brand-subtitle">华夏文明 · 传承记忆</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="./index.html#festivals" class="nav-item">
+                    <i class="fas fa-calendar-alt nav-icon"></i> <span>返回节日</span>
+                </a>
+                <a href="./index.html#literature" class="nav-item">
+                    <i class="fas fa-book nav-icon"></i> <span>文学艺术</span>
+                </a>
+                <a href="./index.html#crafts" class="nav-item">
+                    <i class="fas fa-hands nav-icon"></i> <span>工艺技艺</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-main">
+        <div class="content-section">
+            <section class="detail-body reveal-on-scroll" id="content">
+                <div class="detail-section">
+                    <h3>起源与寓意</h3>
+                    <p>中秋节又称祭月节、月光诞、团圆节，时间在农历八月十五，恰逢三秋之半，故得名"中秋"。其起源可追溯至上古的秋分祭月仪式，后融合嫦娥奔月、吴刚伐桂、玉兔捣药等神话传说，成为寄托团圆、祈福的重要传统节日。</p>
+                    <p>中秋的核心文化内涵是"团圆"，因八月十五月亮最圆，象征阖家美满；同时，中秋正值秋收时节，祭月、赏月也包含着对丰收的感恩与对来年的祈愿。在农耕社会，中秋既是自然时序的节点，也是家族情感联结的重要时刻。</p>
+                    <p>中秋节在汉唐时期逐渐成型，至宋代成为全民性节日，明清时期礼仪臻于完善。2008年，中秋节被列为国家法定节假日，2006年入选第一批国家级非物质文化遗产名录，成为传承中华团圆文化的核心载体。</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>中秋习俗全览</h3>
+                    <p>中秋节习俗围绕"月"展开，兼具自然崇拜与人文情感，地域特色鲜明却都指向"团圆"核心：</p>
+                    <ul class="detail-list">
+                        <li><strong>赏月祭月：</strong>设香案摆月饼、瓜果、桂花酒，拜月祈福，祈求月圆人圆。祭月仪式自古为中秋核心，民间有"男不拜月，女不祭灶"的传统，多由女性主祭。</li>
+                        <li><strong>吃月饼：</strong>月饼象征团圆，最初为祭月供品，后演变为中秋必食的应节食品，口味分广式、苏式、京式等，馅料从传统五仁、莲蓉到现代创新口味，种类繁多。</li>
+                        <li><strong>赏桂花饮桂酒：</strong>中秋正值桂花开，赏桂、饮桂花酒、吃桂花糕，取"桂"与"贵"谐音，寓意富贵吉祥，也为赏月增添雅趣。</li>
+                        <li><strong>燃灯祈福：</strong>在江河湖海放荷灯，或在家中挂灯笼，灯火映月，寓意照亮归途、祈福平安，部分地区还有"树中秋"（竖中秋）的习俗。</li>
+                        <li><strong>玩兔儿爷：</strong>北方地区中秋给孩童赠送兔儿爷玩偶，兔儿爷造型呆萌，兼具祭祀与玩具属性，是中秋特有的民俗符号。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>关键时序与仪式</h3>
+                    <p>中秋节的庆祝围绕八月十五展开，部分地区提前筹备，延续至八月十六：</p>
+                    <ul class="detail-timeline">
+                        <li>
+                            <h4>八月初一 · 起中秋</h4>
+                            <p>民间开始筹备中秋用品，制作/采购月饼，腌制柚子，准备祭月供品，商家开始售卖中秋特色商品，节日氛围渐浓。</p>
+                        </li>
+                        <li>
+                            <h4>八月十五 · 中秋正日</h4>
+                            <p>白天阖家团聚备团圆饭，傍晚设案祭月，入夜后赏月、吃月饼、品桂酒，孩童提灯笼玩耍，是中秋庆祝的核心时刻。</p>
+                        </li>
+                        <li>
+                            <h4>八月十六 · 追月</h4>
+                            <p>江浙部分地区有"八月十六过中秋"的习俗（传说是为纪念抗金名将岳飞），延续赏月、团圆的仪式，称为"追月"。</p>
+                        </li>
+                        <li>
+                            <h4>八月十八 · 谢月</h4>
+                            <p>部分地区在中秋后三日举行谢月仪式，撤去祭月供品，感谢月神庇佑，标志着中秋节日周期的结束。</p>
+                        </li>
+                        <li>
+                            <h4>九月初九 · 重阳前</h4>
+                            <p>中秋的团圆意涵延续至重阳，成为秋冬季节家族团聚的重要铺垫，也体现了传统节日的时序关联。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>当代传承</h3>
+                    <p>如今的中秋节，既保留了赏月、吃月饼、团圆的核心习俗，又融入了现代生活元素：月饼品类不断创新，文创月饼、低糖月饼成为新潮流；线上赏月、云端团圆让异地亲人也能共享中秋；各地举办中秋灯会、汉服祭月、非遗展等活动，让传统节日焕发新活力。</p>
+                    <p>中秋的"团圆"内核在现代社会更具价值，尤其在城市化进程中，中秋成为维系家庭情感、缓解乡愁的重要节点。同时，中秋文化也走向世界，海外华人的中秋庆祝活动，成为传播中华文化的重要窗口。</p>
+                    <p>作为四大传统节日之一，中秋节承载的"和合"文化——人与自然的和谐、人与人的团圆、家国的统一——是中华优秀传统文化的重要组成，在当代依然具有强大的生命力。</p>
+                    <div class="detail-tags">
+                        <span>团圆美满</span>
+                        <span>赏月祭月</span>
+                        <span>月饼寄情</span>
+                        <span>非遗传承</span>
+                        <span>丰收祈福</span>
+                        <span>家国和合</span>
+                    </div>
+                </div>
+
+                <!-- 中秋诗词拓展 -->
+                <div class="detail-section poetry-section reveal-on-scroll">
+                    <h3>经典中秋诗词</h3>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《水调歌头·明月几时有》</h4>
+                        <p class="poetry-author">宋 · 苏轼</p>
+                        <p class="poetry-content">明月几时有？把酒问青天。<br>不知天上宫阙，今夕是何年。<br>我欲乘风归去，又恐琼楼玉宇，高处不胜寒。<br>起舞弄清影，何似在人间。<br>转朱阁，低绮户，照无眠。<br>不应有恨，何事长向别时圆？<br>人有悲欢离合，月有阴晴圆缺，此事古难全。<br>但愿人长久，千里共婵娟。</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《中秋月二首·其二》</h4>
+                        <p class="poetry-author">唐 · 李白</p>
+                        <p class="poetry-content">圆魄上寒空，皆言四海同。<br>安知千里外，不有雨兼风？</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《十五夜望月寄杜郎中》</h4>
+                        <p class="poetry-author">唐 · 王建</p>
+                        <p class="poetry-content">中庭地白树栖鸦，冷露无声湿桂花。<br>今夜月明人尽望，不知秋思落谁家。</p>
+                    </div>
+                </div>
+
+                <!-- 中秋传统禁忌 -->
+                <div class="detail-section reveal-on-scroll">
+                    <h3>中秋传统禁忌</h3>
+                    <p>中秋节的禁忌多与"月神崇拜"和"团圆祈福"相关，是古人对中秋文化的敬畏：</p>
+                    <ul class="detail-list">
+                        <li><strong>忌月亮晒头：</strong>赏月时忌让月亮直接照头顶，尤其孕妇和孩童，相传会被月神"勾走魂魄"，实则是避免夜露伤身。</li>
+                        <li><strong>忌打碎餐具：</strong>中秋团圆饭忌打碎碗碟，认为会破坏团圆的好兆头，若不慎打碎需说"岁岁平安"化解。</li>
+                        <li><strong>忌吃不完的月饼留到节后：</strong>传统认为月饼是祭月供品，需中秋当天吃完，寓意"圆圆满满"，不吃剩月。</li>
+                        <li><strong>忌单身赏月：</strong>民间有"中秋不单身，单身不赏月"的说法，认为单身者中秋赏月会加重孤独，难遇良缘。</li>
+                        <li><strong>忌乱指月亮：</strong>孩童忌用手指月亮，相传会被月神割耳朵，是古人教导孩童敬畏自然的方式。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-quote">
+                        "但愿人长久，千里共婵娟。" —— 宋 · 苏轼《水调歌头·明月几时有》
+                    </div>
+                    <p>这句千古名句道尽了中秋的核心情感——无论相隔多远，只要共望一轮明月，便如同团聚。中秋节历经千年，从最初的祭月仪式，到融合神话传说与人文情感，始终是中华儿女心中最具温情的节日。</p>
+                    <p>在快节奏的现代生活中，中秋节提醒我们放慢脚步，珍惜与家人相处的时光，感受自然的美好，传承"团圆、和谐、感恩"的中华美德。一轮明月，承载着中国人最朴素的情感，也凝聚着最深厚的文化认同。</p>
+                    <a class="btn primary" href="./index.html#festivals">返回主页 · 继续探索其他节日</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">地区特色习俗</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-water region-icon"></i>
+                        <div>
+                            <strong>江南：</strong>赏桂花、吃桂花糖藕、放荷灯
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-mountain region-icon"></i>
+                        <div>
+                            <strong>岭南：</strong>吃柚子、烧塔祈福、玩花灯
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-home region-icon"></i>
+                        <div>
+                            <strong>北方：</strong>玩兔儿爷、吃自来红月饼、竖中秋
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-ship region-icon"></i>
+                        <div>
+                            <strong>闽南：</strong>博饼游戏、吃麻薯、拜天公
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-tree region-icon"></i>
+                        <div>
+                            <strong>川渝：</strong>吃椒盐月饼、喝桂花酒、登高赏月
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">中秋传统物品</h3>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>月饼</h4>
+                        <p>象征团圆，分广式、苏式、京式等多种风味</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>桂花/桂酒</h4>
+                        <p>中秋应景风物，寓意富贵吉祥，香气沁人</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>灯笼/荷灯</h4>
+                        <p>燃灯祈福，灯火映月，增添节日氛围</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>兔儿爷</h4>
+                        <p>北方中秋特色玩偶，兼具祭祀与玩具属性</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>柚子/石榴</h4>
+                        <p>中秋祭月供品，柚子谐音"佑子"，石榴象征多子多福</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">中秋相关文化</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-book region-icon"></i>
+                        <div>
+                            <strong>嫦娥奔月传说</strong>
+                            <p>中秋核心神话，寄托对团圆的美好向往</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-trophy region-icon"></i>
+                        <div>
+                            <strong>闽南博饼</strong>
+                            <p>中秋特色游戏，源自郑成功屯兵时期</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-award region-icon"></i>
+                        <div>
+                            <strong>国家级非遗</strong>
+                            <p>2006年入选第一批国家级非物质文化遗产</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-calendar-check region-icon"></i>
+                        <div>
+                            <strong>法定假日</strong>
+                            <p>2008年起成为国家法定节假日，放假1天</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">传统文化百科</h3>
+                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。我们通过数字化手段，让传统文化在现代社会焕发新的生机。</p>
+                    <p class="quote">"观今宜鉴古，无古不成今" —— 了解过去，才能更好地理解现在，创造未来。</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">内容分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="./index.html#festivals"><i class="fas fa-calendar-alt"></i> 传统节日</a></li>
+                        <li><a href="./index.html#literature"><i class="fas fa-book"></i> 文学艺术</a></li>
+                        <li><a href="./index.html#crafts"><i class="fas fa-hands"></i> 工艺技艺</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> 饮食文化</a></li>
+                        <li><a href="#"><i class="fas fa-archway"></i> 建筑园林</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 传统文化百科平台 | 传承文明，启迪未来</p>
+                <p>本日访问量：2,358 次 | 总知识条目：1,248 条 | 中秋专题访问量：6,128 次</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            
+            function checkScroll() {
+                revealElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('revealed');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkScroll);
+            
+            // 导航栏交互效果
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
