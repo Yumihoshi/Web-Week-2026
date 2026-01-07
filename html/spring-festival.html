@@ -6,7 +6,503 @@
     <title>春节 · 传统文化详情</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #f9f5f2;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏样式 */
+        .site-nav {
+            background-color: rgba(149, 43, 28, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .nav-brand i {
+            font-size: 2rem;
+            color: #f8d568;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* 主内容区域 */
+        .page-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* 主要内容区域 */
+        .content-section {
+            flex: 3;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        /* 详情内容区域 */
+        .detail-body {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: #952b1c;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d568;
+        }
+        
+        .detail-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .detail-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        .detail-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+        
+        .detail-list li:before {
+            content: "•";
+            color: #952b1c;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .detail-timeline {
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .detail-timeline:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #f8d568;
+        }
+        
+        .detail-timeline li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .detail-timeline li:before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: #952b1c;
+            border: 2px solid #f8d568;
+        }
+        
+        .detail-timeline h4 {
+            color: #952b1c;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .detail-timeline p {
+            color: #666;
+        }
+        
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-tags span {
+            background-color: #f0e6d6;
+            color: #952b1c;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .detail-quote {
+            background-color: #f9f5f2;
+            border-left: 4px solid #f8d568;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: #952b1c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #7a2318;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(149, 43, 28, 0.2);
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #952b1c;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d568;
+        }
+        
+        .regional-customs {
+            list-style-type: none;
+        }
+        
+        .regional-customs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .regional-customs li:last-child {
+            border-bottom: none;
+        }
+        
+        .region-icon {
+            color: #952b1c;
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .custom-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .custom-item:last-child {
+            border-bottom: none;
+        }
+        
+        .custom-icon {
+            background-color: #f0e6d6;
+            color: #952b1c;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .custom-text h4 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+        
+        .custom-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: #2c1810;
+            color: #d9c7b8;
+            padding: 3rem 0 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 移除联系我们后改为2列 */
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            color: #f8d568;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #952b1c;
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #d9c7b8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #f8d568;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(149, 43, 28, 0.2);
+            border-radius: 5px;
+            border-left: 3px solid #f8d568;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #b8a693;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .page-main {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-item span {
+                display: none;
+            }
+            
+            .nav-item {
+                padding: 0.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .detail-body {
+                padding: 1.8rem;
+            }
+        }
+        
+        /* 动画效果 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 春节诗词拓展模块样式 */
+        .poetry-section {
+            background-color: #fff8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #952b1c;
+        }
+        
+        .poetry-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .poetry-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .poetry-title {
+            color: #952b1c;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poetry-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .poetry-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #444;
+        }
+    </style>
 </head>
 <body class="detail-page">
     <nav class="site-nav">
@@ -20,92 +516,247 @@
             </div>
             <div class="nav-links">
                 <a href="./index.html#festivals" class="nav-item">
-                    <i class="fas fa-calendar-alt nav-icon"></i> 返回节日
+                    <i class="fas fa-calendar-alt nav-icon"></i> <span>返回节日</span>
                 </a>
                 <a href="./index.html#literature" class="nav-item">
-                    <i class="fas fa-book nav-icon"></i> 文学艺术
+                    <i class="fas fa-book nav-icon"></i> <span>文学艺术</span>
                 </a>
                 <a href="./index.html#crafts" class="nav-item">
-                    <i class="fas fa-hands nav-icon"></i> 工艺技艺
+                    <i class="fas fa-hands nav-icon"></i> <span>工艺技艺</span>
                 </a>
             </div>
         </div>
     </nav>
 
     <main class="page-main">
-        <section class="content-section detail-hero reveal-on-scroll" id="hero-spring"
-            style="background-image: linear-gradient(120deg, rgba(149, 43, 28, 0.92), rgba(72, 27, 18, 0.82)), url('../img/part1/春节.png'); background-size: cover; background-position: center;">
-            <div class="section-heading">
-                <p class="section-kicker">Spring Festival · Lunar New Year</p>
-                <h2 class="section-title">春节：团圆、更新与烟火人间</h2>
-                <p class="section-description">从除夕到元宵，贴春联、守岁、拜年、闹元宵，将“辞旧迎新”的仪式感铺满街巷与心间，连接亲情、乡愁与对新年的期许。</p>
-            </div>
-            <div class="detail-meta">
-                <span><i class="fas fa-clock"></i> 农历腊月廿九/三十 - 正月十五</span>
-                <span><i class="fas fa-map-marker-alt"></i> 中原 · 江南 · 华南 · 北方民俗</span>
-                <span><i class="fas fa-fire"></i> 团圆 · 祈福 · 燃灯 · 年味</span>
-            </div>
-        </section>
+        <div class="content-section">
+            <section class="detail-body reveal-on-scroll" id="content">
+                <div class="detail-section">
+                    <h3>起源与寓意</h3>
+                    <p>春节源于上古"岁首"祭祀与驱疫礼俗，后融合汉代"守岁"与唐宋坊市烟火，形成今日贯穿腊月末至正月十五的民俗季。它既是农事周期的重置点，也是家族团聚、祈福纳祥的社会情感节点。</p>
+                    <p>"年"的概念伴随历法与物候而生：贴春联、挂桃符、贴福字，传达对门楣庇护的期待；爆竹、烟火则寓意驱邪迎新。元宵的灯火游赏，则为新年仪式收束并为春耕开场。</p>
+                    <p>春节的起源可以追溯到殷商时期岁末年初的祭神祭祖活动。古代的"年"字，形似谷物成熟的样子，意味着五谷丰登。因此，春节最初是一种庆祝丰收、祭祀祖先和祈求来年风调雨顺的农业祭祀活动。随着时间的推移，这种祭祀活动逐渐演变为内容丰富、形式多样的民间节日。</p>
+                </div>
 
-        <section class="detail-body reveal-on-scroll" id="content">
-            <div class="detail-section">
-                <h3>起源与寓意</h3>
-                <p>春节源于上古“岁首”祭祀与驱疫礼俗，后融合汉代“守岁”与唐宋坊市烟火，形成今日贯穿腊月末至正月十五的民俗季。它既是农事周期的重置点，也是家族团聚、祈福纳祥的社会情感节点。</p>
-                <p>“年”的概念伴随历法与物候而生：贴春联、挂桃符、贴福字，传达对门楣庇护的期待；爆竹、烟火则寓意驱邪迎新。元宵的灯火游赏，则为新年仪式收束并为春耕开场。</p>
-            </div>
+                <div class="detail-section">
+                    <h3>年俗全览</h3>
+                    <p>春节习俗丰富多彩，不同地区、不同民族都有自己独特的庆祝方式，但一些核心习俗在全国范围内普遍存在：</p>
+                    <ul class="detail-list">
+                        <li><strong>扫尘与贴春联：</strong>除陈布新，朱砂文字象征吉庆守护。扫尘有"除旧布新"的含义，寄托着人们破旧立新的愿望和辞旧迎新的祈求。春联最初的形式是桃符，后来逐渐演变为写在红纸上的对仗诗句，表达对新年的美好祝愿。</li>
+                        <li><strong>年夜饭与守岁：</strong>围炉共食，长辈分岁钱，守候子时钟声。年夜饭是全年中最重要的一餐，丰盛的菜肴象征着家庭富裕、生活美满。守岁则体现了对时间的敬畏和对新年的期待。</li>
+                        <li><strong>拜年与贺礼：</strong>走亲访友，口彩与祝词延续至正月初十前后。拜年不仅是表达新年祝福的方式，也是维系亲情、友情的重要纽带。贺礼的选择也很有讲究，通常寓意吉祥如意。</li>
+                        <li><strong>燃灯与观灯：</strong>从正月初一至十五，挂灯、猜灯谜、舞龙舞狮。灯笼象征着光明和希望，猜灯谜增添了节日的趣味性，舞龙舞狮则代表着驱邪避灾、祈求丰收。</li>
+                        <li><strong>食俗：</strong>饺子、年糕、汤圆、长面，象征团圆、步步高、甜美圆满。北方人过年吃饺子，取"更岁交子"之意；南方人吃年糕，象征"年年高"；元宵节吃汤圆，寓意团团圆圆。</li>
+                    </ul>
+                </div>
 
-            <div class="detail-section">
-                <h3>年俗全览</h3>
-                <ul class="detail-list">
-                    <li>扫尘与贴春联：除陈布新，朱砂文字象征吉庆守护。</li>
-                    <li>年夜饭与守岁：围炉共食，长辈分岁钱，守候子时钟声。</li>
-                    <li>拜年与贺礼：走亲访友，口彩与祝词延续至正月初十前后。</li>
-                    <li>燃灯与观灯：从正月初一至十五，挂灯、猜灯谜、舞龙舞狮。</li>
-                    <li>食俗：饺子、年糕、汤圆、长面，象征团圆、步步高、甜美圆满。</li>
+                <div class="detail-section">
+                    <h3>关键时序</h3>
+                    <p>春节从腊月就开始准备，一直持续到正月十五元宵节，期间有许多重要的时间节点和相应的习俗活动：</p>
+                    <ul class="detail-timeline">
+                        <li>
+                            <h4>腊月二十四 · 扫尘日</h4>
+                            <p>"大扫除"与祭灶，寓意送旧迎新，家宅清净以待新岁。民间传说这一天灶王爷要上天汇报人间情况，所以人们会用糖瓜等甜食祭灶，希望灶王爷"上天言好事，下界保平安"。</p>
+                        </li>
+                        <li>
+                            <h4>除夕 · 守岁夜</h4>
+                            <p>年夜饭、贴春联、挂灯笼、燃爆竹，家族团圆的高潮时刻。除夕夜全家人聚在一起吃年夜饭，饭后长辈会给晚辈压岁钱，然后一家人围坐一起守岁，等待新年的到来。</p>
+                        </li>
+                        <li>
+                            <h4>正月初一 · 破五</h4>
+                            <p>新衣新履开门炮仗，走亲访友拜年；初五迎财神，祈求新岁财气。正月初一是一年的开始，人们穿上新衣服，放鞭炮驱邪，互相拜年祝福。初五则是迎接财神的日子，商家多在这一天开市。</p>
+                        </li>
+                        <li>
+                            <h4>正月初七 · 人日</h4>
+                            <p>传说女娲在这一天创造了人类，所以被称为"人日"。人们在这一天会吃七宝羹、戴人胜，祈求平安健康。</p>
+                        </li>
+                        <li>
+                            <h4>正月十五 · 元宵</h4>
+                            <p>赏灯、吃元宵、舞龙舞狮，为新年仪式收束并迎向春耕。元宵节是春节的最后一个高潮，过后人们就要开始新一年的劳作，所以格外热闹。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>当代传承</h3>
+                    <p>随着社会的发展，春节的庆祝方式也在不断变化。城市烟火与乡村庙会并行，春晚、数字红包、线上云拜年等新形式为"年味"增添科技色彩；但团圆、祈福与分享的核心情感未变。无论身处何地，"过年"仍是把家庭、社区与文化记忆紧紧串起的节点。</p>
+                    <p>近年来，春节文化在海外的影响力也越来越大。许多国家和地区都将春节定为法定假日，世界各地都会举行各种形式的春节庆祝活动。春节不仅是中国人的节日，也逐渐成为世界性的文化现象。</p>
+                    <p>同时，春节的非物质文化遗产价值也得到了越来越多的重视。2006年，春节被列入中国第一批国家级非物质文化遗产名录。保护和传承春节文化，对于维护文化多样性、增强民族认同感具有重要意义。</p>
+                    <div class="detail-tags">
+                        <span>团圆</span>
+                        <span>祈福</span>
+                        <span>烟火灯彩</span>
+                        <span>非遗传承</span>
+                        <span>文化创新</span>
+                        <span>全球共享</span>
+                    </div>
+                </div>
+
+                <!-- 新增：春节诗词拓展 -->
+                <div class="detail-section poetry-section reveal-on-scroll">
+                    <h3>经典春节诗词</h3>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《除夜雪》</h4>
+                        <p class="poetry-author">宋 · 陆游</p>
+                        <p class="poetry-content">北风吹雪四更初，嘉瑞天教及岁除。<br>半盏屠苏犹未举，灯前小草写桃符。</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《拜年》</h4>
+                        <p class="poetry-author">明 · 文徵明</p>
+                        <p class="poetry-content">不求见面惟通谒，名纸朝来满敝庐。<br>我亦随人投数纸，世情嫌简不嫌虚。</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《守岁》</h4>
+                        <p class="poetry-author">唐 · 戴复古</p>
+                        <p class="poetry-content">相邀守岁阿戎家，蜡炬传红映碧纱。<br>三十六旬都浪过，偏从此夜惜年华。</p>
+                    </div>
+                </div>
+
+                <!-- 新增：春节传统禁忌 -->
+                <div class="detail-section reveal-on-scroll">
+                    <h3>春节传统禁忌</h3>
+                    <p>春节期间的传统禁忌，多源于对新年吉祥的期许，虽随时代简化，但仍能反映古人的生活智慧：</p>
+                    <ul class="detail-list">
+                        <li><strong>忌打碎器物：</strong>若不慎打碎，需说“碎碎平安”“落地开花富贵”等吉语化解，寓意化凶为吉。</li>
+                        <li><strong>忌泼水扫尘：</strong>正月初一至初五忌向外泼水、扫地，认为会扫走财气和福气；垃圾需暂存，初五“破五”后再清理。</li>
+                        <li><strong>忌说不吉之言：</strong>避免说“死、破、穷、坏”等负面词汇，不慎说出需用“童言无忌”等话破解。</li>
+                        <li><strong>忌动刀剪：</strong>正月初一忌用刀剪，认为会剪断福气，也寓意新年远离纷争。</li>
+                        <li><strong>忌倒贴福字：</strong>仅大门福字可倒贴（寓意“福到”），屋内福字需正贴，否则有“福倒（到）走”之意。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-quote">
+                        "爆竹声中一岁除，春风送暖入屠苏。千门万户曈曈日，总把新桃换旧符。" —— 宋 · 王安石《元日》
+                    </div>
+                    <p>这首脍炙人口的诗作生动描绘了宋代春节的热闹景象。从古至今，春节一直是中国人最重要的节日，它承载着深厚的文化内涵和民族情感。</p>
+                    <p>春节不仅是时间的刻度，更是情感的聚合点。通过一系列礼俗、饮食与灯火，它让人们在新岁之初完成对过去的告别与对未来的祝福。在这个全球化的时代，春节文化正在不断创新和发展，但其核心价值——家庭团聚、感恩祈福、和谐共生——将永远传承下去。</p>
+                    <a class="btn primary" href="./index.html#festivals">返回主页 · 继续探索其他节日</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- 侧边栏（已删除春节图集板块） -->
+        <aside class="sidebar">
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">地区特色习俗</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-home region-icon"></i>
+                        <div>
+                            <strong>北方：</strong>吃饺子、逛庙会、踩高跷
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-utensils region-icon"></i>
+                        <div>
+                            <strong>南方：</strong>吃年糕、舞龙灯、行花街
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-mountain region-icon"></i>
+                        <div>
+                            <strong>西南：</strong>杀年猪、打糍粑、跳锅庄
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-water region-icon"></i>
+                        <div>
+                            <strong>江南：</strong>吃春卷、赏梅花、听评弹
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-tree region-icon"></i>
+                        <div>
+                            <strong>东北：</strong>冻梨冻柿子、扭秧歌、冰灯展
+                        </div>
+                    </li>
                 </ul>
             </div>
 
-            <div class="detail-section">
-                <h3>关键时序</h3>
-                <ul class="detail-timeline">
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">春节传统物品</h3>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-scroll"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>春联与福字</h4>
+                        <p>红色纸张上书写吉祥诗句，寄托新年愿望</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>窗花剪纸</h4>
+                        <p>手工剪制的吉祥图案，装饰窗户增添喜庆</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>红包压岁钱</h4>
+                        <p>红色信封内装钱币，寓意辟邪驱鬼、保佑平安</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>爆竹烟花</h4>
+                        <p>传统爆竹和现代烟花，营造热闹喜庆氛围</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>年画与门神</h4>
+                        <p>传统绘画艺术，守护家宅平安吉祥</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">春节相关节日</h3>
+                <ul class="regional-customs">
                     <li>
-                        <h4>腊月二十四 · 扫尘日</h4>
-                        <p>“大扫除”与祭灶，寓意送旧迎新，家宅清净以待新岁。</p>
+                        <i class="fas fa-calendar-day region-icon"></i>
+                        <div>
+                            <strong>小年</strong> (腊月廿三/廿四)
+                            <p>祭灶神，春节序幕拉开</p>
+                        </div>
                     </li>
                     <li>
-                        <h4>除夕 · 守岁夜</h4>
-                        <p>年夜饭、贴春联、挂灯笼、燃爆竹，家族团圆的高潮时刻。</p>
+                        <i class="fas fa-calendar-week region-icon"></i>
+                        <div>
+                            <strong>除夕</strong> (腊月最后一天)
+                            <p>辞旧迎新，家人团圆</p>
+                        </div>
                     </li>
                     <li>
-                        <h4>正月初一 · 破五</h4>
-                        <p>新衣新履开门炮仗，走亲访友拜年；初五迎财神，祈求新岁财气。</p>
+                        <i class="fas fa-calendar-alt region-icon"></i>
+                        <div>
+                            <strong>元宵节</strong> (正月十五)
+                            <p>赏灯猜谜，春节尾声</p>
+                        </div>
                     </li>
                     <li>
-                        <h4>正月十五 · 元宵</h4>
-                        <p>赏灯、吃元宵、舞龙舞狮，为新年仪式收束并迎向春耕。</p>
+                        <i class="fas fa-calendar-check region-icon"></i>
+                        <div>
+                            <strong>龙抬头</strong> (二月初二)
+                            <p>春耕开始，理发祈福</p>
+                        </div>
                     </li>
                 </ul>
             </div>
-
-            <div class="detail-section">
-                <h3>当代传承</h3>
-                <p>城市烟火与乡村庙会并行，春晚、数字红包、线上云拜年等新形式为“年味”增添科技色彩；但团圆、祈福与分享的核心情感未变。无论身处何地，“过年”仍是把家庭、社区与文化记忆紧紧串起的节点。</p>
-                <div class="detail-tags">
-                    <span>团圆</span>
-                    <span>祈福</span>
-                    <span>烟火灯彩</span>
-                    <span>非遗传承</span>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <div class="detail-quote">
-                    “爆竹声中一岁除，春风送暖入屠苏。” —— 宋 · 王安石《元日》
-                </div>
-                <p>春节不仅是时间的刻度，更是情感的聚合点。通过一系列礼俗、饮食与灯火，它让人们在新岁之初完成对过去的告别与对未来的祝福。</p>
-                <a class="btn primary" href="./index.html#festivals">返回主页 · 继续探索其他节日</a>
-            </div>
-        </section>
+        </aside>
     </main>
 
     <footer>
@@ -113,8 +764,8 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3 class="footer-title">传统文化百科</h3>
-                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。</p>
-                    <p class="quote">"观今宜鉴古，无古不成今"</p>
+                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。我们通过数字化手段，让传统文化在现代社会焕发新的生机。</p>
+                    <p class="quote">"观今宜鉴古，无古不成今" —— 了解过去，才能更好地理解现在，创造未来。</p>
                 </div>
 
                 <div class="footer-section">
@@ -123,27 +774,52 @@
                         <li><a href="./index.html#festivals"><i class="fas fa-calendar-alt"></i> 传统节日</a></li>
                         <li><a href="./index.html#literature"><i class="fas fa-book"></i> 文学艺术</a></li>
                         <li><a href="./index.html#crafts"><i class="fas fa-hands"></i> 工艺技艺</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h3 class="footer-title">联系我们</h3>
-                    <ul class="footer-links">
-                        <li><a href="#"><i class="fas fa-question-circle"></i> 常见问题</a></li>
-                        <li><a href="#"><i class="fas fa-lightbulb"></i> 内容建议</a></li>
-                        <li><a href="#"><i class="fas fa-school"></i> 学校合作</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> 投稿联系</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> 饮食文化</a></li>
+                        <li><a href="#"><i class="fas fa-archway"></i> 建筑园林</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="copyright">
                 <p>&copy; 2023 传统文化百科平台 | 传承文明，启迪未来</p>
-                <p>本日访问量：2,358 次 | 总知识条目：1,248 条</p>
+                <p>本日访问量：2,358 次 | 总知识条目：1,248 条 | 春节专题访问量：5,672 次</p>
             </div>
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script>
+        // 滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            
+            function checkScroll() {
+                revealElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('revealed');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkScroll);
+            
+            // 导航栏交互效果
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
