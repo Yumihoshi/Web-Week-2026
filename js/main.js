@@ -75,20 +75,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     navItems.forEach(item => {
         item.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
+            const targetId = this.getAttribute('href') || '';
+            const isHashLink = targetId.startsWith('#');
 
             navItems.forEach(nav => nav.classList.remove('active'));
             this.classList.add('active');
 
-            if (targetId.startsWith('#')) {
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+            if (!isHashLink) {
+                return;
+            }
+
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             }
         });
     });
@@ -169,12 +172,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 activeIndex: 0,
                 defaultImage,
                 currentImage: defaultImage,
-                resetTimer: null
+                resetTimer: null,
+                swapTimer: null
             });
         });
     };
 
-    const swapSectionBackground = (section, imagePath) => {
+    const swapSectionBackground = (section, imagePath, { immediate = false } = {}) => {
         const state = sectionBgRegistry.get(section);
         if (!state) {
             return;
@@ -182,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const normalizedPath = sanitizeImagePath(imagePath);
         const targetImage = normalizedPath ?? state.defaultImage;
-        if (state.currentImage === targetImage) {
+        if (state.currentImage === targetImage && !state.swapTimer) {
             return;
         }
 
@@ -190,19 +194,32 @@ document.addEventListener('DOMContentLoaded', function () {
             clearTimeout(state.resetTimer);
             state.resetTimer = null;
         }
+        if (state.swapTimer) {
+            clearTimeout(state.swapTimer);
+            state.swapTimer = null;
+        }
 
-        const nextIndex = state.activeIndex === 0 ? 1 : 0;
-        const nextLayer = state.layers[nextIndex];
-        const activeLayer = state.layers[state.activeIndex];
+        const runSwap = () => {
+            const nextIndex = state.activeIndex === 0 ? 1 : 0;
+            const nextLayer = state.layers[nextIndex];
+            const activeLayer = state.layers[state.activeIndex];
 
-        const appliedImage = setLayerBackground(nextLayer, targetImage);
+            const appliedImage = setLayerBackground(nextLayer, targetImage);
 
-        requestAnimationFrame(() => {
-            nextLayer.classList.add('is-active');
-            activeLayer.classList.remove('is-active');
-            state.activeIndex = nextIndex;
-            state.currentImage = appliedImage;
-        });
+            requestAnimationFrame(() => {
+                nextLayer.classList.add('is-active');
+                activeLayer.classList.remove('is-active');
+                state.activeIndex = nextIndex;
+                state.currentImage = appliedImage;
+                state.swapTimer = null;
+            });
+        };
+
+        if (immediate) {
+            runSwap();
+        } else {
+            state.swapTimer = setTimeout(runSwap, 40);
+        }
     };
 
     const resetSectionBackground = (section, immediate = false) => {
@@ -217,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (immediate) {
-            swapSectionBackground(section, state.defaultImage);
+            swapSectionBackground(section, state.defaultImage, { immediate: true });
             return;
         }
 

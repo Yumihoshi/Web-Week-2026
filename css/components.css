@@ -131,6 +131,9 @@
 .card-content {
     padding: 0;
     color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .card-desc {
@@ -169,6 +172,10 @@
     gap: 10px;
 }
 
+.card-list li:nth-child(n+4) {
+    display: none;
+}
+
 .card-list li:last-child {
     border-bottom: none;
 }
@@ -197,6 +204,7 @@
     transition: all 0.35s ease;
     text-decoration: none;
     width: fit-content;
+    align-self: flex-end;
 }
 
 .category-card:hover .card-button,
