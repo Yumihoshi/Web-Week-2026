@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>戏曲名乐 · 传统文化详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式（调整为戏曲名乐的绛红雅韵色系） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #faf5f2;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏样式（主色调整为戏曲绛红） */
+        .site-nav {
+            background-color: rgba(88, 22, 30, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .nav-brand i {
+            font-size: 2rem;
+            color: #f8d088;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* 主内容区域 */
+        .page-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* 主要内容区域 */
+        .content-section {
+            flex: 3;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        /* 详情内容区域 */
+        .detail-body {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: #58161e; /* 戏曲主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d088;
+        }
+        
+        .detail-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .detail-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        .detail-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+        
+        .detail-list li:before {
+            content: "•";
+            color: #58161e; /* 戏曲主色 */
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .detail-timeline {
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .detail-timeline:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #f8d088;
+        }
+        
+        .detail-timeline li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .detail-timeline li:before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: #58161e; /* 戏曲主色 */
+            border: 2px solid #f8d088;
+        }
+        
+        .detail-timeline h4 {
+            color: #58161e; /* 戏曲主色 */
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .detail-timeline p {
+            color: #666;
+        }
+        
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-tags span {
+            background-color: #f5e0d0; /* 戏曲浅红 */
+            color: #58161e; /* 戏曲主色 */
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .detail-quote {
+            background-color: #faf5f2; /* 戏曲背景色 */
+            border-left: 4px solid #f8d088;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: #58161e; /* 戏曲主色 */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #401017; /* 戏曲深色 */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 22, 30, 0.2);
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #58161e; /* 戏曲主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d088;
+        }
+        
+        .regional-customs {
+            list-style-type: none;
+        }
+        
+        .regional-customs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .regional-customs li:last-child {
+            border-bottom: none;
+        }
+        
+        .region-icon {
+            color: #58161e; /* 戏曲主色 */
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .custom-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .custom-item:last-child {
+            border-bottom: none;
+        }
+        
+        .custom-icon {
+            background-color: #f5e0d0; /* 戏曲浅红 */
+            color: #58161e; /* 戏曲主色 */
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .custom-text h4 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+        
+        .custom-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 页脚样式（适配戏曲主色） */
+        footer {
+            background-color: #300d12; /* 戏曲深红 */
+            color: #f0d4b8;
+            padding: 3rem 0 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            color: #f8d088;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #58161e; /* 戏曲主色 */
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #f0d4b8;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #f8d088;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(88, 22, 30, 0.2);
+            border-radius: 5px;
+            border-left: 3px solid #f8d088;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #d0b090;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .page-main {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-item span {
+                display: none;
+            }
+            
+            .nav-item {
+                padding: 0.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .detail-body {
+                padding: 1.8rem;
+            }
+        }
+        
+        /* 动画效果 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 戏曲名乐拓展模块样式 */
+        .poetry-section {
+            background-color: #fef9f6;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #58161e; /* 戏曲主色 */
+        }
+        
+        .poetry-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .poetry-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .poetry-title {
+            color: #58161e; /* 戏曲主色 */
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poetry-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .poetry-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body class="detail-page">
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <i class="fas fa-music"></i>
+                <div class="brand-text">
+                    <span class="brand-title">传统文化</span>
+                    <span class="brand-subtitle">丝竹管弦 · 梨园雅韵</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="./index.html#festivals" class="nav-item">
+                    <i class="fas fa-calendar-alt nav-icon"></i> <span>传统节日</span>
+                </a>
+                <a href="./index.html#literature" class="nav-item">
+                    <i class="fas fa-book nav-icon"></i> <span>文学艺术</span>
+                </a>
+                <a href="./index.html#crafts" class="nav-item">
+                    <i class="fas fa-hands nav-icon"></i> <span>返回戏曲</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-main">
+        <div class="content-section">
+            <section class="detail-body reveal-on-scroll" id="content">
+                <div class="detail-section">
+                    <h3>戏曲名乐的起源与价值</h3>
+                    <p>中国戏曲名乐是中华传统音乐与舞台艺术的集大成者，戏曲融合唱、念、做、打，以歌舞演故事；传统名乐涵盖琴、棋、书、画中的"琴"乐，以及丝竹、鼓吹、管弦等多种器乐形式，二者共同构成了中华听觉艺术的核心体系。</p>
+                    <p>戏曲起源可追溯至先秦乐舞、汉代百戏、唐代参军戏，至宋元时期成熟为杂剧、南戏，明清达到鼎盛；传统名乐则从远古乐舞发端，历经宫廷雅乐、文人琴乐、民间俗乐的发展，形成了独具特色的音乐美学——讲求"和"的境界，追求意境与情感的统一。</p>
+                    <p>戏曲名乐的核心价值，在于其既是声音的艺术，也是文化的载体：戏曲演绎着历史故事、民间传说，传递着忠孝节义的价值观念；传统名乐则以乐抒情、以乐明志，体现着中国人"天人合一"的审美追求，是非物质文化遗产中最具听觉魅力的瑰宝。</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>戏曲名乐的核心门类</h3>
+                    <p>中国戏曲名乐体系丰富，品类繁多，核心可分为戏曲与民乐两大体系，各有细分品类：</p>
+                    <ul class="detail-list">
+                        <li><strong>戏曲剧种：</strong>全国现存300余个剧种，京剧（国粹）、昆曲（百戏之祖）、越剧（女子之美）、黄梅戏（乡土之韵）、豫剧（中原之声）、评剧（市井之情）、川剧（变脸绝技）为代表，各有独特声腔与表演风格。</li>
+                        <li><strong>古琴音乐：</strong>文人音乐的代表，有3000余年历史，《广陵散》《梅花三弄》《流水》等名曲流传千古，讲求"清、微、淡、远"的意境，2003年入选人类口述和非物质遗产代表作。</li>
+                        <li><strong>民族器乐：</strong>分为吹管乐（笛、箫、唢呐）、弹拨乐（琵琶、古筝、扬琴）、拉弦乐（二胡、京胡、板胡）、打击乐（鼓、锣、钹），《十面埋伏》《二泉映月》《百鸟朝凤》为经典名曲。</li>
+                        <li><strong>宫廷雅乐：</strong>古代皇家礼仪音乐，讲求"乐与礼和"，虽形式严谨，但影响了民间音乐的发展，是中华礼乐文化的重要组成。</li>
+                        <li><strong>民间乐种：</strong>如江南丝竹、广东音乐、福建南音、西安鼓乐等，扎根民间生活，风格鲜活，是百姓精神生活的重要载体。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>戏曲名乐的发展脉络</h3>
+                    <p>中国戏曲名乐的发展，是一部听觉艺术不断丰富、表演形式不断成熟的历史：</p>
+                    <ul class="detail-timeline">
+                        <li>
+                            <h4>先秦至隋唐 · 萌芽成型</h4>
+                            <p>先秦乐舞、汉代百戏奠定表演基础，魏晋南北朝清商乐兴起，唐代燕乐繁盛、参军戏出现，古琴艺术逐渐成熟，为戏曲名乐的发展奠定了音乐与表演基础。</p>
+                        </li>
+                        <li>
+                            <h4>宋元时期 · 戏曲成熟</h4>
+                            <p>宋代杂剧、金代院本、元代杂剧达到第一个高峰（关汉卿、王实甫），南戏形成完整的戏曲结构；古琴流派开始形成，民间器乐合奏形式逐渐丰富。</p>
+                        </li>
+                        <li>
+                            <h4>明清时期 · 鼎盛繁荣</h4>
+                            <p>明代传奇（汤显祖《牡丹亭》）、清代昆曲鼎盛，后京剧形成并成为国粹；古琴艺术流派纷呈（虞山派、广陵派），民间器乐如江南丝竹、广东音乐走向成熟。</p>
+                        </li>
+                        <li>
+                            <h4>近现代 · 传承创新</h4>
+                            <p>戏曲改良运动推动传统剧种现代化，梅兰芳访美将京剧推向世界；民乐开始融合西方作曲技法，出现《春江花月夜》等经典合奏曲，古琴、昆曲等入选非遗保护名录。</p>
+                        </li>
+                        <li>
+                            <h4>当代 · 活化发展</h4>
+                            <p>戏曲进校园、非遗传承人制度保护传统技艺，民乐与流行音乐融合创新，数字技术让经典名曲、戏曲唱段得以永久保存和广泛传播。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>戏曲名乐的当代传承与创新</h3>
+                    <p>在当代，戏曲名乐的传承不再局限于戏台与琴桌，而是以多元形式融入生活：戏曲动漫、民乐跨界演出、数字博物馆展示、短视频传播经典唱段，让丝竹之音、梨园雅韵走进年轻人的视野。</p>
+                    <p>创新方面，当代艺术家既坚守传统技法与韵味，又融合现代审美：戏曲音乐加入交响乐队伴奏，民乐演奏结合电子音乐元素，经典剧目改编为沉浸式演出，让传统艺术既有古韵，又具时代气息。</p>
+                    <p>传承戏曲名乐，核心是传承其背后的听觉美学与文化内涵——戏曲的"唱念做打"、民乐的"清微淡远"，这些核心价值仍是当代音乐创作与审美培养的重要养分，也是中华文化走向世界的独特名片。</p>
+                    <div class="detail-tags">
+                        <span>梨园雅韵</span>
+                        <span>丝竹管弦</span>
+                        <span>京剧国粹</span>
+                        <span>古琴天籁</span>
+                        <span>非遗传承</span>
+                        <span>以乐传情</span>
+                    </div>
+                </div>
+
+                <!-- 戏曲名乐经典名句拓展 -->
+                <div class="detail-section poetry-section reveal-on-scroll">
+                    <h3>千古传诵的乐论名句</h3>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">乐论经典</h4>
+                        <p class="poetry-author">历代 · 乐论选段</p>
+                        <p class="poetry-content">乐者，天地之和也；礼者，天地之序也。——《礼记·乐记》<br>凡音之起，由人心生也。人心之动，物使之然也。——《礼记·乐记》<br>移风易俗，莫善于乐。——《孝经》</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">戏曲论句</h4>
+                        <p class="poetry-author">历代 · 戏曲论选</p>
+                        <p class="poetry-content">凡传奇，要事佳，词佳，科诨佳。——李渔《闲情偶寄》<br>有声必歌，无动不舞。——王国维《宋元戏曲考》<br>戏乃戏也，然不可不真；真乃真也，然不可不戏。——李渔</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">琴论名句</h4>
+                        <p class="poetry-author">历代 · 琴论选</p>
+                        <p class="poetry-content">琴者，心也；琴者，吟也，所以吟其心也。——朱长文《琴史》<br>丝桐合为琴，中有太古声。——白居易《废琴》<br>琴德最优，通神明，感鬼神。——嵇康《琴赋》</p>
+                    </div>
+                </div>
+
+                <!-- 戏曲名乐学习建议 -->
+                <div class="detail-section reveal-on-scroll">
+                    <h3>戏曲名乐学习的方法与建议</h3>
+                    <p>学习戏曲名乐需循序渐进，兼顾技法与修养，才能真正领会其中精髓：</p>
+                    <ul class="detail-list">
+                        <li><strong>筑基听赏：</strong>初学者先多听经典唱段、名曲，培养听觉审美，感受不同剧种、乐器的风格特点，建立基础认知。</li>
+                        <li><strong>师承学习：</strong>戏曲讲究"口传心授"，民乐注重"师徒相承"，跟随专业老师学习技法，避免自行摸索走弯路。</li>
+                        <li><strong>文化修养：</strong>学习戏曲需了解剧目背后的历史故事，学习民乐需理解乐曲的意境内涵，做到"知其然也知其所以然"。</li>
+                        <li><strong>持之以恒：</strong>戏曲的唱念做打、民乐的指法技巧，都需每日练习不辍，从量变到质变，忌急功近利。</li>
+                        <li><strong>舞台实践：</strong>戏曲需登台表演，民乐需现场演奏，在实践中体会艺术的魅力，与观众产生共鸣。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-quote">
+                        "乐与政通，乐也者，情之不可变者也；礼也者，理之不可易者也。" —— 《荀子·乐论》
+                    </div>
+                    <p>荀子的这句话，道尽了戏曲名乐的社会价值与文化意义。中国戏曲名乐不仅是听觉的艺术，更是情感的表达、文化的载体，它以丝竹管弦为语言，以唱念做打为形式，记录着中华文明的听觉历程，也塑造着中国人的精神世界。</p>
+                    <p>在快节奏的现代社会，戏曲名乐的慢、雅、韵，恰好能抚慰人心，让我们在丝竹之声中感受东方听觉美学的韵味，在梨园雅韵中体会"以乐传情"的境界。丝竹千秋，梨园永传，这是属于中国人的听觉底色与文化自信。</p>
+                    <a class="btn primary" href="./index.html#crafts">返回主页 · 继续探索工艺技艺</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">戏曲名家与经典剧目</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-user-actor region-icon"></i>
+                        <div>
+                            <strong>梅兰芳：</strong>京剧《贵妃醉酒》《霸王别姬》
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-theater-masks region-icon"></i>
+                        <div>
+                            <strong>汤显祖：</strong>昆曲《牡丹亭》（《还魂记》）
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-microphone region-icon"></i>
+                        <div>
+                            <strong>严凤英：</strong>黄梅戏《天仙配》《女驸马》
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-drama region-icon"></i>
+                        <div>
+                            <strong>常香玉：</strong>豫剧《花木兰》《拷红》
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-guitar region-icon"></i>
+                        <div>
+                            <strong>袁雪芬：</strong>越剧《梁山伯与祝英台》
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">经典民乐与乐器</h3>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-guitar"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>古琴</h4>
+                        <p>经典名曲：《广陵散》《梅花三弄》《流水》</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>琵琶</h4>
+                        <p>经典名曲：《十面埋伏》《琵琶行》《阳春白雪》</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-drum"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>二胡</h4>
+                        <p>经典名曲：《二泉映月》《良宵》《赛马》</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-flute"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>古筝</h4>
+                        <p>经典名曲：《渔舟唱晚》《高山流水》《战台风》</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-trumpet"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>唢呐</h4>
+                        <p>经典名曲：《百鸟朝凤》《抬花轿》《庆丰收》</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">戏曲名乐相关文化</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-award region-icon"></i>
+                        <div>
+                            <strong>非遗保护</strong>
+                            <p>昆曲、古琴、京剧、粤剧等入选人类非遗名录</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-school region-icon"></i>
+                        <div>
+                            <strong>戏曲进校园</strong>
+                            <p>中小学开设戏曲课程，培养青少年审美</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-globe-asia region-icon"></i>
+                        <div>
+                            <strong>海外传播</strong>
+                            <p>京剧、民乐演出走出国门，文化交流名片</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-film region-icon"></i>
+                        <div>
+                            <strong>影视融合</strong>
+                            <p>戏曲电影、民乐纪录片传播传统艺术</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">传统文化百科</h3>
+                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。我们通过数字化手段，让传统文化在现代社会焕发新的生机。</p>
+                    <p class="quote">"观今宜鉴古，无古不成今" —— 了解过去，才能更好地理解现在，创造未来。</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">内容分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="./index.html#festivals"><i class="fas fa-calendar-alt"></i> 传统节日</a></li>
+                        <li><a href="./index.html#literature"><i class="fas fa-book"></i> 文学艺术</a></li>
+                        <li><a href="./index.html#crafts"><i class="fas fa-hands"></i> 工艺技艺</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> 饮食文化</a></li>
+                        <li><a href="#"><i class="fas fa-archway"></i> 建筑园林</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 传统文化百科平台 | 传承文明，启迪未来</p>
+                <p>本日访问量：2,358 次 | 总知识条目：1,248 条 | 戏曲名乐专题访问量：6,218 次</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            
+            function checkScroll() {
+                revealElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('revealed');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkScroll);
+            
+            // 导航栏交互效果
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

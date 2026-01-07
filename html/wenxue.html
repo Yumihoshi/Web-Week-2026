@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文学经典 · 传统文化详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式（调整为文学经典的墨香雅韵色系） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #f5f5f0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏样式（主色调整为墨蓝雅灰） */
+        .site-nav {
+            background-color: rgba(26, 42, 58, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .nav-brand i {
+            font-size: 2rem;
+            color: #e8c872;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* 主内容区域 */
+        .page-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* 主要内容区域 */
+        .content-section {
+            flex: 3;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        /* 详情内容区域 */
+        .detail-body {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: #1a2a3a; /* 文学主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e8c872;
+        }
+        
+        .detail-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .detail-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        .detail-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+        
+        .detail-list li:before {
+            content: "•";
+            color: #1a2a3a; /* 文学主色 */
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .detail-timeline {
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .detail-timeline:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #e8c872;
+        }
+        
+        .detail-timeline li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .detail-timeline li:before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: #1a2a3a; /* 文学主色 */
+            border: 2px solid #e8c872;
+        }
+        
+        .detail-timeline h4 {
+            color: #1a2a3a; /* 文学主色 */
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .detail-timeline p {
+            color: #666;
+        }
+        
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-tags span {
+            background-color: #e8edf0; /* 文学浅灰 */
+            color: #1a2a3a; /* 文学主色 */
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .detail-quote {
+            background-color: #f5f5f0; /* 文学背景色 */
+            border-left: 4px solid #e8c872;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: #1a2a3a; /* 文学主色 */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #121e2b; /* 文学深色 */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 42, 58, 0.2);
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #1a2a3a; /* 文学主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e8c872;
+        }
+        
+        .regional-customs {
+            list-style-type: none;
+        }
+        
+        .regional-customs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .regional-customs li:last-child {
+            border-bottom: none;
+        }
+        
+        .region-icon {
+            color: #1a2a3a; /* 文学主色 */
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .custom-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .custom-item:last-child {
+            border-bottom: none;
+        }
+        
+        .custom-icon {
+            background-color: #e8edf0; /* 文学浅灰 */
+            color: #1a2a3a; /* 文学主色 */
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .custom-text h4 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+        
+        .custom-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 页脚样式（适配文学主色） */
+        footer {
+            background-color: #0f1a24; /* 文学深蓝 */
+            color: #d9e0e6;
+            padding: 3rem 0 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            color: #e8c872;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #1a2a3a; /* 文学主色 */
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #d9e0e6;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #e8c872;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(26, 42, 58, 0.2);
+            border-radius: 5px;
+            border-left: 3px solid #e8c872;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #b0bac7;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .page-main {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-item span {
+                display: none;
+            }
+            
+            .nav-item {
+                padding: 0.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .detail-body {
+                padding: 1.8rem;
+            }
+        }
+        
+        /* 动画效果 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 文学经典拓展模块样式 */
+        .poetry-section {
+            background-color: #f8f8f5;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #1a2a3a; /* 文学主色 */
+        }
+        
+        .poetry-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .poetry-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .poetry-title {
+            color: #1a2a3a; /* 文学主色 */
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poetry-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .poetry-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body class="detail-page">
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <div class="brand-text">
+                    <span class="brand-title">传统文化</span>
+                    <span class="brand-subtitle">华夏文脉 · 经典永传</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="./index.html#festivals" class="nav-item">
+                    <i class="fas fa-calendar-alt nav-icon"></i> <span>传统节日</span>
+                </a>
+                <a href="./index.html#literature" class="nav-item">
+                    <i class="fas fa-book nav-icon"></i> <span>返回文学</span>
+                </a>
+                <a href="./index.html#crafts" class="nav-item">
+                    <i class="fas fa-hands nav-icon"></i> <span>工艺技艺</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-main">
+        <div class="content-section">
+            <section class="detail-body reveal-on-scroll" id="content">
+                <div class="detail-section">
+                    <h3>文学经典的起源与价值</h3>
+                    <p>中华文学经典是中华文明的核心载体，从上古神话、甲骨卜辞发端，历经三千余年发展，形成了诗词、散文、小说、戏曲等丰富体裁，记录了民族的精神轨迹，塑造了中国人的文化品格。</p>
+                    <p>文学经典的诞生与时代同频：先秦诸子散文奠定了中国思想的根基，汉赋铺陈盛世气象，唐诗宋词达到古典诗歌的巅峰，元曲展现市井风情，明清小说则将世俗生活写入经典。这些作品既是个体才情的绽放，也是时代精神的凝练。</p>
+                    <p>文学经典的核心价值，在于其超越时空的精神力量——它既是语言艺术的典范，也是民族情感的寄托，更是中国人审美情趣、价值观念、处世智慧的集中体现。诵读经典，即是与先贤对话，与文脉同行。</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>经典体裁与代表作品</h3>
+                    <p>中华文学经典体裁丰富，各领风骚，不同形式承载着不同的文化内涵：</p>
+                    <ul class="detail-list">
+                        <li><strong>诗词：</strong>中国文学的瑰宝，以凝练的语言、和谐的韵律表达情感与哲思。唐诗（李白、杜甫、王维）意境开阔，宋词（苏轼、李清照、辛弃疾）婉转细腻，楚辞浪漫瑰丽，汉乐府质朴自然。</li>
+                        <li><strong>散文：</strong>分为诸子散文（《论语》《庄子》）、史传散文（《史记》《左传》）、骈文、唐宋八大家散文等，或说理、或叙事、或抒情，兼具思想性与文学性。</li>
+                        <li><strong>小说：</strong>从魏晋志人志怪、唐传奇、宋话本，到明清四大名著（《红楼梦》《三国演义》《水浒传》《西游记》），逐步从民间文学走向文学主流，反映社会百态。</li>
+                        <li><strong>戏曲：</strong>元曲为代表，包含杂剧与散曲，关汉卿《窦娥冤》、王实甫《西厢记》、汤显祖《牡丹亭》等作品，将音乐、表演、文学融为一体，是舞台艺术的经典。</li>
+                        <li><strong>文论：</strong>《文心雕龙》《诗品》等理论著作，系统总结文学创作规律，构建了中国独有的文学批评体系。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>文学发展的关键脉络</h3>
+                    <p>中华文学经典的发展，是一条绵延不绝的文脉长河，每个时代都有其标志性成就：</p>
+                    <ul class="detail-timeline">
+                        <li>
+                            <h4>先秦时期 · 源头奠基</h4>
+                            <p>《诗经》开启现实主义传统，《楚辞》开创浪漫主义先河，诸子散文（儒、道、墨、法）奠定中国文学的思想根基，《左传》《战国策》展现史传文学的成熟。</p>
+                        </li>
+                        <li>
+                            <h4>汉魏六朝 · 体式拓展</h4>
+                            <p>汉赋铺张扬厉，记录大汉气象；建安文学（三曹、建安七子）慷慨悲凉；陶渊明田园诗清新自然，《文选》《玉台新咏》等总集编纂，标志文学自觉时代的到来。</p>
+                        </li>
+                        <li>
+                            <h4>唐宋时期 · 巅峰盛景</h4>
+                            <p>唐诗题材广泛、格律成熟，达到古典诗歌顶峰；宋词突破格律束缚，成为宋代文学标志；唐宋八大家革新散文，使古文重归实用与审美统一。</p>
+                        </li>
+                        <li>
+                            <h4>元明清 · 世俗绽放</h4>
+                            <p>元曲贴近市井，开创戏曲黄金时代；明清小说从短篇到长篇，从英雄传奇到人情小说，《红楼梦》达到古典小说的最高成就。</p>
+                        </li>
+                        <li>
+                            <h4>近现代 · 承古开新</h4>
+                            <p>从桐城派散文到新文学运动，鲁迅、茅盾、巴金等作家融合中西，开创现代文学新格局，经典作品依然扎根中华文脉。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>经典的当代传承与解读</h3>
+                    <p>在当代，文学经典的传承不再局限于纸本阅读，而是以多元形式融入生活：经典诵读进校园、诗词大会等文化节目普及经典、古籍数字化让经典触手可及、文创产品将经典元素生活化，让千年文脉活在当下。</p>
+                    <p>解读经典的视角也更加多元：既有考据式的文本研究，也有从文化、哲学、社会学角度的现代阐释，让经典走出书斋，与当代人的精神需求对话。如《论语》的处世智慧、《庄子》的生命哲学、《红楼梦》的人情洞察，依然能给现代人以启示。</p>
+                    <p>传承文学经典，不仅是保护文化遗产，更是为了汲取其中的精神养分——家国情怀、民胞物与、审美情趣、处世智慧，这些核心价值跨越时空，仍是当代中国人的精神底色。</p>
+                    <div class="detail-tags">
+                        <span>文脉传承</span>
+                        <span>诗词歌赋</span>
+                        <span>四大名著</span>
+                        <span>古籍经典</span>
+                        <span>以文育人</span>
+                        <span>古今对话</span>
+                    </div>
+                </div>
+
+                <!-- 经典名句拓展 -->
+                <div class="detail-section poetry-section reveal-on-scroll">
+                    <h3>千古传诵的经典名句</h3>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">诸子百家</h4>
+                        <p class="poetry-author">先秦 · 经典选段</p>
+                        <p class="poetry-content">三人行，必有我师焉。——《论语》<br>天行健，君子以自强不息。——《周易》<br>知者乐水，仁者乐山。——《论语》</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">唐诗宋词</h4>
+                        <p class="poetry-author">唐宋 · 经典选段</p>
+                        <p class="poetry-content">海内存知己，天涯若比邻。——王勃《送杜少府之任蜀州》<br>人生自古谁无死？留取丹心照汗青。——文天祥《过零丁洋》<br>但愿人长久，千里共婵娟。——苏轼《水调歌头》</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">明清小说</h4>
+                        <p class="poetry-author">明清 · 经典选段</p>
+                        <p class="poetry-content">满纸荒唐言，一把辛酸泪。——《红楼梦》<br>天下大势，分久必合，合久必分。——《三国演义》<br>海阔凭鱼跃，天高任鸟飞。——《西游记》</p>
+                    </div>
+                </div>
+
+                <!-- 经典阅读建议 -->
+                <div class="detail-section reveal-on-scroll">
+                    <h3>经典阅读的方法与建议</h3>
+                    <p>阅读文学经典需循序渐进，结合自身认知水平选择合适的方式，才能真正领会其中精髓：</p>
+                    <ul class="detail-list">
+                        <li><strong>由浅入深：</strong>初学者可先读选本、注译本，如《唐诗三百首》《宋词选》，再逐步阅读全本、原著，避免因晦涩放弃。</li>
+                        <li><strong>知人论世：</strong>了解作者生平、时代背景，才能理解作品的情感与思想，如读杜甫需知安史之乱，读苏轼需知乌台诗案。</li>
+                        <li><strong>诵读涵咏：</strong>诗词类经典需大声诵读，体会韵律之美；散文小说需静心品读，感受语言与情节的张力。</li>
+                        <li><strong>联系生活：</strong>将经典中的道理与现实生活结合，如用《论语》的"己所不欲，勿施于人"指导处世，让经典活起来。</li>
+                        <li><strong>多方参考：</strong>结合名家解读、相关研究，多角度理解经典，避免片面化、教条化解读。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-quote">
+                        "盖文章，经国之大业，不朽之盛事。" —— 三国 · 曹丕《典论·论文》
+                    </div>
+                    <p>曹丕的这句话，道尽了文学经典的价值——它既是经世致用的工具，也是超越时间的精神财富。中华文学经典，是民族的精神密码，是文明的活态传承。</p>
+                    <p>在快餐化阅读的时代，重读经典，是为了在纷繁的信息中找到精神的锚点。那些历经千年仍能打动人心的文字，不仅塑造了我们的语言，更塑造了我们的精神世界，是每个中国人的文化底色与精神故乡。</p>
+                    <a class="btn primary" href="./index.html#literature">返回主页 · 继续探索文学艺术</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">经典分类与代表</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-scroll region-icon"></i>
+                        <div>
+                            <strong>经部：</strong>《诗经》《尚书》《礼记》《周易》《春秋》
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-feather-alt region-icon"></i>
+                        <div>
+                            <strong>史部：</strong>《史记》《汉书》《资治通鉴》《三国志》
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-book region-icon"></i>
+                        <div>
+                            <strong>子部：</strong>《论语》《孟子》《庄子》《老子》《韩非子》
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-pen-fancy region-icon"></i>
+                        <div>
+                            <strong>集部：</strong>《楚辞》《李太白集》《杜工部集》《东坡乐府》
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-book-journal-whills region-icon"></i>
+                        <div>
+                            <strong>小说：</strong>《红楼梦》《三国演义》《水浒传》《西游记》
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">经典阅读工具</h3>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>注译本</h4>
+                        <p>权威注译帮助理解古文，如中华书局"中华经典名著全本全注全译丛书"</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>数字古籍</h4>
+                        <p>中华再造善本、知网古籍库等平台，可查阅高清古籍原文</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>音频解读</h4>
+                        <p>有声书、名家解读音频，适合碎片化时间学习经典</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>共读社群</h4>
+                        <p>经典读书会、线上共读小组，交流心得加深理解</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>读书笔记</h4>
+                        <p>批注、摘抄、感悟，让经典阅读从"读过"到"读懂"</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">文学经典相关文化</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-award region-icon"></i>
+                        <div>
+                            <strong>古籍保护</strong>
+                            <p>国家珍贵古籍名录，数字化与实体保护并重</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-school region-icon"></i>
+                        <div>
+                            <strong>经典进校园</strong>
+                            <p>中小学语文教材增加经典篇目，诵读活动普及</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-tv region-icon"></i>
+                        <div>
+                            <strong>文化节目</strong>
+                            <p>中国诗词大会、经典咏流传等节目传播经典</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-globe-asia region-icon"></i>
+                        <div>
+                            <strong>海外传播</strong>
+                            <p>经典作品译介海外，成为中华文化名片</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">传统文化百科</h3>
+                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。我们通过数字化手段，让传统文化在现代社会焕发新的生机。</p>
+                    <p class="quote">"观今宜鉴古，无古不成今" —— 了解过去，才能更好地理解现在，创造未来。</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">内容分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="./index.html#festivals"><i class="fas fa-calendar-alt"></i> 传统节日</a></li>
+                        <li><a href="./index.html#literature"><i class="fas fa-book"></i> 文学艺术</a></li>
+                        <li><a href="./index.html#crafts"><i class="fas fa-hands"></i> 工艺技艺</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> 饮食文化</a></li>
+                        <li><a href="#"><i class="fas fa-archway"></i> 建筑园林</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 传统文化百科平台 | 传承文明，启迪未来</p>
+                <p>本日访问量：2,358 次 | 总知识条目：1,248 条 | 文学经典专题访问量：5,986 次</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            
+            function checkScroll() {
+                revealElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('revealed');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkScroll);
+            
+            // 导航栏交互效果
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

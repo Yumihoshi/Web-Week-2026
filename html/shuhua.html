@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书画艺术 · 传统文化详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式（调整为书画艺术的水墨丹青色系） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #f7f9f8;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏样式（主色调整为水墨青黑） */
+        .site-nav {
+            background-color: rgba(20, 40, 40, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .nav-brand i {
+            font-size: 2rem;
+            color: #e6d7a8;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* 主内容区域 */
+        .page-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* 主要内容区域 */
+        .content-section {
+            flex: 3;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        /* 详情内容区域 */
+        .detail-body {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: #142828; /* 书画主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e6d7a8;
+        }
+        
+        .detail-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .detail-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        .detail-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+        
+        .detail-list li:before {
+            content: "•";
+            color: #142828; /* 书画主色 */
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .detail-timeline {
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .detail-timeline:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #e6d7a8;
+        }
+        
+        .detail-timeline li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .detail-timeline li:before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: #142828; /* 书画主色 */
+            border: 2px solid #e6d7a8;
+        }
+        
+        .detail-timeline h4 {
+            color: #142828; /* 书画主色 */
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .detail-timeline p {
+            color: #666;
+        }
+        
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-tags span {
+            background-color: #eef1ef; /* 书画浅青 */
+            color: #142828; /* 书画主色 */
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .detail-quote {
+            background-color: #f7f9f8; /* 书画背景色 */
+            border-left: 4px solid #e6d7a8;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: #142828; /* 书画主色 */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #0d1c1c; /* 书画深色 */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(20, 40, 40, 0.2);
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #142828; /* 书画主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e6d7a8;
+        }
+        
+        .regional-customs {
+            list-style-type: none;
+        }
+        
+        .regional-customs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .regional-customs li:last-child {
+            border-bottom: none;
+        }
+        
+        .region-icon {
+            color: #142828; /* 书画主色 */
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .custom-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .custom-item:last-child {
+            border-bottom: none;
+        }
+        
+        .custom-icon {
+            background-color: #eef1ef; /* 书画浅青 */
+            color: #142828; /* 书画主色 */
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .custom-text h4 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+        
+        .custom-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 页脚样式（适配书画主色） */
+        footer {
+            background-color: #0a1515; /* 书画深青 */
+            color: #d7e0dd;
+            padding: 3rem 0 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            color: #e6d7a8;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #142828; /* 书画主色 */
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #d7e0dd;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #e6d7a8;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(20, 40, 40, 0.2);
+            border-radius: 5px;
+            border-left: 3px solid #e6d7a8;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #b2c0bc;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .page-main {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-item span {
+                display: none;
+            }
+            
+            .nav-item {
+                padding: 0.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .detail-body {
+                padding: 1.8rem;
+            }
+        }
+        
+        /* 动画效果 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 书画艺术拓展模块样式 */
+        .poetry-section {
+            background-color: #fafbfb;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #142828; /* 书画主色 */
+        }
+        
+        .poetry-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .poetry-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .poetry-title {
+            color: #142828; /* 书画主色 */
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poetry-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .poetry-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body class="detail-page">
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <i class="fas fa-palette"></i>
+                <div class="brand-text">
+                    <span class="brand-title">传统文化</span>
+                    <span class="brand-subtitle">笔墨丹青 · 书画千秋</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="./index.html#festivals" class="nav-item">
+                    <i class="fas fa-calendar-alt nav-icon"></i> <span>传统节日</span>
+                </a>
+                <a href="./index.html#literature" class="nav-item">
+                    <i class="fas fa-book nav-icon"></i> <span>文学艺术</span>
+                </a>
+                <a href="./index.html#crafts" class="nav-item">
+                    <i class="fas fa-hands nav-icon"></i> <span>返回书画</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-main">
+        <div class="content-section">
+            <section class="detail-body reveal-on-scroll" id="content">
+                <div class="detail-section">
+                    <h3>书画艺术的起源与价值</h3>
+                    <p>中国书画艺术是中华文明的视觉瑰宝，以毛笔、宣纸、墨、砚为工具，以线条为核心表现手段，融合诗、书、画、印为一体，形成了独具东方美学的艺术体系。其起源可追溯至新石器时代的彩陶纹饰、商周甲骨金文，历经数千年发展，成为中华文化的核心符号之一。</p>
+                    <p>书画艺术的核心价值，在于"以形写神"——不仅追求物象的形似，更注重意境的营造与精神的表达。书法讲求"字如其人"，绘画追求"意在笔先"，二者皆以笔墨为载体，承载着中国人的审美情趣、哲学思想与生命感悟。</p>
+                    <p>作为非物质文化遗产，书画艺术不仅是艺术创作的形式，更是修身养性的途径、文化交流的桥梁。从文人雅士的案头创作，到殿堂庙宇的巨幅佳作，书画始终扎根中华文脉，展现着东方美学的独特魅力。</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>书画艺术的核心门类</h3>
+                    <p>中国书画体系庞大，门类丰富，核心可分为书法与绘画两大体系，各有细分品类：</p>
+                    <ul class="detail-list">
+                        <li><strong>书法：</strong>以汉字为载体的线条艺术，分为篆书（甲骨文、金文、小篆）、隶书、草书（章草、今草、狂草）、楷书、行书五大书体。王羲之《兰亭序》、颜真卿《祭侄文稿》、苏轼《寒食帖》并称"天下三大行书"，是书法艺术的巅峰之作。</li>
+                        <li><strong>山水画：</strong>绘画的核心门类，讲求"咫尺千里"的空间意境，分为青绿山水（李思训）、水墨山水（王维）、浅绛山水等，追求"天人合一"的哲学境界，是东方山水画的独特范式。</li>
+                        <li><strong>花鸟画：</strong>以花卉、禽鸟、虫鱼为题材，分为工笔与写意两大流派，讲求"传神写照"，如徐熙的"野逸"、黄筌的"富贵"，各成体系，寓意吉祥与生命之美。</li>
+                        <li><strong>人物画：</strong>以人物为核心题材，从魏晋顾恺之的"传神论"，到唐代阎立本的《历代帝王图》，再到明清陈洪绶的变形人物，兼具写实与写意，记录时代风貌。</li>
+                        <li><strong>文人画：</strong>融诗、书、画、印于一体，强调"文心"与"意境"，不求形似求神韵，是中国书画的最高境界，代表人物有苏轼、米芾、倪瓒、八大山人等。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>书画艺术的发展脉络</h3>
+                    <p>中国书画艺术的发展，是一部笔墨语言不断丰富、审美理念不断深化的历史：</p>
+                    <ul class="detail-timeline">
+                        <li>
+                            <h4>先秦至魏晋 · 奠基成型</h4>
+                            <p>商周金文奠定书法线条基础，魏晋时期书法进入自觉时代（二王书法），顾恺之提出"传神写照"，确立人物画核心理论，书画开始脱离实用，成为独立艺术形式。</p>
+                        </li>
+                        <li>
+                            <h4>隋唐时期 · 鼎盛发展</h4>
+                            <p>唐代楷书成熟（欧、颜、柳、褚），草书达到巅峰（张旭、怀素）；绘画方面，阎立本、吴道子开创人物画新范式，李思训、王维奠定山水画两大体系，书画分科明确。</p>
+                        </li>
+                        <li>
+                            <h4>宋元时期 · 文人画兴起</h4>
+                            <p>宋代书法尚意（苏、黄、米、蔡），绘画重理（郭熙《林泉高致》），院体画与文人画并行；元代文人画成为主流，赵孟頫提倡"书画同源"，黄公望、倪瓒等将山水画推向意境高峰。</p>
+                        </li>
+                        <li>
+                            <h4>明清时期 · 流派纷呈</h4>
+                            <p>明代吴门画派（沈周、文徵明）、董其昌"南北宗论"影响深远；清代四王、四僧各成体系，扬州八怪突破传统，书法则有傅山、王铎等创新，书画流派百花齐放。</p>
+                        </li>
+                        <li>
+                            <h4>近现代 · 中西融合</h4>
+                            <p>徐悲鸿、林风眠融合中西绘画技法，齐白石、黄宾虹、潘天寿坚守传统并创新，书法则有于右任、林散之等大家，书画艺术在传承中开启现代转型。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>书画艺术的当代传承与创新</h3>
+                    <p>在当代，书画艺术的传承不再局限于师徒相授，而是以多元形式融入生活：书画进校园普及基础技法、博物馆数字化让经典名作触手可及、文创产品将书画元素生活化、新媒体平台传播书画创作过程，让笔墨丹青走进大众视野。</p>
+                    <p>创新方面，当代书画家既坚守笔墨传统，又融合现代审美与创作理念：有的探索书画与装置艺术、数字艺术的结合，有的将现代生活题材融入传统笔墨，有的在材料上创新（如彩墨画），让书画艺术既有传统底蕴，又具时代气息。</p>
+                    <p>传承书画艺术，核心是传承其背后的东方美学与哲学思想——"天人合一"的自然观、"意在笔先"的创作观、"雅俗共赏"的审美观，这些核心价值仍是当代艺术创作与审美培养的重要养分。</p>
+                    <div class="detail-tags">
+                        <span>笔墨丹青</span>
+                        <span>书画同源</span>
+                        <span>文人画</span>
+                        <span>书法五体</span>
+                        <span>山水意境</span>
+                        <span>非遗传承</span>
+                    </div>
+                </div>
+
+                <!-- 书画经典名句拓展 -->
+                <div class="detail-section poetry-section reveal-on-scroll">
+                    <h3>千古传诵的书画论名句</h3>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">书法论</h4>
+                        <p class="poetry-author">历代 · 经典论句</p>
+                        <p class="poetry-content">书者，散也。欲书先散怀抱，任情恣性，然后书之。——蔡邕《笔论》<br>喜怒窘穷，忧悲愉佚，怨恨思慕，酣醉，无聊，不平，有动于心，必于草书焉发之。——韩愈《送高闲上人序》<br>字如其人，书为心画。——扬雄《法言》</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">绘画论</h4>
+                        <p class="poetry-author">历代 · 经典论句</p>
+                        <p class="poetry-content">外师造化，中得心源。——张璪<br>意在笔先，画尽意在。——王维<br>论画以形似，见与儿童邻。——苏轼《书鄢陵王主簿所画折枝二首》</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">文人画论</h4>
+                        <p class="poetry-author">历代 · 经典论句</p>
+                        <p class="poetry-content">书画同源。——赵孟頫<br>逸笔草草，不求形似，聊以自娱耳。——倪瓒<br>诗中有画，画中有诗。——苏轼评王维</p>
+                    </div>
+                </div>
+
+                <!-- 书画学习建议 -->
+                <div class="detail-section reveal-on-scroll">
+                    <h3>书画学习的方法与建议</h3>
+                    <p>学习书画艺术需循序渐进，兼顾技法与修养，才能真正领会其中精髓：</p>
+                    <ul class="detail-list">
+                        <li><strong>筑基临摹：</strong>初学者从经典碑帖、名作入手临摹，书法先练楷书打基础，绘画先练线条与造型，掌握传统笔墨语言。</li>
+                        <li><strong>师法自然：</strong>临摹之余走出画室，观察自然万物（山水、花鸟、人物），将自然之美转化为笔墨之美，避免闭门造车。</li>
+                        <li><strong>提升修养：</strong>书画离不开文化修养，多读诗词、文论、史论，理解作品背后的文化内涵，做到"功夫在诗外"。</li>
+                        <li><strong>持之以恒：</strong>书画是慢功夫，需每日临池不辍，从量变到质变，忌急功近利、追求速成。</li>
+                        <li><strong>求变创新：</strong>在掌握传统技法的基础上，结合自身性情与时代审美，形成个人风格，避免一味模仿。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-quote">
+                        "夫画者，成教化，助人伦，穷神变，测幽微，与六籍同功，四时并运。" —— 唐 · 张彦远《历代名画记》
+                    </div>
+                    <p>张彦远的这句话，道尽了书画艺术的社会价值与文化意义。中国书画不仅是视觉的艺术，更是文化的载体、精神的寄托，它以笔墨为语言，记录着中华文明的审美历程，也塑造着中国人的精神世界。</p>
+                    <p>在快节奏的现代社会，书画艺术的慢、静、雅，恰好能抚慰人心，让我们在笔墨间感受东方美学的韵味，在临摹与创作中体会"天人合一"的境界。笔墨千秋，经典永传，这是属于中国人的审美底色与文化自信。</p>
+                    <a class="btn primary" href="./index.html#crafts">返回主页 · 继续探索工艺技艺</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">书画名家与代表作</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-feather-alt region-icon"></i>
+                        <div>
+                            <strong>王羲之：</strong>《兰亭序》（天下第一行书）
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-mountain region-icon"></i>
+                        <div>
+                            <strong>王维：</strong>《辋川图》（水墨山水鼻祖）
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-user region-icon"></i>
+                        <div>
+                            <strong>顾恺之：</strong>《洛神赋图》（人物画经典）
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-tree region-icon"></i>
+                        <div>
+                            <strong>八大山人：</strong>《荷石水禽图》（写意花鸟巅峰）
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-scroll region-icon"></i>
+                        <div>
+                            <strong>黄公望：</strong>《富春山居图》（山水画第一神品）
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">书画创作工具</h3>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>毛笔</h4>
+                        <p>分狼毫、羊毫、兼毫，不同笔性适配不同书体与画风</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>宣纸</h4>
+                        <p>分生宣（写意）、熟宣（工笔）、半生熟宣（行书/小楷）</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>墨</h4>
+                        <p>松烟墨（黑而无光）、油烟墨（黑而有光），现多用墨汁</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-square"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>砚台</h4>
+                        <p>端砚、歙砚、洮河砚、澄泥砚为四大名砚，研墨存墨之用</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>颜料</h4>
+                        <p>传统矿物颜料（石青、石绿）、植物颜料（花青、藤黄）</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">书画艺术相关文化</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-university region-icon"></i>
+                        <div>
+                            <strong>书画收藏</strong>
+                            <p>故宫、上海博物馆等藏有大量历代书画珍品</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-award region-icon"></i>
+                        <div>
+                            <strong>非遗保护</strong>
+                            <p>书法、国画均列入国家级非物质文化遗产</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-globe-asia region-icon"></i>
+                        <div>
+                            <strong>海外传播</strong>
+                            <p>书画展览走出国门，成为中华文化交流的重要载体</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-school region-icon"></i>
+                        <div>
+                            <strong>书画教育</strong>
+                            <p>中小学开设书法课，专业美院培养书画人才</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">传统文化百科</h3>
+                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。我们通过数字化手段，让传统文化在现代社会焕发新的生机。</p>
+                    <p class="quote">"观今宜鉴古，无古不成今" —— 了解过去，才能更好地理解现在，创造未来。</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">内容分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="./index.html#festivals"><i class="fas fa-calendar-alt"></i> 传统节日</a></li>
+                        <li><a href="./index.html#literature"><i class="fas fa-book"></i> 文学艺术</a></li>
+                        <li><a href="./index.html#crafts"><i class="fas fa-hands"></i> 工艺技艺</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> 饮食文化</a></li>
+                        <li><a href="#"><i class="fas fa-archway"></i> 建筑园林</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 传统文化百科平台 | 传承文明，启迪未来</p>
+                <p>本日访问量：2,358 次 | 总知识条目：1,248 条 | 书画艺术专题访问量：5,768 次</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            
+            function checkScroll() {
+                revealElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('revealed');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkScroll);
+            
+            // 导航栏交互效果
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
