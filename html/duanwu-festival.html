@@ -1,9 +1,825 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-	</body>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>端午节 · 传统文化详情</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+    <style>
+        /* 全局样式（仅调整主色调为端午青绿色系） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #f2f9f7;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* 导航栏样式（主色调整为端午绿） */
+        .site-nav {
+            background-color: rgba(22, 88, 62, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .nav-brand i {
+            font-size: 2rem;
+            color: #f8d568;
+        }
+        
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .brand-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 1px;
+        }
+        
+        .brand-subtitle {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* 主内容区域 */
+        .page-main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        /* 主要内容区域 */
+        .content-section {
+            flex: 3;
+        }
+        
+        /* 侧边栏 */
+        .sidebar {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        /* 详情内容区域 */
+        .detail-body {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .detail-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-section h3 {
+            font-size: 1.6rem;
+            color: #16583e; /* 端午主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d568;
+        }
+        
+        .detail-section p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        
+        .detail-list {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+        
+        .detail-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+        
+        .detail-list li:before {
+            content: "•";
+            color: #16583e; /* 端午主色 */
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+        
+        .detail-timeline {
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .detail-timeline:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: #f8d568;
+        }
+        
+        .detail-timeline li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        .detail-timeline li:before {
+            content: "";
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: #16583e; /* 端午主色 */
+            border: 2px solid #f8d568;
+        }
+        
+        .detail-timeline h4 {
+            color: #16583e; /* 端午主色 */
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+        
+        .detail-timeline p {
+            color: #666;
+        }
+        
+        .detail-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        
+        .detail-tags span {
+            background-color: #e6f5ef; /* 端午浅绿 */
+            color: #16583e; /* 端午主色 */
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .detail-quote {
+            background-color: #f2f9f7; /* 端午背景色 */
+            border-left: 4px solid #f8d568;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: #16583e; /* 端午主色 */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #0f422d; /* 端午深色 */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(22, 88, 62, 0.2);
+        }
+        
+        /* 侧边栏样式 */
+        .sidebar-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            color: #16583e; /* 端午主色 */
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f8d568;
+        }
+        
+        .regional-customs {
+            list-style-type: none;
+        }
+        
+        .regional-customs li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .regional-customs li:last-child {
+            border-bottom: none;
+        }
+        
+        .region-icon {
+            color: #16583e; /* 端午主色 */
+            font-size: 1.2rem;
+            width: 24px;
+        }
+        
+        .custom-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .custom-item:last-child {
+            border-bottom: none;
+        }
+        
+        .custom-icon {
+            background-color: #e6f5ef; /* 端午浅绿 */
+            color: #16583e; /* 端午主色 */
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .custom-text h4 {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 0.2rem;
+        }
+        
+        .custom-text p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* 页脚样式（适配端午主色） */
+        footer {
+            background-color: #103324; /* 端午深绿 */
+            color: #d9e7e1;
+            padding: 3rem 0 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-title {
+            color: #f8d568;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #16583e; /* 端午主色 */
+        }
+        
+        .footer-links {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #d9e7e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #f8d568;
+        }
+        
+        .quote {
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: rgba(22, 88, 62, 0.2);
+            border-radius: 5px;
+            border-left: 3px solid #f8d568;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #b8d0c6;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .page-main {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+            }
+            
+            .nav-item span {
+                display: none;
+            }
+            
+            .nav-item {
+                padding: 0.5rem;
+            }
+            
+            .detail-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .detail-body {
+                padding: 1.8rem;
+            }
+        }
+        
+        /* 动画效果 */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 端午诗词拓展模块样式 */
+        .poetry-section {
+            background-color: #f9fdfb;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+            border-left: 4px solid #16583e; /* 端午主色 */
+        }
+        
+        .poetry-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .poetry-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .poetry-title {
+            color: #16583e; /* 端午主色 */
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poetry-author {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+        }
+        
+        .poetry-content {
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: #444;
+        }
+    </style>
+</head>
+<body class="detail-page">
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <i class="fas fa-leaf"></i>
+                <div class="brand-text">
+                    <span class="brand-title">传统文化</span>
+                    <span class="brand-subtitle">华夏文明 · 传承记忆</span>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="./index.html#festivals" class="nav-item">
+                    <i class="fas fa-calendar-alt nav-icon"></i> <span>返回节日</span>
+                </a>
+                <a href="./index.html#literature" class="nav-item">
+                    <i class="fas fa-book nav-icon"></i> <span>文学艺术</span>
+                </a>
+                <a href="./index.html#crafts" class="nav-item">
+                    <i class="fas fa-hands nav-icon"></i> <span>工艺技艺</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="page-main">
+        <div class="content-section">
+            <section class="detail-body reveal-on-scroll" id="content">
+                <div class="detail-section">
+                    <h3>起源与寓意</h3>
+                    <p>端午节又称端阳节、龙舟节、重午节，起源于上古先民对龙图腾的祭祀，后因纪念屈原投江而赋予深厚的人文内涵。其时间在农历五月初五，正值仲夏，是古人驱邪防疫、祈福安康的重要节点。</p>
+                    <p>"端午"二字，"端"为初，"午"属十二地支，五月为午月，初五为午日，故称端午。古人认为五月是"恶月"，暑气上升、疫病易生，因此端午节的核心习俗多围绕驱邪、防疫、纳凉展开，如挂艾草、佩香囊、喝雄黄酒等。</p>
+                    <p>屈原投汨罗江的传说，让端午节成为纪念爱国诗人的节日。民众为防止鱼虾啃食屈原身体，投粽子于江中，这一行为逐渐演变为端午食粽的习俗；而龙舟竞渡，则寓意着打捞屈原遗体，后发展为极具特色的民俗竞技活动。</p>
+                </div>
+
+                <div class="detail-section">
+                    <h3>端午习俗全览</h3>
+                    <p>端午节习俗兼具自然崇拜与人文纪念，地域特色鲜明，但核心习俗流传千年：</p>
+                    <ul class="detail-list">
+                        <li><strong>挂艾草与菖蒲：</strong>艾草芳香驱蚊，菖蒲形似宝剑，二者悬挂门前，寓意"蒲剑斩千邪，艾旗招百福"，是古人驱邪防疫的智慧。</li>
+                        <li><strong>吃粽子：</strong>粽叶包裹糯米，内填枣、肉、豆沙等馅料，南北风味各异。粽子最初为祭祀用品，后成为端午标志性食俗，象征团圆与祈福。</li>
+                        <li><strong>赛龙舟：</strong>龙舟形制仿龙形，竞渡时鼓声震天、桨手齐力，既是纪念屈原的仪式，也是水乡人民强身健体、祈福纳祥的盛会。</li>
+                        <li><strong>佩香囊：</strong>以彩布缝制香囊，内装雄黄、朱砂、艾草等香料，佩戴于身，既能驱虫避疫，又寓意平安康健，尤其受孩童喜爱。</li>
+                        <li><strong>饮雄黄酒/沐兰汤：</strong>雄黄泡酒饮用或涂抹额头（"王"字），兰草煮水沐浴，均为端午驱邪解毒、消暑祛湿的传统方式。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>关键时序与仪式</h3>
+                    <p>端午节的筹备与庆祝围绕农历五月初五展开，部分地区习俗延伸至整个五月：</p>
+                    <ul class="detail-timeline">
+                        <li>
+                            <h4>五月初一 · 起端午</h4>
+                            <p>民间开始筹备端午用品，采艾草、菖蒲，包粽子，缝制香囊，为初五正日做准备，部分水乡开始训练龙舟队。</p>
+                        </li>
+                        <li>
+                            <h4>五月初五 · 端午正日</h4>
+                            <p>晨起挂艾草菖蒲，给孩童佩香囊、涂雄黄，全家吃粽子、咸鸭蛋，水乡举行龙舟竞渡，是端午庆祝的核心时刻。</p>
+                        </li>
+                        <li>
+                            <h4>五月十三 · 送端午</h4>
+                            <p>部分地区有"送端午"习俗，女婿向岳父母送礼（粽子、鸭蛋、酒等），表达孝敬之意，延续端午的亲情联结。</p>
+                        </li>
+                        <li>
+                            <h4>五月十五 · 大端午</h4>
+                            <p>湘鄂西等地区将五月十五定为"大端午"，延续龙舟竞渡等活动，是端午习俗的延伸与补充。</p>
+                        </li>
+                        <li>
+                            <h4>五月底 · 端午收尾</h4>
+                            <p>取下门前艾草菖蒲晒干备用，端午相关习俗告一段落，标志着仲夏防疫期的关键节点完成。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3>当代传承</h3>
+                    <p>如今的端午节，既保留了驱邪防疫、纪念屈原的核心内涵，又融入了现代生活元素：龙舟竞渡发展为国际赛事，粽子口味不断创新，香囊成为非遗文创产品；同时，端午被列入国家级非物质文化遗产，并成为法定节假日，让传统文化回归大众生活。</p>
+                    <p>2009年，中国端午节被列入《人类非物质文化遗产代表作名录》，成为中国首个入选世界非遗的节日，彰显了其在中华文化中的独特价值。各地通过端午文化节、龙舟赛、非遗展等形式，让端午习俗活态传承。</p>
+                    <p>端午的核心精神——敬畏自然、爱国怀乡、健康祈福——在现代社会依然具有重要意义，成为连接古今、凝聚民族情感的重要纽带。</p>
+                    <div class="detail-tags">
+                        <span>驱邪防疫</span>
+                        <span>龙舟竞渡</span>
+                        <span>食粽寄情</span>
+                        <span>非遗传承</span>
+                        <span>爱国情怀</span>
+                        <span>健康祈福</span>
+                    </div>
+                </div>
+
+                <!-- 端午诗词拓展 -->
+                <div class="detail-section poetry-section reveal-on-scroll">
+                    <h3>经典端午诗词</h3>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《端午》</h4>
+                        <p class="poetry-author">唐 · 文秀</p>
+                        <p class="poetry-content">节分端午自谁言，万古传闻为屈原。<br>堪笑楚江空渺渺，不能洗得直臣冤。</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《乙卯重五诗》</h4>
+                        <p class="poetry-author">宋 · 陆游</p>
+                        <p class="poetry-content">重五山村好，榴花忽已繁。<br>粽包分两髻，艾束著危冠。<br>旧俗方储药，羸躯亦点丹。<br>日斜吾事毕，一笑向杯盘。</p>
+                    </div>
+                    <div class="poetry-item">
+                        <h4 class="poetry-title">《竞渡诗》</h4>
+                        <p class="poetry-author">唐 · 卢肇</p>
+                        <p class="poetry-content">石溪久住思端午，馆驿楼前看发机。<br>鼙鼓动时雷隐隐，兽头凌处雪微微。<br>冲波突出人齐譀，跃浪争先鸟退飞。<br>向道是龙刚不信，果然夺得锦标归。</p>
+                    </div>
+                </div>
+
+                <!-- 端午传统禁忌 -->
+                <div class="detail-section reveal-on-scroll">
+                    <h3>端午传统禁忌</h3>
+                    <p>端午节的禁忌多与"恶月"防疫、祈福安康相关，是古人应对仲夏气候的生活智慧：</p>
+                    <ul class="detail-list">
+                        <li><strong>忌正午出门：</strong>古人认为五月初五正午阳气最盛、煞气最重，尤其是孩童忌出门，避免招惹邪气。</li>
+                        <li><strong>忌下水游泳：</strong>水乡地区忌端午当天下水，相传屈原投江日，水中有蛟龙出没，下水易被"勾魂"，实则是提醒汛期防溺水。</li>
+                        <li><strong>忌吃生冷：</strong>端午正值梅雨季节，湿气重，忌吃生冷食物，防止肠胃不适，与端午吃热粽、饮雄黄酒的习俗相呼应。</li>
+                        <li><strong>忌打骂孩童：</strong>端午给孩童佩香囊、系五彩绳，忌打骂孩子，认为会冲散"百毒不侵"的福气，寓意孩童平安成长。</li>
+                        <li><strong>忌剪断五彩绳：</strong>端午给孩童系的五彩绳，需等到端午后第一场雨或七月七才剪断扔入水中，寓意带走百病。</li>
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <div class="detail-quote">
+                        "彩线轻缠红玉臂，小符斜挂绿云鬟。佳人相见一千年。" —— 宋 · 苏轼《浣溪沙·端午》
+                    </div>
+                    <p>这首词生动描绘了宋代端午的民俗风情。端午节历经千年，从最初的驱邪防疫仪式，到融合纪念屈原的人文内涵，始终承载着中国人对自然的敬畏、对家国的情怀、对健康的祈愿。</p>
+                    <p>在现代社会，端午节不仅是传承非遗的重要载体，更是提醒人们珍视传统文化、守护健康生活的重要节点。龙舟竞渡的拼搏精神、食粽寄情的家国情怀，让端午文化在新时代依然焕发生机。</p>
+                    <a class="btn primary" href="./index.html#festivals">返回主页 · 继续探索其他节日</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">地区特色习俗</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-water region-icon"></i>
+                        <div>
+                            <strong>江南：</strong>赛龙舟、吃五黄（黄鳝、黄鱼、黄瓜、咸蛋黄、雄黄酒）
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-mountain region-icon"></i>
+                        <div>
+                            <strong>川渝：</strong>包椒盐粽子、沐兰汤、挂葛藤驱邪
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-home region-icon"></i>
+                        <div>
+                            <strong>北方：</strong>吃甜粽、系五彩绳、给孩童点雄黄
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-ship region-icon"></i>
+                        <div>
+                            <strong>闽南：</strong>赛龙舟、烧午纸、吃薄饼卷菜
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-tree region-icon"></i>
+                        <div>
+                            <strong>湘鄂：</strong>龙舟竞渡规模盛大，过"大端午"（五月十五）
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">端午传统物品</h3>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>艾草与菖蒲</h4>
+                        <p>悬挂门前驱邪防疫，芳香驱蚊，寓意平安</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>香囊</h4>
+                        <p>内装香料，佩戴驱虫，象征百毒不侵</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>粽子</h4>
+                        <p>粽叶裹米，南北风味各异，寄情屈原</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-dragon"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>龙舟</h4>
+                        <p>仿龙形制，竞渡祈福，彰显拼搏精神</p>
+                    </div>
+                </div>
+                <div class="custom-item">
+                    <div class="custom-icon">
+                        <i class="fas fa-thread"></i>
+                    </div>
+                    <div class="custom-text">
+                        <h4>五彩绳</h4>
+                        <p>五色丝线系腕，寓意辟邪纳福，健康成长</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section reveal-on-scroll">
+                <h3 class="sidebar-title">端午相关文化</h3>
+                <ul class="regional-customs">
+                    <li>
+                        <i class="fas fa-book region-icon"></i>
+                        <div>
+                            <strong>屈原与《离骚》</strong>
+                            <p>端午核心文化符号，爱国情怀的象征</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-trophy region-icon"></i>
+                        <div>
+                            <strong>龙舟赛事</strong>
+                            <p>从民俗活动发展为国际体育赛事</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-award region-icon"></i>
+                        <div>
+                            <strong>世界非遗</strong>
+                            <p>2009年入选人类非物质文化遗产名录</p>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-calendar-check region-icon"></i>
+                        <div>
+                            <strong>法定假日</strong>
+                            <p>2008年起成为国家法定节假日</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">传统文化百科</h3>
+                    <p>传承中华文明，弘扬优秀传统文化。本平台致力于为青少年提供系统、有趣、深入的传统文化学习资源。我们通过数字化手段，让传统文化在现代社会焕发新的生机。</p>
+                    <p class="quote">"观今宜鉴古，无古不成今" —— 了解过去，才能更好地理解现在，创造未来。</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">内容分类</h3>
+                    <ul class="footer-links">
+                        <li><a href="./index.html#festivals"><i class="fas fa-calendar-alt"></i> 传统节日</a></li>
+                        <li><a href="./index.html#literature"><i class="fas fa-book"></i> 文学艺术</a></li>
+                        <li><a href="./index.html#crafts"><i class="fas fa-hands"></i> 工艺技艺</a></li>
+                        <li><a href="#"><i class="fas fa-utensils"></i> 饮食文化</a></li>
+                        <li><a href="#"><i class="fas fa-archway"></i> 建筑园林</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 传统文化百科平台 | 传承文明，启迪未来</p>
+                <p>本日访问量：2,358 次 | 总知识条目：1,248 条 | 端午专题访问量：4,892 次</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动显示动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            
+            function checkScroll() {
+                revealElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('revealed');
+                    }
+                });
+            }
+            
+            // 初始检查
+            checkScroll();
+            
+            // 滚动时检查
+            window.addEventListener('scroll', checkScroll);
+            
+            // 导航栏交互效果
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
 </html>
