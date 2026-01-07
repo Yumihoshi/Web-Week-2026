@@ -100,6 +100,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const categoryCards = document.querySelectorAll('.category-card');
     const interactiveGrids = Array.from(document.querySelectorAll('.interactive-grid'));
     const getGridCards = grid => Array.from(grid.querySelectorAll('.category-card'));
+    const getCardHref = card => {
+        const btn = card ? card.querySelector('.card-button') : null;
+        if (!btn) {
+            return null;
+        }
+        const href = btn.getAttribute('href');
+        return href && href !== '#' ? href : null;
+    };
 
     // 检测是否为移动设备
     const isMobile = () => window.innerWidth <= 768;
@@ -258,6 +266,19 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             e.preventDefault();
             card.classList.toggle('expanded');
+        });
+
+        card.addEventListener('click', e => {
+            if (isMobile()) {
+                return;
+            }
+            if (e.target.closest('a')) {
+                return;
+            }
+            const href = getCardHref(card);
+            if (href) {
+                window.location.href = href;
+            }
         });
     });
 
