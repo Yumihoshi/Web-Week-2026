@@ -1,0 +1,93 @@
+/* 民间手工配色：陶土橘 + 暖米色 */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Serif SC', serif;
+    background-color: #fdf6f0;
+    color: #34251b;
+    line-height: 1.6;
+}
+
+.site-nav {
+    background-color: rgba(161, 71, 28, 0.95);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.12);
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.nav-brand { display: flex; align-items: center; gap: 0.8rem; }
+.nav-brand i { font-size: 2rem; color: #f2c27d; }
+.brand-text { display: flex; flex-direction: column; }
+.brand-title { font-size: 1.4rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
+.brand-subtitle { font-size: 0.8rem; color: rgba(255,255,255,0.85); font-family: 'Ma Shan Zheng', cursive; }
+
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-item { color: #fff; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-weight: 500; padding: 0.5rem 0.8rem; border-radius: 4px; transition: all 0.3s ease; }
+.nav-item:hover { background-color: rgba(255,255,255,0.16); transform: translateY(-2px); }
+.nav-icon { font-size: 1.1rem; }
+
+.page-main { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; gap: 2rem; margin-top: 2rem; margin-bottom: 3rem; }
+.content-section { flex: 3; }
+.sidebar { flex: 1; min-width: 280px; }
+
+.detail-body { background-color: #fff; border-radius: 10px; padding: 2.5rem; box-shadow: 0 5px 20px rgba(0,0,0,0.06); }
+.detail-section { margin-bottom: 2.5rem; }
+.detail-section:last-child { margin-bottom: 0; }
+.detail-section h3 { font-size: 1.6rem; color: #a1471c; margin-bottom: 1.2rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f2c27d; }
+.detail-section p { margin-bottom: 1.2rem; font-size: 1.05rem; line-height: 1.7; }
+
+.detail-list { list-style: none; padding-left: 1rem; }
+.detail-list li { position: relative; padding-left: 1.8rem; margin-bottom: 0.8rem; font-size: 1.05rem; }
+.detail-list li:before { content: "•"; color: #a1471c; font-size: 1.5rem; position: absolute; left: 0; top: -2px; }
+
+.detail-timeline { list-style: none; position: relative; padding-left: 1.5rem; }
+.detail-timeline:before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background-color: #f2c27d; }
+.detail-timeline li { position: relative; padding-left: 1.5rem; margin-bottom: 1.8rem; }
+.detail-timeline li:before { content: ""; position: absolute; left: -7px; top: 5px; width: 13px; height: 13px; border-radius: 50%; background-color: #a1471c; border: 2px solid #f2c27d; }
+.detail-timeline h4 { color: #a1471c; font-size: 1.2rem; margin-bottom: 0.4rem; }
+.detail-timeline p { color: #4a372c; }
+
+.detail-tags { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
+.detail-tags span { background-color: #f9e6d0; color: #a1471c; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; }
+
+.detail-quote { background-color: #fdf6f0; border-left: 4px solid #f2c27d; padding: 1.5rem; margin: 1.5rem 0; font-style: italic; font-size: 1.05rem; color: #5a4032; border-radius: 0 8px 8px 0; }
+
+.btn { display: inline-block; padding: 0.8rem 1.8rem; background-color: #a1471c; color: #fff; text-decoration: none; border-radius: 5px; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; font-size: 1rem; }
+.btn:hover { background-color: #853812; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(161,71,28,0.25); }
+
+.sidebar-section { background-color: #fff; border-radius: 10px; padding: 1.8rem; margin-bottom: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.06); }
+.sidebar-title { font-size: 1.2rem; color: #a1471c; margin-bottom: 1rem; border-bottom: 1px solid #f3e0d0; padding-bottom: 0.6rem; }
+
+.regional-customs { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.regional-customs li { display: flex; gap: 0.8rem; color: #4a372c; }
+.region-icon { color: #f2c27d; width: 20px; text-align: center; margin-top: 4px; }
+
+.custom-item { display: flex; gap: 0.8rem; margin-bottom: 1rem; align-items: center; }
+.custom-icon { width: 44px; height: 44px; border-radius: 12px; background-color: #f9e6d0; color: #a1471c; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+.custom-text h4 { font-size: 1.05rem; color: #a1471c; margin-bottom: 0.2rem; }
+.custom-text p { color: #4a372c; font-size: 0.95rem; }
+
+.footer-content { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; gap: 2rem; padding-top: 2rem; padding-bottom: 1.5rem; }
+.footer-section { flex: 1; }
+.footer-title { font-size: 1.2rem; color: #a1471c; margin-bottom: 0.8rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-links a { color: #a1471c; text-decoration: none; font-weight: 500; }
+.footer-links a:hover { color: #f2c27d; }
+.quote { color: #5a4032; font-style: italic; font-size: 0.95rem; }
+
+footer { background-color: #f8eee4; margin-top: 2rem; }
+.footer-content + .copyright { text-align: center; padding: 1rem 0 1.6rem; color: #4a372c; font-size: 0.95rem; }
+
+.reveal-on-scroll { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+.reveal-on-scroll.revealed { opacity: 1; transform: translateY(0); }
